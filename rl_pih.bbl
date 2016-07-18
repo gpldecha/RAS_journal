@@ -1,0 +1,149 @@
+\begin{thebibliography}{25}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Abu-Dakka et~al.(2014)Abu-Dakka, Nemec, Kramberger, Buch, Kr{\"u}ger,
+  and Ude}]{sol_pdg_pbd_2014}
+Abu-Dakka, F., Nemec, B., Kramberger, A., Buch, A.~G., Kr{\"u}ger, N., Ude, A.,
+  2014. Solving peg-in-hole tasks by human demonstration and exception
+  strategies. Industrial Robot 41~(6), 575--584.
+
+\bibitem[{Atkeson et~al.(1997)Atkeson, Moore, and
+  Schaal}]{Atkeson97locallyweighted}
+Atkeson, C.~G., Moore, A.~W., Schaal, S., 1997. Locally weighted learning.
+  ARTIFICIAL INTELLIGENCE REVIEW, 11--73.
+
+\bibitem[{Bdiwi et~al.(2015)Bdiwi, Winkler, Jokesch, and
+  Suchy}]{peg_imcssd_2015}
+Bdiwi, M., Winkler, A., Jokesch, M., Suchy, J., 2015. Improved peg-in-hole
+  (5-pin plug) task: Intended for charging electric vehicles by robot system
+  automatically. In: Proc. of 12th IEEE International Multi-Conference on
+  Systems, Signals and Devices.
+
+\bibitem[{Bergman and Bergman(1999)}]{Bergman99recursivebayesian}
+Bergman, N., Bergman, C.~N., 1999. Recursive bayesian estimation: Navigation
+  and tracking applications. thesis no 579. Tech. rep., Link\"oping University,
+  Link\"oping Studies in Science and Technology. Doctoral dissertation.
+
+\bibitem[{Calinon et~al.(2010)Calinon, D'halluin, Sauser, Caldwell, and
+  Billard}]{gesture_calinon_2010}
+Calinon, S., D'halluin, F., Sauser, E.~L., Caldwell, D.~G., Billard, A.~G.,
+  June 2010. Learning and reproduction of gestures by imitation. IEEE Robotics
+  Automation Magazine 17~(2), 44--54.
+
+\bibitem[{Chambrier and Billard(2014)}]{Chambrier2014}
+Chambrier, G.~d., Billard, A., 2014. Learning search policies from humans in a
+  partially observable context. Robotics and Biomimetics 1~(1), 1--16.
+\newline\urlprefix\url{http://dx.doi.org/10.1186/s40638-014-0008-1}
+
+\bibitem[{Cheng and Chen(2014)}]{online_gpr_icra_2014}
+Cheng, H., Chen, H., May 2014. Online parameter optimization in robotic force
+  controlled assembly processes. In: 2014 IEEE International Conference on
+  Robotics and Automation (ICRA). pp. 3465--3470.
+
+\bibitem[{Chhatpar and Branicky(2001)}]{search_strategies_icra_2001}
+Chhatpar, S.~R., Branicky, M.~S., 2001. Search strategies for peg-in-hole
+  assemblies with position uncertainty. In: Intelligent Robots and Systems,
+  2001. Proceedings. 2001 IEEE/RSJ International Conference on. Vol.~3. pp.
+  1465--1470 vol.3.
+
+\bibitem[{Deisenroth et~al.(2011)Deisenroth, Neumann, and
+  Peters}]{p_search_surv_2011}
+Deisenroth, M.~P., Neumann, G., Peters, J., 2011. A survey on policy search for
+  robotics. Foundations and Trends in Robotics 2~(1-2), 1--142.
+\newline\urlprefix\url{http://dx.doi.org/10.1561/2300000021}
+
+\bibitem[{Ernst et~al.(2005)Ernst, Geurts, and Wehenkel}]{EGW05}
+Ernst, D., Geurts, P., Wehenkel, L., April 2005. Tree-based batch mode
+  reinforcement learning. Journal of Machine Learning Research 6, 503--556.
+
+\bibitem[{Fisher and Mujtaba(1992)}]{hybrid_1992}
+Fisher, W.~D., Mujtaba, M.~S., 1992. Hybrid position/force control: A correct
+  formulation. The International Journal of Robotics Research 11~(4), 299--311.
+\newline\urlprefix\url{http://ijr.sagepub.com/content/11/4/299.abstract}
+
+\bibitem[{Gullapalli et~al.(1994)Gullapalli, Barto, and
+  Grupen}]{learn_admittance_icra_1994}
+Gullapalli, V., Barto, A.~G., Grupen, R.~A., 1994. Learning admittance mappings
+  for force-guided assembly. In: Proceedings of the 1994 International
+  Conference on Robotics and Automation, San Diego, CA, USA, May 1994. pp.
+  2633--2638.
+
+\bibitem[{Kalakrishnan et~al.(2011)Kalakrishnan, Righetti, Pastor, and
+  Schaal}]{learn_force_c_icirs_2011}
+Kalakrishnan, M., Righetti, L., Pastor, P., Schaal, S., Sept 2011. Learning
+  force control policies for compliant manipulation. In: 2011 IEEE/RSJ
+  International Conference on Intelligent Robots and Systems. pp. 4639--4644.
+
+\bibitem[{kook Yun(2008)}]{compliant_manip_icra_2008}
+kook Yun, S., May 2008. Compliant manipulation for peg-in-hole: Is passive
+  compliance a key to learn contact motion? In: Robotics and Automation, 2008.
+  ICRA 2008. IEEE International Conference on. pp. 1647--1652.
+
+\bibitem[{Meeussen et~al.(2010)Meeussen, Wise, Glaser, Chitta, McGann,
+  Mihelich, Marder-Eppstein, Muja, Eruhimov, Foote, Hsu, Rusu, Marthi, Bradski,
+  Konolige, Gerkey, and Berger}]{peg_personal_icra_2010}
+Meeussen, W., Wise, M., Glaser, S., Chitta, S., McGann, C., Mihelich, P.,
+  Marder-Eppstein, E., Muja, M., Eruhimov, V., Foote, T., Hsu, J., Rusu, R.~B.,
+  Marthi, B., Bradski, G., Konolige, K., Gerkey, B., Berger, E., May 2010.
+  Autonomous door opening and plugging in with a personal robot. In: Robotics
+  and Automation (ICRA), 2010 IEEE International Conference on. pp. 729--736.
+
+\bibitem[{Nemec et~al.(2013)Nemec, Abu-Dakka, Ridge, Ude, Jorgensen,
+  Savarimuthu, Jouffroy, Petersen, and Kr\"uger}]{trans_workpiece_icra_2013}
+Nemec, B., Abu-Dakka, F.~J., Ridge, B., Ude, A., Jorgensen, J.~A., Savarimuthu,
+  T.~R., Jouffroy, J., Petersen, H.~G., Kr\"uger, N., Nov 2013. Transfer of
+  assembly operations to new workpiece poses by adaptation to the desired force
+  profile. In: Advanced Robotics (ICAR), 2013 16th International Conference on.
+  pp. 1--7.
+
+\bibitem[{Neumann and Peters(2009)}]{NIPS2008_3501}
+Neumann, G., Peters, J.~R., 2009. Fitted q-iteration by advantage weighted
+  regression. In: Koller, D., Schuurmans, D., Bengio, Y., Bottou, L. (Eds.),
+  Advances in Neural Information Processing Systems 21. Curran Associates,
+  Inc., pp. 1177--1184.
+
+\bibitem[{Park et~al.(2013)Park, Bae, Park, Baeg, and
+  Park}]{intuitive_peg_isr_2013}
+Park, H., Bae, J.-H., Park, J.-H., Baeg, M.-H., Park, J., Oct 2013. Intuitive
+  peg-in-hole assembly strategy with a compliant manipulator. In: Robotics
+  (ISR), 2013 44th International Symposium on. pp. 1--5.
+
+\bibitem[{Peters and Schaal(2008)}]{peter_nac_2008}
+Peters, J., Schaal, S., 2008. Natural actor-critic. Neurocomputing 71~(7-9),
+  1180--1190.
+
+\bibitem[{Riedmiller(2005)}]{Riedmiller2005}
+Riedmiller, M., 2005. Neural Fitted Q Iteration - First Experiences with a Data
+  Efficient Neural Reinforcement Learning Method. pp. 317--328.
+\newline\urlprefix\url{http://dx.doi.org/10.1007/11564096_32}
+
+\bibitem[{Roy and Gordon(2003)}]{NIPS2002_2319}
+Roy, N., Gordon, G.~J., 2003. Exponential family pca for belief compression in
+  pomdps. In: Becker, S., Thrun, S., Obermayer, K. (Eds.), Advances in Neural
+  Information Processing Systems 15. MIT Press, pp. 1667--1674.
+\newline\urlprefix\url{http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}
+
+\bibitem[{Schaal et~al.(2004)Schaal, Peters, Nakanishi, and
+  Ijspeert}]{Schaal04learningmovement}
+Schaal, S., Peters, J., Nakanishi, J., Ijspeert, A., 2004. Learning movement
+  primitives. In: International Symposium on Robotics Research (ISRR2003.
+  Springer.
+
+\bibitem[{Sung(2004)}]{gmr_2004}
+Sung, H., 2004. Gaussian mixture regression and classification. Ph.D. thesis,
+  Rice University.
+
+\bibitem[{Sutton and Barto(1998)}]{sutton1998reinforcement}
+Sutton, R., Barto, A., 1998. Reinforcement learning: An introduction. Vol. 116.
+  Cambridge Univ Press.
+
+\bibitem[{Yang et~al.(2014)Yang, Lin, Song, Nemec, Ude, Buch, Krüger, and
+  Savarimuthu}]{fast_peg_pbd_icmc_2014}
+Yang, Y., Lin, L., Song, Y., Nemec, B., Ude, A., Buch, A., Krüger, N.,
+  Savarimuthu, T., 2014. Fast programming of peg-in-hole actions by human
+  demonstration. IEEE, pp. 990--995.
+
+\end{thebibliography}
