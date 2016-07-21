@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.1)  18 JUL 2016 22:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  21 JUL 2016 20:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**rl_pih.tex -shell-escape
+**rl_pih.tex
 (./rl_pih.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
@@ -1142,44 +1142,44 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 ) (./rl_pih.aux)
 \openout1 = `rl_pih.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 101.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 101
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 103.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 103
 .
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 101.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 101
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 103.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 103
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 101.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 101
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 103.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 103
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 101.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 101.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 103.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 103.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 101.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 103.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
@@ -1250,7 +1250,7 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box79
-Package hyperref Info: Link coloring OFF on input line 101.
+Package hyperref Info: Link coloring OFF on input line 103.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1259,556 +1259,235 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count181
 )
-LaTeX Info: Redefining \ref on input line 101.
-LaTeX Info: Redefining \pageref on input line 101.
-LaTeX Info: Redefining \nameref on input line 101.
+LaTeX Info: Redefining \ref on input line 103.
+LaTeX Info: Redefining \pageref on input line 103.
+LaTeX Info: Redefining \nameref on input line 103.
 
 (./rl_pih.out) (./rl_pih.out)
 \@outlinefile=\write6
 \openout6 = `rl_pih.out'.
 
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+txmia on input line 183.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 185.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 183.
+LaTeX Font Info:    Try loading font information for U+msa on input line 185.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 183.
+LaTeX Font Info:    Try loading font information for U+msb on input line 185.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 183.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 185.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-Underfull \hbox (badness 1308) in paragraph at lines 231--239
+Underfull \hbox (badness 1308) in paragraph at lines 241--246
 []\OT1/txr/m/n/10 The Peg-in-Hole (PiH) task is one of the most
  []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+
+Package natbib Warning: Citation `Kronander2015' on page 2 undefined on input l
+ine 267.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+ [2]
+<./Figure/Figure1.pdf, id=153, 543.28973pt x 329.18983pt>
+File: ./Figure/Figure1.pdf Graphic file (type pdf)
+
+<use ./Figure/Figure1.pdf>
+Package pdftex.def Info: ./Figure/Figure1.pdf used on input line 326.
+(pdftex.def)             Requested size: 374.40143pt x 226.85994pt.
 
 
-]
-Underfull \hbox (badness 1067) in paragraph at lines 254--258
-\OT1/txr/m/n/10 kines-thetic demon-stra-tions by a hu-man teacher are
+LaTeX Warning: Reference `fig:plug_cylinder' on page 3 undefined on input line 
+342.
+
+<./Figure/Figure2.pdf, id=159, 1687.23024pt x 819.34819pt>
+File: ./Figure/Figure2.pdf Graphic file (type pdf)
+
+<use ./Figure/Figure2.pdf>
+Package pdftex.def Info: ./Figure/Figure2.pdf used on input line 362.
+(pdftex.def)             Requested size: 444.59857pt x 215.90102pt.
+
+Underfull \hbox (badness 5787) in paragraph at lines 373--377
+[]\OT1/txr/m/n/10 The pdf is high di-men-sional and thus it is
  []
 
 
-Package natbib Warning: Citation `Kronander2015' on page 2 undefined on input l
-ine 271.
-
-[2]
-Underfull \hbox (badness 1308) in paragraph at lines 327--335
-[]\OT1/txr/m/n/10 The Peg-in-Hole (PiH) task is one of the most
+Underfull \hbox (badness 6725) in paragraph at lines 373--377
+\OT1/txr/m/n/10 im-prac-ti-cal to di-rectly learn a sta-tis-ti-cal pol-icy
  []
 
-[3]
-<./Figures/Fig/experiment_setup_and_design.pdf, id=145, 575.32341pt x 478.53885
-pt>
-File: ./Figures/Fig/experiment_setup_and_design.pdf Graphic file (type pdf)
- <use ./Figures/Fig/experiment_setup_and_design.pdf>
-Package pdftex.def Info: ./Figures/Fig/experiment_setup_and_design.pdf used on 
-input line 448.
-(pdftex.def)             Requested size: 374.40143pt x 311.41896pt.
 
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 448--452
- [][] 
+Underfull \hbox (badness 1389) in paragraph at lines 373--377
+[]$ \OT1/txr/m/n/10 with-out some form of com-
  []
 
-<./Figures/Fig/plug_socket_closeup.pdf, id=149, 518.46928pt x 178.5828pt>
-File: ./Figures/Fig/plug_socket_closeup.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/plug_socket_closeup.pdf>
-Package pdftex.def Info: ./Figures/Fig/plug_socket_closeup.pdf used on input li
-ne 470.
-(pdftex.def)             Requested size: 374.40143pt x 128.96645pt.
-
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 470--471
- [][] 
- []
-
-[4]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 481.
-
-
-Package natbib Warning: Citation `Bergman99recursivebayesian' on page 5 undefin
-ed on input line 487.
-
-<./Figures/PMF/pmf_likelihood_v2.pdf, id=164, 1053.0265pt x 1177.44115pt>
-File: ./Figures/PMF/pmf_likelihood_v2.pdf Graphic file (type pdf)
-
-<use ./Figures/PMF/pmf_likelihood_v2.pdf>
-Package pdftex.def Info: ./Figures/PMF/pmf_likelihood_v2.pdf used on input line
- 502.
-(pdftex.def)             Requested size: 468.0pt x 523.3039pt.
-
-
-Package natbib Warning: Citation `NIPS2002_2319' on page 5 undefined on input l
-ine 515.
-
-
-Underfull \vbox (badness 3219) has occurred while \output is active []
-
- [5 <./Figures/Fig/experiment_setup_and_design.pdf> <./Figures/Fig/plug_socket_
-closeup.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Fig/plug_socket_closeup.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
->] [6 <./Figures/PMF/pmf_likelihood_v2.pdf>]
-<./Figures/Fig/experiment_design_v2.pdf, id=611, 226.56818pt x 116.11742pt>
+<./Figures/Fig/experiment_design_v2.pdf, id=162, 226.56818pt x 116.11742pt>
 File: ./Figures/Fig/experiment_design_v2.pdf Graphic file (type pdf)
 
 <use ./Figures/Fig/experiment_design_v2.pdf>
 Package pdftex.def Info: ./Figures/Fig/experiment_design_v2.pdf used on input l
-ine 567.
-(pdftex.def)             Requested size: 374.40143pt x 191.88666pt.
+ine 408.
+(pdftex.def)             Requested size: 199.79865pt x 102.3998pt.
 
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 567--570
- [][] 
- []
+<./Figure/time_taken.pdf, id=163, 470.15181pt x 462.8838pt>
+File: ./Figure/time_taken.pdf Graphic file (type pdf)
 
-
-LaTeX Warning: Reference `app:anova_socket' on page 7 undefined on input line 5
-84.
-
-<./Figures/Fig/start_position_v2.pdf, id=613, 555.12546pt x 870.27637pt>
-File: ./Figures/Fig/start_position_v2.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/start_position_v2.pdf>
-Package pdftex.def Info: ./Figures/Fig/start_position_v2.pdf used on input line
- 593.
-(pdftex.def)             Requested size: 468.0pt x 733.72287pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 593--597
- [][] 
- []
+<use ./Figure/time_taken.pdf>
+Package pdftex.def Info: ./Figure/time_taken.pdf used on input line 418.
+(pdftex.def)             Requested size: 199.79865pt x 196.71242pt.
 
 
-LaTeX Warning: Float too large for page by 170.96286pt on input line 603.
+Package natbib Warning: Citation `Kronander2015' on page 3 undefined on input l
+ine 431.
 
-
-Package natbib Warning: Citation `Kronander2015' on page 7 undefined on input l
-ine 624.
-
-[7 <./Figures/Fig/experiment_design_v2.pdf>]
-Underfull \hbox (badness 1902) in paragraph at lines 647--650
+[3] [4 <./Figure/Figure1.pdf> <./Figure/Figure2.pdf>]
+Underfull \hbox (badness 1902) in paragraph at lines 452--455
 \OT1/txr/m/n/10 The pa-ram-e-ters $[] = \OMS/txsy/m/n/10 f\OML/txmi/m/it/10 w[]
 ; [][]; [][]\OMS/txsy/m/n/10 g[]$\OT1/txr/m/n/10 , are the
  []
 
+[5 <./Figures/Fig/experiment_design_v2.pdf> <./Figure/time_taken.pdf
 
-Underfull \hbox (badness 1189) in paragraph at lines 661--665
-[]\OT1/txr/m/n/10 A gen-er-a-tive model of the an-gu-lar ve-loc-ity and
- []
-
-
-Package natbib Warning: Citation `Atkeson97locallyweighted' on page 8 undefined
- on input line 698.
-
-[8 <./Figures/Fig/start_position_v2.pdf>]
-
-Package natbib Warning: Citation `EGW05' on page 9 undefined on input line 723.
-
-
-
-Package natbib Warning: Citation `NIPS2008_3501' on page 9 undefined on input l
-ine 746.
-
-
-Package natbib Warning: Citation `EGW05' on page 9 undefined on input line 746.
-
-
-
-Package natbib Warning: Citation `Riedmiller2005' on page 9 undefined on input 
-line 746.
-
-
-LaTeX Warning: Reference `alg:fpe' on page 9 undefined on input line 753.
-
-
-Package natbib Warning: Citation `sutton1998reinforcement' on page 9 undefined 
-on input line 764.
-
-
-Package natbib Warning: Citation `p_search_surv_2011' on page 9 undefined on in
-put line 771.
-
-
-Underfull \hbox (badness 4193) in paragraph at lines 773--774
-[]\OT1/txr/m/n/10 The re-ward of a demon-strated tra-jec-tory (one
- []
-
-
-LaTeX Warning: Reference `app:lb' on page 9 undefined on input line 787.
-
-
-LaTeX Warning: Reference `app:unbiased_delta' on page 9 undefined on input line
- 798.
-
-
-Package natbib Warning: Citation `peter_nac_2008' on page 9 undefined on input 
-line 803.
-
-
-LaTeX Warning: Reference `app:grad' on page 9 undefined on input line 810.
-
-[9] <./Figures/fpe_example.pdf, id=1237, 1052.08107pt x 953.18971pt>
-File: ./Figures/fpe_example.pdf Graphic file (type pdf)
-
-<use ./Figures/fpe_example.pdf>
-Package pdftex.def Info: ./Figures/fpe_example.pdf used on input line 860.
-(pdftex.def)             Requested size: 468.0pt x 424.01538pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 860--872
- [][] 
- []
-
-
-LaTeX Warning: Reference `alg:fpe' on page 10 undefined on input line 878.
-
-
-<./Figures/ValueFunction/value_func_final_v2.pdf, id=1239, 1757.43857pt x 2677.
-21567pt>
-File: ./Figures/ValueFunction/value_func_final_v2.pdf Graphic file (type pdf)
- <use ./Figures/ValueFunction/value_func_final_v2.pdf>
-Package pdftex.def Info: ./Figures/ValueFunction/value_func_final_v2.pdf used o
-n input line 885.
-(pdftex.def)             Requested size: 468.0pt x 712.93112pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 885--890
- [][] 
- []
-
-
-LaTeX Warning: Float too large for page by 169.17111pt on input line 892.
-
-
-<./Figures/ValueFunction/value_func_final_v3.pdf, id=1241, 2942.47794pt x 1562.
-42963pt>
-File: ./Figures/ValueFunction/value_func_final_v3.pdf Graphic file (type pdf)
- <use ./Figures/ValueFunction/value_func_final_v3.pdf>
-Package pdftex.def Info: ./Figures/ValueFunction/value_func_final_v3.pdf used o
-n input line 900.
-(pdftex.def)             Requested size: 468.0pt x 248.49188pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 900--904
- [][] 
- []
-
-[10 <./Figures/fpe_example.pdf>] [11 <./Figures/ValueFunction/value_func_final_
-v2.pdf> <./Figures/ValueFunction/value_func_final_v3.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/ValueFunction/value_func_fina
-l_v3.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
+pdfTeX warning: /usr/bin/pdflatex (file ./Figure/time_taken.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
 >]
 
-Package natbib Warning: Citation `gesture_calinon_2010' on page 12 undefined on
- input line 926.
+LaTeX Warning: Reference `app:grad' on page 6 undefined on input line 517.
 
+<./Figure/fpe_example.pdf, id=515, 915.70366pt x 888.55186pt>
+File: ./Figure/fpe_example.pdf Graphic file (type pdf)
 
-Package natbib Warning: Citation `gmr_2004' on page 12 undefined on input line 
-926.
+<use ./Figure/fpe_example.pdf>
+Package pdftex.def Info: ./Figure/fpe_example.pdf used on input line 560.
+(pdftex.def)             Requested size: 222.0pt x 215.41255pt.
 
-<./Figures/Fig/policy_vf.pdf, id=1320, 1298.8525pt x 1129.21875pt>
+<./Figure/value_function_belief.pdf, id=517, 4945.3547pt x 1566.85106pt>
+File: ./Figure/value_function_belief.pdf Graphic file (type pdf)
+
+<use ./Figure/value_function_belief.pdf>
+Package pdftex.def Info: ./Figure/value_function_belief.pdf used on input line 
+584.
+(pdftex.def)             Requested size: 468.0pt x 148.2786pt.
+ [6 <./Figure/fpe_example.pdf>]
+<./Figures/Fig/policy_vf.pdf, id=560, 1298.8525pt x 1129.21875pt>
 File: ./Figures/Fig/policy_vf.pdf Graphic file (type pdf)
 
 <use ./Figures/Fig/policy_vf.pdf>
-Package pdftex.def Info: ./Figures/Fig/policy_vf.pdf used on input line 947.
-(pdftex.def)             Requested size: 468.0pt x 406.86305pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 947--953
-[][] 
- []
-
-[12 <./Figures/Fig/policy_vf.pdf>]
-<./Figures/kuka.pdf, id=1336, 615.09799pt x 517.935pt>
-File: ./Figures/kuka.pdf Graphic file (type pdf)
-
-<use ./Figures/kuka.pdf>
-Package pdftex.def Info: ./Figures/kuka.pdf used on input line 1006.
-(pdftex.def)             Requested size: 374.40143pt x 315.26021pt.
-
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 1006--1008
- [][] 
- []
-
-<./Figures/control_flow_final.pdf, id=1337, 178.26662pt x 188.79752pt>
+Package pdftex.def Info: ./Figures/Fig/policy_vf.pdf used on input line 638.
+(pdftex.def)             Requested size: 210.59857pt x 183.09096pt.
+ [7 <./Figure/value_function_belief.pdf>]
+<./Figures/control_flow_final.pdf, id=604, 178.26662pt x 188.79752pt>
 File: ./Figures/control_flow_final.pdf Graphic file (type pdf)
 
 <use ./Figures/control_flow_final.pdf>
-Package pdftex.def Info: ./Figures/control_flow_final.pdf used on input line 10
-14.
-(pdftex.def)             Requested size: 374.40143pt x 396.55272pt.
+Package pdftex.def Info: ./Figures/control_flow_final.pdf used on input line 69
+6.
+(pdftex.def)             Requested size: 210.59857pt x 223.03839pt.
+ [8 <./Figures/Fig/policy_vf.pdf> <./Figures/control_flow_final.pdf
 
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 1014--1016
- [][] 
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/control_flow_final.pdf): PDF 
+inclusion: multiple pdfs with page group included in a single page
+>] <./Figure/experiment1.pdf, id=654, 2471.57755pt x 2689.95149pt>
+File: ./Figure/experiment1.pdf Graphic file (type pdf)
+
+<use ./Figure/experiment1.pdf>
+Package pdftex.def Info: ./Figure/experiment1.pdf used on input line 774.
+(pdftex.def)             Requested size: 468.0pt x 509.33116pt.
+ [9] [10 <./Figure/experiment1.pdf>]
+Underfull \hbox (badness 2591) in paragraph at lines 802--806
+[]\OT1/txr/m/n/10 Figure []10[] (\OT1/txr/m/it/10 Top-left\OT1/txr/m/n/10 ) il-
+lus-trates 6 tra-jec-to-ries of
  []
 
-[13 <./Figures/kuka.pdf>] [14 <./Figures/control_flow_final.pdf>]
-<./Figures/Fig/experiment_final_v3.pdf, id=1401, 2224.75821pt x 2700.20758pt>
-File: ./Figures/Fig/experiment_final_v3.pdf Graphic file (type pdf)
+<./Figure/experiment3.pdf, id=1470, 1725.64696pt x 1053.2571pt>
+File: ./Figure/experiment3.pdf Graphic file (type pdf)
 
-<use ./Figures/Fig/experiment_final_v3.pdf>
-Package pdftex.def Info: ./Figures/Fig/experiment_final_v3.pdf used on input li
-ne 1080.
-(pdftex.def)             Requested size: 561.59857pt x 681.60133pt.
+<use ./Figure/experiment3.pdf>
+Package pdftex.def Info: ./Figure/experiment3.pdf used on input line 809.
+(pdftex.def)             Requested size: 468.0pt x 285.63678pt.
 
-Overfull \hbox (301.6649pt too wide) in paragraph at lines 1079--1090
- []|  [] 
- []
+<./Figure/experiment3_stats.pdf, id=1473, 492.45988pt x 392.8796pt>
+File: ./Figure/experiment3_stats.pdf Graphic file (type pdf)
 
+<use ./Figure/experiment3_stats.pdf>
+Package pdftex.def Info: ./Figure/experiment3_stats.pdf used on input line 849.
 
-LaTeX Warning: Float too large for page by 213.84132pt on input line 1092.
+(pdftex.def)             Requested size: 222.0pt x 177.10591pt.
 
-[15 <./Figures/Fig/experiment_final_v3.pdf>]
-<./Figures/Fig/first_contact_center.pdf, id=1549, 705.63625pt x 412.54124pt>
-File: ./Figures/Fig/first_contact_center.pdf Graphic file (type pdf)
+<./Figure/experiment4.pdf, id=1475, 1731.42783pt x 657.698pt>
+File: ./Figure/experiment4.pdf Graphic file (type pdf)
 
-<use ./Figures/Fig/first_contact_center.pdf>
-Package pdftex.def Info: ./Figures/Fig/first_contact_center.pdf used on input l
-ine 1134.
-(pdftex.def)             Requested size: 210.59857pt x 123.12125pt.
+<use ./Figure/experiment4.pdf>
+Package pdftex.def Info: ./Figure/experiment4.pdf used on input line 872.
+(pdftex.def)             Requested size: 468.0pt x 177.7715pt.
+ [11 <./Figure/experiment3_stats.pdf>] [12 <./Figure/experiment3.pdf> <./Figure
+/experiment4.pdf
 
-<./Figures/Fig/first_contact_right.pdf, id=1550, 701.62125pt x 415.5525pt>
-File: ./Figures/Fig/first_contact_right.pdf Graphic file (type pdf)
+pdfTeX warning: /usr/bin/pdflatex (file ./Figure/experiment4.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>] <./Figure/real_experiment_v2.pdf, id=2232, 5191.57047pt x 2447.2844pt>
+File: ./Figure/real_experiment_v2.pdf Graphic file (type pdf)
 
-<use ./Figures/Fig/first_contact_right.pdf>
-Package pdftex.def Info: ./Figures/Fig/first_contact_right.pdf used on input li
-ne 1135.
-(pdftex.def)             Requested size: 210.59857pt x 124.73012pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-<./Figures/Fig/experiment_1_2.pdf, id=1555, 1011.77805pt x 430.17665pt>
-File: ./Figures/Fig/experiment_1_2.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/experiment_1_2.pdf>
-Package pdftex.def Info: ./Figures/Fig/experiment_1_2.pdf used on input line 11
-68.
-(pdftex.def)             Requested size: 468.0pt x 198.97983pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 1168--1172
- [][] 
- []
-
-<./Figures/Fig/experiment3_plot2.pdf, id=1560, 578.16pt x 433.62pt>
-File: ./Figures/Fig/experiment3_plot2.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/experiment3_plot2.pdf>
-Package pdftex.def Info: ./Figures/Fig/experiment3_plot2.pdf used on input line
- 1177.
-(pdftex.def)             Requested size: 280.80286pt x 210.59657pt.
-
-Overfull \hbox (58.80286pt too wide) in paragraph at lines 1177--1179
- [][] 
- []
-
-[16 <./Figures/Fig/first_contact_center.pdf> <./Figures/Fig/first_contact_right
-.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Fig/first_contact_right.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
->] <./Figures/Fig/subject5.pdf, id=1574, 868.05714pt x 496.74368pt>
-File: ./Figures/Fig/subject5.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/subject5.pdf>
-Package pdftex.def Info: ./Figures/Fig/subject5.pdf used on input line 1207.
-(pdftex.def)             Requested size: 468.0pt x 267.81313pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 1207--1210
- [][] 
- []
-
-<./Figures/Fig/value_subj_5.pdf, id=1575, 526.535pt x 433.61647pt>
-File: ./Figures/Fig/value_subj_5.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/value_subj_5.pdf>
-Package pdftex.def Info: ./Figures/Fig/value_subj_5.pdf used on input line 1216
+<use ./Figure/real_experiment_v2.pdf>
+Package pdftex.def Info: ./Figure/real_experiment_v2.pdf used on input line 935
 .
-(pdftex.def)             Requested size: 374.40143pt x 308.32637pt.
+(pdftex.def)             Requested size: 444.59857pt x 209.56613pt.
 
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 1216--1217
- [][] 
- []
-
-<./Figures/Fig/gmm_v2c.pdf, id=1576, 2160.87305pt x 2165.6911pt>
-File: ./Figures/Fig/gmm_v2c.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/gmm_v2c.pdf>
-Package pdftex.def Info: ./Figures/Fig/gmm_v2c.pdf used on input line 1223.
-(pdftex.def)             Requested size: 468.0pt x 469.01823pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 1223--1233
- [][] 
- []
-
-
-LaTeX Warning: Float too large for page by 20.25822pt on input line 1235.
-
-[17 <./Figures/Fig/experiment_1_2.pdf> <./Figures/Fig/experiment3_plot2.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Fig/experiment3_plot2.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/Fig/subject5.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Fig/subject5.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
->] [18 <./Figures/Fig/value_subj_5.pdf> <./Figures/Fig/gmm_v2c.pdf>]
-<./Figures/Fig/experiment4.pdf, id=2117, 578.16pt x 433.62pt>
-File: ./Figures/Fig/experiment4.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/experiment4.pdf>
-Package pdftex.def Info: ./Figures/Fig/experiment4.pdf used on input line 1253.
-
-(pdftex.def)             Requested size: 374.40143pt x 280.79764pt.
-
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 1253--1254
- [][] 
- []
-
-[19 <./Figures/Fig/experiment4.pdf>]
-<./Figures/Fig/traj_experiment5.pdf, id=2141, 1243.64626pt x 510.90875pt>
-File: ./Figures/Fig/traj_experiment5.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/traj_experiment5.pdf>
-Package pdftex.def Info: ./Figures/Fig/traj_experiment5.pdf used on input line 
-1276.
-(pdftex.def)             Requested size: 468.0pt x 192.26074pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 1276--1281
- [][] 
- []
-
-<./Figures/Fig/experiment5.pdf, id=2142, 578.16pt x 433.62pt>
-File: ./Figures/Fig/experiment5.pdf Graphic file (type pdf)
-
-<use ./Figures/Fig/experiment5.pdf>
-Package pdftex.def Info: ./Figures/Fig/experiment5.pdf used on input line 1287.
-
-(pdftex.def)             Requested size: 374.40143pt x 280.79764pt.
-
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 1287--1289
- [][] 
- []
-
-
-Underfull \vbox (badness 2368) has occurred while \output is active []
-
- [20 <./Figures/Fig/traj_experiment5.pdf> <./Figures/Fig/experiment5.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Fig/experiment5.pdf): PDF inc
-lusion: multiple pdfs with page group included in a single page
->]
-<./Figures/Results2/socket_connection_A.pdf, id=2185, 626.69644pt x 200.36829pt
->
-File: ./Figures/Results2/socket_connection_A.pdf Graphic file (type pdf)
- <use ./Figures/Results2/socket_connection_A.pdf>
-Package pdftex.def Info: ./Figures/Results2/socket_connection_A.pdf used on inp
-ut line 1344.
-(pdftex.def)             Requested size: 468.0pt x 149.63072pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 1344--1347
- [][] 
- []
-
-<./Figures/Results2/s1_sequence.pdf, id=2186, 3868.0511pt x 880.08798pt>
-File: ./Figures/Results2/s1_sequence.pdf Graphic file (type pdf)
-
-<use ./Figures/Results2/s1_sequence.pdf>
-Package pdftex.def Info: ./Figures/Results2/s1_sequence.pdf used on input line 
-1354.
-(pdftex.def)             Requested size: 444.59857pt x 101.14755pt.
-
-<./Figures/Results2/s2_sequence.pdf, id=2187, 1290.42097pt x 292.292pt>
-File: ./Figures/Results2/s2_sequence.pdf Graphic file (type pdf)
-
-<use ./Figures/Results2/s2_sequence.pdf>
-Package pdftex.def Info: ./Figures/Results2/s2_sequence.pdf used on input line 
-1355.
-(pdftex.def)             Requested size: 444.59857pt x 100.70259pt.
-
-<./Figures/Results2/real_exp_socketAB.pdf, id=2188, 997.52747pt x 429.43597pt>
-File: ./Figures/Results2/real_exp_socketAB.pdf Graphic file (type pdf)
-
-<use ./Figures/Results2/real_exp_socketAB.pdf>
-Package pdftex.def Info: ./Figures/Results2/real_exp_socketAB.pdf used on input
- line 1366.
-(pdftex.def)             Requested size: 468.0pt x 201.47453pt.
-
-Overfull \hbox (246.0pt too wide) in paragraph at lines 1366--1375
- [][] 
- []
-
-
-<./Figures/Results2/peg_socket_connection_v2.pdf, id=2189, 496.22606pt x 387.98
+<./Figures/Results2/peg_socket_connection_v2.pdf, id=2233, 496.22606pt x 387.98
 062pt>
 File: ./Figures/Results2/peg_socket_connection_v2.pdf Graphic file (type pdf)
  <use ./Figures/Results2/peg_socket_connection_v2.pdf>
 Package pdftex.def Info: ./Figures/Results2/peg_socket_connection_v2.pdf used o
-n input line 1381.
-(pdftex.def)             Requested size: 374.40143pt x 292.73117pt.
-
-Overfull \hbox (152.40143pt too wide) in paragraph at lines 1381--1382
- [][] 
- []
-
-[21 <./Figures/Results2/socket_connection_A.pdf>]
-
-Package natbib Warning: Citation `Chambrier2014' on page 22 undefined on input 
-line 1422.
-
-[22 <./Figures/Results2/s1_sequence.pdf> <./Figures/Results2/s2_sequence.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Results2/s2_sequence.pdf): PD
-F inclusion: multiple pdfs with page group included in a single page
->] [23 <./Figures/Results2/real_exp_socketAB.pdf> <./Figures/Results2/peg_socke
-t_connection_v2.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Results2/peg_socket_connectio
-n_v2.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
->]
-Underfull \hbox (badness 1292) in paragraph at lines 1445--1451
+n input line 952.
+(pdftex.def)             Requested size: 199.79865pt x 156.21367pt.
+ [13 <./Figures/Results2/peg_socket_connection_v2.pdf>] [14 <./Figure/real_expe
+riment_v2.pdf>]
+Underfull \hbox (badness 1292) in paragraph at lines 1010--1016
 []\OT1/txr/m/n/10 Fourthly, we eval-u-ated all three poli-cies on the
  []
 
 (./rl_pih.bbl
-Underfull \vbox (badness 2698) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 72--76
+\OT1/txr/m/n/8 URL []$\OT1/cmtt/m/n/8 "http : / / www . cs . cmu . edu / []ggor
+don /
+ []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--66
-\OT1/txr/m/n/8 URL []$\OT1/cmtt/m/n/8 http : / / ijr . sagepub . com / content 
-/ 11 / 4 / 299 .
+Underfull \hbox (badness 10000) in paragraph at lines 92--95
+\OT1/txr/m/n/8 URL []$\OT1/cmtt/m/n/8 https : / / www . aaai . org / ocs / inde
+x . php / FSS /
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [24]
-Underfull \hbox (badness 10000) in paragraph at lines 124--128
-\OT1/txr/m/n/8 URL []$\OT1/cmtt/m/n/8 http : / / papers . nips . cc / paper /
+ [15]
+Underfull \hbox (badness 10000) in paragraph at lines 151--154
+\OT1/txr/m/n/8 URL []$\OT1/cmtt/m/n/8 http : / / www . sciencedirect . com / sc
+ience /
  []
 
 
-Overfull \hbox (59.58173pt too wide) in paragraph at lines 124--128
-\OT1/cmtt/m/n/8 2319-[]exponential-[]family-[]pca-[]for-[]belief-[]compression-
-[]in-[]pomdps .
+Underfull \hbox (badness 10000) in paragraph at lines 175--178
+\OT1/txr/m/n/8 URL []$\OT1/cmtt/m/n/8 http : / / www . cs . ualberta . ca / %7E
+sutton / book /
  []
 
 Missing character: There is no Ã in font txr!
@@ -1817,56 +1496,47 @@ Missing character: There is no ¼ in font txr!
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1464.
-[25
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1029.
+[16
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1464.
- (./rl_pih.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1464.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1464.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1029.
+ (./rl_pih.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1029.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1029.
 
 Package rerunfilecheck Info: File `rl_pih.out' has not changed.
-(rerunfilecheck)             Checksum: A1481C018B48B5DE60CFE33CE55DEBC8;1298.
+(rerunfilecheck)             Checksum: A74C0723D99B0292ACF8D511EB0D8156;1200.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1464.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1029.
  ) 
 Here is how much of TeX's memory you used:
- 22093 strings out of 493304
- 406247 string characters out of 6139871
- 639886 words of memory out of 5000000
- 24907 multiletter control sequences out of 15000+600000
- 59258 words of font info for 144 fonts, out of 8000000 for 9000
+ 22012 strings out of 493304
+ 403563 string characters out of 6139872
+ 636350 words of memory out of 5000000
+ 24862 multiletter control sequences out of 15000+600000
+ 60608 words of font info for 146 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,21n,65p,1345b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,14n,65p,1166b,536s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/txfonts/rtxb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/
-rtxbmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxi.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/txfonts/txexa.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/unc
-r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rl_pih.pdf (25 pages, 14278760 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/txfonts/rtxb.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/txfonts/rtxbmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rt
+xmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on rl_pih.pdf (16 pages, 14168563 bytes).
 PDF statistics:
- 3727 PDF objects out of 4296 (max. 8388607)
- 2565 compressed objects within 26 object streams
- 128 named destinations out of 1000 (max. 500000)
- 292 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2991 PDF objects out of 3580 (max. 8388607)
+ 2067 compressed objects within 21 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 227 words of extra memory for PDF output out of 10000 (max. 10000000)
 

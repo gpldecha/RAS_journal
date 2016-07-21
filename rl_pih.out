@@ -1,18 +1,18 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Peg-in-hole}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Actor-Critic \046 Fitted Reinforcement Learning}{section.1}% 3
-\BOOKMARK [1][-]{section.2}{Experiment methods}{}% 4
-\BOOKMARK [2][-]{subsubsection.2.0.1}{Belief state}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.1}{Participants and experiment protocol}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Learning Actor and Critic}{}% 7
-\BOOKMARK [2][-]{subsection.3.1}{Actor \046 Critic}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Fitted policy evaluation and improvement}{section.3}% 9
-\BOOKMARK [1][-]{section.4}{Control architecture}{}% 10
-\BOOKMARK [2][-]{subsection.4.1}{Robot Implementation}{section.4}% 11
-\BOOKMARK [1][-]{section.5}{Results}{}% 12
-\BOOKMARK [2][-]{subsection.5.1}{Distance taken to reach the socket's edge \(Qualitative\)}{section.5}% 13
-\BOOKMARK [2][-]{subsection.5.2}{Distance taken to reach the socket's edge \(Quantitative\)}{section.5}% 14
-\BOOKMARK [2][-]{subsection.5.3}{Importance of data}{section.5}% 15
-\BOOKMARK [2][-]{subsection.5.4}{Generalisation}{section.5}% 16
-\BOOKMARK [2][-]{subsection.5.5}{Distance taken to connect the plug to the socket}{section.5}% 17
-\BOOKMARK [1][-]{section.6}{Discussion \046 Conclusion}{}% 18
+\BOOKMARK [1][-]{section.2}{Related work}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Peg-in-hole}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Actor-Critic \046 Fitted Reinforcement Learning}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Experiment methods}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Belief state}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Participants and experiment protocol}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Learning Actor and Critic}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Actor \046 Critic}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Fitted Policy Iteration}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Control architecture}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Robot Implementation}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Results}{}% 13
+\BOOKMARK [2][-]{subsection.6.1}{Distance taken to reach the socket's edge}{section.6}% 14
+\BOOKMARK [2][-]{subsection.6.2}{Importance of data}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.3}{Generalisation}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.4}{Distance taken to connect the plug to the socket}{section.6}% 17
+\BOOKMARK [1][-]{section.7}{Discussion \046 Conclusion}{}% 18

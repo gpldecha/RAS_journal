@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rl_pih.aux
 The style file: elsarticle-harv.bst
 I couldn't open database file ch3-citations.bib.bib
----line 162 of file rl_pih.aux
+---line 123 of file rl_pih.aux
  : \bibdata{bib/peg_hole.bib,bib/pomdp.bib,bib/RL.bib,ch3-citations.bib
  :                                                                     ,bib/DT.bib,bib/MLMF.bib,bib/spatial_navigation.bib}
 I'm skipping whatever remains of this command
@@ -11,50 +11,51 @@ Database file #1: bib/peg_hole.bib.bib
 Database file #2: bib/pomdp.bib.bib
 Database file #3: bib/RL.bib.bib
 Warning--I didn't find a database entry for "Kronander2015"
-Warning--empty pages in peg_imcssd_2015
+Warning--empty pages in stable_FA_gordon_1995
+Warning--empty journal in DRQ_AAAI_2015
 Warning--empty publisher in Riedmiller2005
 Warning--empty chapter and pages in Riedmiller2005
 Warning--empty pages in Schaal04learningmovement
 Warning--empty chapter and pages in fast_peg_pbd_icmc_2014
-You've used 25 entries,
+You've used 32 entries,
             2821 wiz_defined-function locations,
-            807 strings with 10476 characters,
-and the built_in function-call counts, 15578 in all, are:
-= -- 1543
-> -- 855
-< -- 26
-+ -- 319
-- -- 292
-* -- 1343
-:= -- 2620
-add.period$ -- 88
-call.type$ -- 25
-change.case$ -- 242
-chr.to.int$ -- 25
-cite$ -- 30
-duplicate$ -- 613
-empty$ -- 1059
-format.name$ -- 381
-if$ -- 3274
-int.to.chr$ -- 1
+            847 strings with 11975 characters,
+and the built_in function-call counts, 19660 in all, are:
+= -- 1928
+> -- 1114
+< -- 32
++ -- 420
+- -- 382
+* -- 1734
+:= -- 3336
+add.period$ -- 110
+call.type$ -- 32
+change.case$ -- 311
+chr.to.int$ -- 30
+cite$ -- 38
+duplicate$ -- 755
+empty$ -- 1316
+format.name$ -- 501
+if$ -- 4098
+int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 26
-newline$ -- 87
-num.names$ -- 104
-pop$ -- 281
+missing$ -- 34
+newline$ -- 111
+num.names$ -- 130
+pop$ -- 358
 preamble$ -- 1
-purify$ -- 195
+purify$ -- 254
 quote$ -- 0
-skip$ -- 495
+skip$ -- 592
 stack$ -- 0
-substring$ -- 834
-swap$ -- 180
-text.length$ -- 14
+substring$ -- 1018
+swap$ -- 218
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 216
-warning$ -- 5
-while$ -- 117
+type$ -- 276
+warning$ -- 6
+while$ -- 144
 width$ -- 0
-write$ -- 286
+write$ -- 362
 (There was 1 error message)

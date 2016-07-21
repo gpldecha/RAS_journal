@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{32}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -10,22 +10,31 @@ Abu-Dakka, F., Nemec, B., Kramberger, A., Buch, A.~G., Kr{\"u}ger, N., Ude, A.,
   2014. Solving peg-in-hole tasks by human demonstration and exception
   strategies. Industrial Robot 41~(6), 575--584.
 
+\bibitem[{Agostini and Celaya(2010)}]{rl_gmm_2010}
+Agostini, A., Celaya, E., July 2010. Reinforcement learning with a gaussian
+  mixture model. In: The 2010 International Joint Conference on Neural Networks
+  (IJCNN). pp. 1--8.
+
 \bibitem[{Atkeson et~al.(1997)Atkeson, Moore, and
   Schaal}]{Atkeson97locallyweighted}
 Atkeson, C.~G., Moore, A.~W., Schaal, S., 1997. Locally weighted learning.
   ARTIFICIAL INTELLIGENCE REVIEW, 11--73.
 
-\bibitem[{Bdiwi et~al.(2015)Bdiwi, Winkler, Jokesch, and
-  Suchy}]{peg_imcssd_2015}
-Bdiwi, M., Winkler, A., Jokesch, M., Suchy, J., 2015. Improved peg-in-hole
-  (5-pin plug) task: Intended for charging electric vehicles by robot system
-  automatically. In: Proc. of 12th IEEE International Multi-Conference on
-  Systems, Signals and Devices.
-
 \bibitem[{Bergman and Bergman(1999)}]{Bergman99recursivebayesian}
 Bergman, N., Bergman, C.~N., 1999. Recursive bayesian estimation: Navigation
   and tracking applications. thesis no 579. Tech. rep., Link\"oping University,
   Link\"oping Studies in Science and Technology. Doctoral dissertation.
+
+\bibitem[{Bou-Ammar et~al.(2010)Bou-Ammar, Voos, and Ertel}]{fvi_uav_2010}
+Bou-Ammar, H., Voos, H., Ertel, W., Sept 2010. Controller design for quadrotor
+  uavs using reinforcement learning. In: 2010 IEEE International Conference on
+  Control Applications. pp. 2130--2135.
+
+\bibitem[{Busoniu et~al.(2011)Busoniu, Ernst, Schutter, and
+  Babuska}]{approx_rl_overview_2011}
+Busoniu, L., Ernst, D., Schutter, B.~D., Babuska, R., April 2011. Approximate
+  reinforcement learning: An overview. In: 2011 IEEE Symposium on Adaptive
+  Dynamic Programming and Reinforcement Learning (ADPRL). pp. 1--8.
 
 \bibitem[{Calinon et~al.(2010)Calinon, D'halluin, Sauser, Caldwell, and
   Billard}]{gesture_calinon_2010}
@@ -59,10 +68,18 @@ Deisenroth, M.~P., Neumann, G., Peters, J., 2011. A survey on policy search for
 Ernst, D., Geurts, P., Wehenkel, L., April 2005. Tree-based batch mode
   reinforcement learning. Journal of Machine Learning Research 6, 503--556.
 
-\bibitem[{Fisher and Mujtaba(1992)}]{hybrid_1992}
-Fisher, W.~D., Mujtaba, M.~S., 1992. Hybrid position/force control: A correct
-  formulation. The International Journal of Robotics Research 11~(4), 299--311.
-\newline\urlprefix\url{http://ijr.sagepub.com/content/11/4/299.abstract}
+\bibitem[{Gordon(1995)}]{stable_FA_gordon_1995}
+Gordon, G.~J., 1995. Stable function approximation in dynamic programming. In:
+  Proceedings of the Twelfth International Conference on Machine Learning
+  (ICML). Carnegie Mellon University.
+\newline\urlprefix\url{"http://www.cs.cmu.edu/~ggordon/ml95-stable-dp.ps.gz"}
+
+\bibitem[{Grondman et~al.(2012)Grondman, Busoniu, Lopes, and
+  Babuska}]{rl_ac_surv_2012}
+Grondman, I., Busoniu, L., Lopes, G. A.~D., Babuska, R., Nov 2012. A survey of
+  actor-critic reinforcement learning: Standard and natural policy gradients.
+  IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and
+  Reviews) 42~(6), 1291--1307.
 
 \bibitem[{Gullapalli et~al.(1994)Gullapalli, Barto, and
   Grupen}]{learn_admittance_icra_1994}
@@ -71,16 +88,21 @@ Gullapalli, V., Barto, A.~G., Grupen, R.~A., 1994. Learning admittance mappings
   Conference on Robotics and Automation, San Diego, CA, USA, May 1994. pp.
   2633--2638.
 
+\bibitem[{Hausknecht and Stone(2015)}]{DRQ_AAAI_2015}
+Hausknecht, M., Stone, P., 2015. Deep recurrent q-learning for partially
+  observable mdps.
+\newline\urlprefix\url{https://www.aaai.org/ocs/index.php/FSS/FSS15/paper/view/11673}
+
 \bibitem[{Kalakrishnan et~al.(2011)Kalakrishnan, Righetti, Pastor, and
   Schaal}]{learn_force_c_icirs_2011}
 Kalakrishnan, M., Righetti, L., Pastor, P., Schaal, S., Sept 2011. Learning
   force control policies for compliant manipulation. In: 2011 IEEE/RSJ
   International Conference on Intelligent Robots and Systems. pp. 4639--4644.
 
-\bibitem[{kook Yun(2008)}]{compliant_manip_icra_2008}
-kook Yun, S., May 2008. Compliant manipulation for peg-in-hole: Is passive
-  compliance a key to learn contact motion? In: Robotics and Automation, 2008.
-  ICRA 2008. IEEE International Conference on. pp. 1647--1652.
+\bibitem[{Lange and Riedmiller(2010)}]{Lange_riedmiller_2010}
+Lange, S., Riedmiller, M., July 2010. Deep auto-encoder neural networks in
+  reinforcement learning. In: The 2010 International Joint Conference on Neural
+  Networks (IJCNN). pp. 1--8.
 
 \bibitem[{Meeussen et~al.(2010)Meeussen, Wise, Glaser, Chitta, McGann,
   Mihelich, Marder-Eppstein, Muja, Eruhimov, Foote, Hsu, Rusu, Marthi, Bradski,
@@ -91,6 +113,16 @@ Meeussen, W., Wise, M., Glaser, S., Chitta, S., McGann, C., Mihelich, P.,
   Autonomous door opening and plugging in with a personal robot. In: Robotics
   and Automation (ICRA), 2010 IEEE International Conference on. pp. 729--736.
 
+\bibitem[{Mnih et~al.(2015)Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare,
+  Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik,
+  Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis}]{mnih-dqn-2015}
+Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A.~A., Veness, J., Bellemare,
+  M.~G., Graves, A., Riedmiller, M., Fidjeland, A.~K., Ostrovski, G., Petersen,
+  S., Beattie, C., Sadik, A., Antonoglou, I., King, H., Kumaran, D., Wierstra,
+  D., Legg, S., Hassabis, D., 02 2015. Human-level control through deep
+  reinforcement learning. Nature 518~(7540), 529--533.
+\newline\urlprefix\url{http://dx.doi.org/10.1038/nature14236}
+
 \bibitem[{Nemec et~al.(2013)Nemec, Abu-Dakka, Ridge, Ude, Jorgensen,
   Savarimuthu, Jouffroy, Petersen, and Kr\"uger}]{trans_workpiece_icra_2013}
 Nemec, B., Abu-Dakka, F.~J., Ridge, B., Ude, A., Jorgensen, J.~A., Savarimuthu,
@@ -99,32 +131,35 @@ Nemec, B., Abu-Dakka, F.~J., Ridge, B., Ude, A., Jorgensen, J.~A., Savarimuthu,
   profile. In: Advanced Robotics (ICAR), 2013 16th International Conference on.
   pp. 1--7.
 
-\bibitem[{Neumann and Peters(2009)}]{NIPS2008_3501}
-Neumann, G., Peters, J.~R., 2009. Fitted q-iteration by advantage weighted
-  regression. In: Koller, D., Schuurmans, D., Bengio, Y., Bottou, L. (Eds.),
-  Advances in Neural Information Processing Systems 21. Curran Associates,
-  Inc., pp. 1177--1184.
+\bibitem[{Neumann and Peters(2009{\natexlab{a}})}]{fqi_nips_peter_2009}
+Neumann, G., Peters, J., Jun. 2009{\natexlab{a}}. Fitted q-iteration by
+  advantage weighted regression. In: Advances in neural information processing
+  systems 21. pp. 1177--1184.
 
-\bibitem[{Park et~al.(2013)Park, Bae, Park, Baeg, and
-  Park}]{intuitive_peg_isr_2013}
-Park, H., Bae, J.-H., Park, J.-H., Baeg, M.-H., Park, J., Oct 2013. Intuitive
-  peg-in-hole assembly strategy with a compliant manipulator. In: Robotics
-  (ISR), 2013 44th International Symposium on. pp. 1--5.
+\bibitem[{Neumann and Peters(2009{\natexlab{b}})}]{NIPS2008_3501}
+Neumann, G., Peters, J.~R., 2009{\natexlab{b}}. Fitted q-iteration by advantage
+  weighted regression. In: Koller, D., Schuurmans, D., Bengio, Y., Bottou, L.
+  (Eds.), Advances in Neural Information Processing Systems 21. Curran
+  Associates, Inc., pp. 1177--1184.
 
-\bibitem[{Peters and Schaal(2008)}]{peter_nac_2008}
-Peters, J., Schaal, S., 2008. Natural actor-critic. Neurocomputing 71~(7-9),
-  1180--1190.
+\bibitem[{Ormoneit and Glynn(2002)}]{kernel_rl_ormoneit_2002}
+Ormoneit, D., Glynn, P., Oct 2002. Kernel-based reinforcement learning in
+  average-cost problems. IEEE Transactions on Automatic Control 47~(10),
+  1624--1636.
+
+\bibitem[{Peters and Schaal(2008{\natexlab{a}})}]{NAC_2008}
+Peters, J., Schaal, S., 2008{\natexlab{a}}. Natural actor-critic. 15th European
+  Symposium on Artificial Neural Networks 71~(7-9), 1180--1190.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0925231208000532}
+
+\bibitem[{Peters and Schaal(2008{\natexlab{b}})}]{peter_nac_2008}
+Peters, J., Schaal, S., 2008{\natexlab{b}}. Natural actor-critic.
+  Neurocomputing 71~(7-9), 1180--1190.
 
 \bibitem[{Riedmiller(2005)}]{Riedmiller2005}
 Riedmiller, M., 2005. Neural Fitted Q Iteration - First Experiences with a Data
   Efficient Neural Reinforcement Learning Method. pp. 317--328.
 \newline\urlprefix\url{http://dx.doi.org/10.1007/11564096_32}
-
-\bibitem[{Roy and Gordon(2003)}]{NIPS2002_2319}
-Roy, N., Gordon, G.~J., 2003. Exponential family pca for belief compression in
-  pomdps. In: Becker, S., Thrun, S., Obermayer, K. (Eds.), Advances in Neural
-  Information Processing Systems 15. MIT Press, pp. 1667--1674.
-\newline\urlprefix\url{http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}
 
 \bibitem[{Schaal et~al.(2004)Schaal, Peters, Nakanishi, and
   Ijspeert}]{Schaal04learningmovement}
@@ -136,9 +171,14 @@ Schaal, S., Peters, J., Nakanishi, J., Ijspeert, A., 2004. Learning movement
 Sung, H., 2004. Gaussian mixture regression and classification. Ph.D. thesis,
   Rice University.
 
-\bibitem[{Sutton and Barto(1998)}]{sutton1998reinforcement}
-Sutton, R., Barto, A., 1998. Reinforcement learning: An introduction. Vol. 116.
-  Cambridge Univ Press.
+\bibitem[{Sutton and Barto(1998)}]{sutton98a}
+Sutton, R.~S., Barto, A.~G., 1998. Reinforcement Learning: An Introduction.
+  {MIT} Press.
+\newline\urlprefix\url{http://www.cs.ualberta.ca/\%7Esutton/book/ebook/the-book.html}
+
+\bibitem[{Wiering and van Otterio(2012)}]{RL_state_art_2012}
+Wiering, M., van Otterio, M., 2012. Reinforcement Learning State-of-the-Art.
+  Springer-Verlag Berlin Heidelberg.
 
 \bibitem[{Yang et~al.(2014)Yang, Lin, Song, Nemec, Ude, Buch, Krüger, and
   Savarimuthu}]{fast_peg_pbd_icmc_2014}
