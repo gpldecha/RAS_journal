@@ -2,60 +2,50 @@ This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rl_pih.aux
 The style file: elsarticle-harv.bst
-I couldn't open database file ch3-citations.bib.bib
----line 123 of file rl_pih.aux
- : \bibdata{bib/peg_hole.bib,bib/pomdp.bib,bib/RL.bib,ch3-citations.bib
- :                                                                     ,bib/DT.bib,bib/MLMF.bib,bib/spatial_navigation.bib}
-I'm skipping whatever remains of this command
-Database file #1: bib/peg_hole.bib.bib
-Database file #2: bib/pomdp.bib.bib
-Database file #3: bib/RL.bib.bib
-Warning--I didn't find a database entry for "Kronander2015"
-Warning--empty pages in stable_FA_gordon_1995
-Warning--empty journal in DRQ_AAAI_2015
-Warning--empty publisher in Riedmiller2005
+Database file #1: bib/ras_fpi.bib.bib
 Warning--empty chapter and pages in Riedmiller2005
 Warning--empty pages in Schaal04learningmovement
+Warning--empty publisher in fast_peg_pbd_icmc_2014
 Warning--empty chapter and pages in fast_peg_pbd_icmc_2014
-You've used 32 entries,
+You've used 38 entries,
             2821 wiz_defined-function locations,
-            847 strings with 11975 characters,
-and the built_in function-call counts, 19660 in all, are:
-= -- 1928
-> -- 1114
-< -- 32
-+ -- 420
-- -- 382
-* -- 1734
-:= -- 3336
-add.period$ -- 110
-call.type$ -- 32
-change.case$ -- 311
-chr.to.int$ -- 30
-cite$ -- 38
-duplicate$ -- 755
-empty$ -- 1316
-format.name$ -- 501
-if$ -- 4098
+            860 strings with 10933 characters,
+and the built_in function-call counts, 21218 in all, are:
+= -- 2204
+> -- 930
+< -- 47
++ -- 351
+- -- 307
+* -- 1715
+:= -- 3519
+add.period$ -- 134
+call.type$ -- 38
+change.case$ -- 321
+chr.to.int$ -- 36
+cite$ -- 42
+duplicate$ -- 906
+empty$ -- 1553
+format.name$ -- 450
+if$ -- 4557
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 34
-newline$ -- 111
-num.names$ -- 130
-pop$ -- 358
+missing$ -- 40
+newline$ -- 121
+num.names$ -- 154
+pop$ -- 368
 preamble$ -- 1
-purify$ -- 254
+purify$ -- 253
 quote$ -- 0
-skip$ -- 592
+skip$ -- 749
 stack$ -- 0
-substring$ -- 1018
-swap$ -- 218
-text.length$ -- 15
+substring$ -- 1194
+swap$ -- 280
+text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 276
-warning$ -- 6
-while$ -- 144
+type$ -- 327
+warning$ -- 4
+while$ -- 170
 width$ -- 0
-write$ -- 362
-(There was 1 error message)
+write$ -- 420
+(There were 4 warnings)

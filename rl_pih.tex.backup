@@ -18,7 +18,7 @@
 %% with harvard style bibliographic references
 %% SP 2008/03/01
 
-\documentclass[final,3p,times,twocolumn]{elsarticle}
+\documentclass[final,5p,times,twocolumn]{elsarticle}
 
 %% Use the option review to obtain double line spacing
 %% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
@@ -50,11 +50,13 @@
 
 \usepackage[ruled,vlined,linesnumbered,boxed]{algorithm2e}
 \usepackage{color}
-
+\usepackage{empheq}
 \usepackage{cancel}
 \usepackage{placeins}
 \newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
-\usepackage{tcolorbox}
+
+\usepackage{empheq}
+\usepackage[many]{tcolorbox}
 
 
 %% The lineno packages adds line numbers. Start line numbering with
@@ -87,6 +89,10 @@
 \newcommand{\Mu}[1]{\boldsymbol{\mu}^{[#1]}}
 \newcommand{\MuK}{\boldsymbol{\mu}^{[k]}}
 \newcommand{\xb}{\dot{x}|b}
+
+\newcommand{\Bx}{\mathbf{x}}
+\newcommand{\Qpx}{Q^{\pi_{\Param'}}(\mathbf{x}^{[j]})}
+
 
 \newcommand{\piK}{w^{[k]}}
 \newcommand{\Param}{\boldsymbol{\theta}}
@@ -131,7 +137,17 @@
 %% \address[label1]{}
 %% \address[label2]{}
 
-\author{Guillaume de Chambrier, Aude Billard}
+%\author{Guillaume de Chambrier, Aude Billard}
+
+\author[rvt]{Guillaume de Chambrier\corref{cor1}\fnref{fn1}}
+\ead{guillaume.dechambrier@epfl.ch}
+
+\author[rvt]{Aude Billard}
+\ead{aude.billard@epfl.ch}
+
+\cortext[cor1]{Corresponding author}
+
+\address[rvt]{Learning Algorithms and Systems Laboratory (LASA), \'Ecole Polytechnique F\'ed\'erale de Lausanne (EPFL), Switzerland}
 
 \address{}
 
@@ -179,7 +195,7 @@ Greedy policy does just as good, or better.
 \end{abstract}
 
 \begin{keyword} 
-Programming by Demonstration, Actor-Critic, Belief Space, POMDP, Fitted Reinforcement Learning
+Fitted Reinforcement Learning, Actor-Critic, POMDP, GMM policy, Programming by Demonstration
 \end{keyword}
 
 \end{frontmatter}
@@ -209,25 +225,51 @@ Programming by Demonstration, Actor-Critic, Belief Space, POMDP, Fitted Reinforc
 The ability to act optimally given uncertainty is paramount for robotic systems to be successful in
 environments which are not fully observable. Depending on the task and structure of the uncertainty, 
 if not taken into consideration by the control policy, can lead to waist-full usage of resources 
-and even fail to accomplish the task. interinerin
+and even fail to accomplish the task. Given the potential adverse (disastrous if considering a 
+search and rescue task) consequences, it is important to design uncertainty robust policies and planners.
 
-An approach is to formulate the task as partially observable markov decision process (POMDP) which is subsequently
-solved by dynamic programming. It is well known that solving a POMDP directly is infeasible even for 
-the simplest problems[cite]. In this work we introduce a Fitted Policy Iteration Actor-Critic 
-Reinforcement Learning (RL) method in which sample episodes are provided by human teachers in 
-a Programming by Demonstration (PbD) framework. We consider a plug power-socket search and connection 
-task (also known as Peg-in-Hole (PiH)) in which a robot apprentice must learn how to localise a 
-power socket and then establish a connection. 
-No vision system is used during the task and we will solely relay on haptic information, provided via force-torque sensor mounted on the end-effector 
-of the robot. We chose to not use vision for two reasons. The first is that we want to 
-know the humans capabilities of accomplishing the task under these conditions and whether 
-we can learn a POMDP policy from their demonstrations. The second is that PiH is a very important 
-component in manufacturing processes and we seek to demonstrate that we accomplish the task without 
-the need of a vision system which would result in additional costs.
+The generic solution to such an optimal control problem is to formulate the task as 
+Partially Observable Markov Decision Process (POMDP) which is subsequently solved by dynamic programming
+or reinforcement learning if the transition and observation models are unavailable. 
+It is well known that solving a POMDP directly is infeasible even for the simplest problems \cite{PBVI}. 
 
-The rest of the paper is organised as follows: Section \ref{sec:related_work}, 
-Section \ref{sec:experiment_methods}, Section \ref{sec:learning-value-actor}, 
-Section \ref{sec:FPI}, Section \ref{ch4:control_architecture}, Section \ref{sec:results}, Section \ref{sec:conclusion}
+% Progress in applying POMDP optimal control to Planning and control probolems ?
+Advances have been made in applying approximate POMDP algorithms to robotic applications
+\cite{pomdp_peg_icra_2014}. However the optimisation often requires a discretisation of the 
+action space which is restrictive for tasks which are naturally continuous. In the case actions 
+are considered continuous, a local optimisation with quantifiable actions (marcos) \cite{toussain_2015}
+or alternatively heuristic approaches \cite{Lauri2016}, based on the most likely state, can be applied. 
+These approaches concede global optimality for a faster approximate solutions which depending on 
+the problem is often close to optimality. Solving continuous actions POMDPs via reinforcement learning 
+is difficult as the exploration-exploitation makes the dimensionality of the problem daunting which 
+lead to the development of local approximate methods in belief space planning [cite]. 
+
+%\cite{Li2016352}
+
+In this paper we propose an approximate POMDP methods for continuous belief-state and action space. We introduce a 
+Fitted Policy Iteration (FPE) Actor-Critic (AC) Reinforcement Learning (RL) method in which sample episodes 
+are provided by human teachers in a Programming by Demonstration (PbD) framework. From the demonstrations provided 
+by the teachers we hypothesis that a good mixture of explorative-exploitative behaviour is present. 
+We have previously shown  \cite{Chambrier2014} that humans exhibit risk-prone and averse behaviour 
+which would, as hypothesised, constitutes an ideal training set for RL, thus removing the need for a costly 
+autonomous exploration. By applying a Fitted RL to the training set we learn a value function 
+which we used to train a belief-space Gaussian Mixture Model policy.
+
+We consider a plug power-socket search and connection task, also known as Peg-in-Hole (PiH), in which a 
+robot apprentice must learn how to localise a power socket and then establish a connection. 
+No vision system is used during the task and we solely rely on haptic information, provided via 
+force-torque sensor mounted on the end-effector of the robot. We chose to not use vision for two reasons. 
+The first is to validate that humans can be viable as expert teachers under these conditions which 
+can be disorientating for humans. The second is that PiH is a very important component 
+in manufacturing processes and we seek to demonstrate that we accomplish the task without the 
+need of a vision system which would result in additional costs.
+
+The rest of the paper is organised as follows: Section \ref{sec:related_work} overviews the literature of 
+Peg-in-hole (PiH) and Actor-critic Fitted Reinforcement Learning. Section \ref{sec:experiment_methods} 
+details the PiH-search task, the formulation of the belief space, the data recorded and the number of human teachers 
+taking part. Section \ref{sec:learning-value-actor} presents the Fitted Policy Iteration (FPI) algorithm.
+Section \ref{sec:control_architecture} details the control architecture. Section \ref{sec:results} experiments are 
+conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusion}, discussion and conclusion.
 
 
 \section{Related work}\label{sec:related_work}
@@ -241,7 +283,7 @@ second is Peg-in-hole.
 The Peg-in-Hole (PiH) task is one of the most widespread step in industrial assembly and manipulations processes, 
 with examples including the assembly of vehicular transmission components \cite{search_strategies_icra_2001} and 
 valves \cite{online_gpr_icra_2014}. To be successful, the estimated position of the robot's end-effector 
-and workpiece must be precise. Typically, the clearance between peg and plug is very small leaving little 
+and workpiece must be precise. Typically, the clearance between peg and hole is very small leaving little 
 room for error.
 
 All approaches use to some extent a vision system \cite{peg_personal_icra_2010} to estimate 
@@ -273,16 +315,15 @@ trajectories are encoded in a parameterised DMP policy and augmented with a F/T 
 After 110 trials the policy was found to be a 100\% successful. In \cite{learn_admittance_icra_1994} a 18 dimensional input 
 and a 6 dimensional output (linear and angular velocity) neural network is learned. After a 100 episodes the policy 
 was shown to be successful. Our work is similar in its approach, however we will not be considering autonomous rollouts 
-common in RL, but will rely solely on the initial data provided by human teachers.
+common in RL, but will rely solely on the data provided by human teachers.
 
 \subsection{Actor-Critic \& Fitted Reinforcement Learning}
 
-Actor-critic \cite[Chap. 6.6]{sutton98a} (AC) use two separate parameterisation of the policy (actor) and 
+Actor-critic \cite[Chap. 6.6]{sutton1998reinforcement} have two separate parameterisation of the policy (actor) and 
 value function (critic). It has been reported and proven \cite{rl_ac_surv_2012} to be faster than policy 
 search methods as the variance in the gradient estimate is smaller. The advantage of an AC is that 
-the policy can be chosen such that it is computationally efficient in evaluating actions and the 
-value function does not necessarily have to have the same function representation and parameterisation 
-as the actor.
+the policy can be chosen such that it is computationally efficient in evaluating actions whilst the  
+value function can have a more complex representation.
 
 To guarantee convergence (in model based RL) during temporal difference learning, 
 the value function approximators has to be an averager (tile coding, k-nearest-neighbour, locally weighted averaging) 
@@ -290,15 +331,15 @@ the value function approximators has to be an averager (tile coding, k-nearest-n
 (locally weighted averaging, the kernel is a Gaussian function) known as Kernel-Based Approximate Dynamic Programming (KBDP) \cite{kernel_rl_ormoneit_2002}
 has proven to be globally optimal in a continuous-space framework. This leads to the wider application of Batch RL methods 
 such as Fitted Value Iteration (FVI) \cite{fvi_uav_2010} and Fitted Q-Iteration (FQI) \cite{EGW05} (Q-approximator is a random forest ensemble),
-\cite{fqi_nips_peter_2009} to the RL community. By remembering all the state transition pairs and by applying multiple 
+\cite{fqi_nips_peter_2009} in RL problems. By remembering all the state transition pairs and by applying multiple 
 synchronous Dynamic Programming (DP) and function approximation updates, the problem of diverging value function approximators is resolved. 
 
 Retaining all the data makes it in practice easy to apply function approximators which are not averagers, such as neural networks,
 to RL problems. A successful example was Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which 
 uses a multi-layer perceptron to represent the Q-function for the cart-pole and mountain car problems and 
 shows rapid convergence to optimal policies. It has since been used in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}.
-This has lead to the application of more sophisticated regression methods such the increasingly popular Deep Learning methods 
-which are known as Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} (used to learn visual control policies) 
+This has lead to the application of more sophisticated regression methods such  Deep Learning, such 
+as  Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} which is used to learn visual control policies
 and with recent work including learning to play ATRI and ping-pong games \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015}. 
 
 The reader is referred to \cite{approx_rl_overview_2011} and \cite[Chap 2]{RL_state_art_2012} for a literature 
@@ -313,23 +354,26 @@ the value function approximator.
 
 \section{Experiment methods}\label{sec:experiment_methods}
 
-Figure \ref{fig:search_task_setup} (\textit{Top-left}), illustrates the PiH-search experiment setup. The orange area represents 
-the teachers starting area and is assumed prior knowledge. The sockets are always positioned at the center of a fake wall (wooden plank) which is clamped to a table, see 
-Figure \ref{fig:search_task_setup} (\textit{Top-right}) for an illustration. 
-We consider one type of plug, Type J\footnote{http://www.iec.ch/worldplugs/typeJ.htm}, and three different power sockets. 
-Power \textit{socket A}, has a ring around its holes, \textit{socket B} has a funnel, which we hypothesize should make 
-it easier to connect, and \textit{socket C} has a flat elevated surface. See Figure \ref{fig:search_task_setup}
-(\textit{Bottom}) for an illustration. 
-
 \begin{figure*}
  \centering
- \includegraphics[width=0.8\textwidth]{./Figure/Figure1.pdf}
- \caption{The experimental setup. \textit{Top-left:} A participant (human teacher) is blindfolded and 
-    placed within the orange rectangular area always facing the wall. \textit{Top-right:} Dimensions of the 
-    the wall and socket. \textit{Bottom:} Three different power sockets, only socket A and B are used for data collection, socket
-    C is purely used for evaluating the generalisation of the learned policy.}
+ \includegraphics[width=0.85\linewidth]{./Figure/Figure1.pdf}
+ \caption{\textbf{Peg-in-Hole search task setup}.
+  \textit{Top-left}: Three different sockets are used, socket A will be only used to gather training data whilst socket B and 
+  C will be used evaluation purposes:
+ \textit{Bottom-left:} A participant (human teacher) is blindfolded and  placed within the orange rectangular area always 
+  facing the wall. \textit{Top-right:} Dimensions of the the wall and socket, and the orange area illustrates the possible starting 
+  locations. \textit{Bottom-right:} The KUKA LWR robot is equipped with a peg holder mounted with an ATI force torque sensor, 
+  it is reproducing a search and connection policy learned from the human demonstrations.}
     \label{fig:search_task_setup}
 \end{figure*}
+
+Figure \ref{fig:search_task_setup} (\textit{Top-right}), illustrates the PiH-search task. The orange area represents 
+the teachers starting area and is assumed prior knowledge. The sockets are always positioned at the center of a fake 
+wall (wooden plank) which is clamped to a table. We consider one type of plug, 
+Type J\footnote{http://www.iec.ch/worldplugs/typeJ.htm}, and three different power sockets. 
+Power \textit{socket A}, has a ring around its holes, \textit{socket B} has a funnel, which we hypothesize should make 
+it easier to connect, and \textit{socket C} has a flat elevated surface. See Figure \ref{fig:search_task_setup}
+(\textit{Top-left}) for an illustration. 
 
 The human teacher holds the plug which is attached to a cylindrical handle with 
 an ATI 6 axis force torque sensor (Nano25 \footnote{http://www.ati-ia.com/products/ft/sensors.aspx}) 
@@ -338,22 +382,20 @@ to be a function of the raw wrench, $\tilde{y}_t = h(\phi_t)$, which is a binary
 and the direction in which it occurs, which is discretized to the four cardinalities.
 
 On top of the cylinder there is a set of markers used by a motion capture system 
-OptiTrack\footnote{http://www.optitrack.com/} (which has millimeter tracking accuracy), 
-see Figure \ref{fig:plug_cylinder}, to measure both linear, $\dot{x} \in \mathbb{R}^3$, 
-and angular velocity, $\omega \in \mathbb{R}^3$, at each time step which is recorded at 
-a rate of 100 Hz along with the F/T information.
-
+OptiTrack\footnote{http://www.optitrack.com/} (which has millimeter tracking accuracy) to measure 
+both linear, $\dot{x} \in \mathbb{R}^3$, and angular velocity, $\omega \in \mathbb{R}^3$, at each 
+time step which is recorded at a rate of 100 Hz along with the F/T information.
 
 The human's location belief is represented by a probability density function (pdf) which 
-is assumed to be uniformly distributed in the orange area of Figure \ref{fig:search_task_setup}
-and that all subsequent beliefs can be inferred from the measured velocity and measurements 
-provided by the ATI and OptiTrack sensors.
+is assumed to be uniformly distributed in the orange area and that all subsequent beliefs can 
+be inferred from the measured velocity and measurements provided by the ATI and OptiTrack sensors.
 
 \subsection{Belief state}
 
-For the task at hand, the belief probability density function,  $p(x_t|y_{0:t},\dot{x}_{1:t})$,  
-is a Point Mass Filter (PMF) \cite[p.87]{Bergman99recursivebayesian}, which is a non-parametric  Bayesian filter.
-In Figure \ref{fig:PMF} (\textit{Bottom-right}) we illustrate the likelihood when an edge is sensed. 
+The belief probability density function,  $p(x_t|y_{0:t},\dot{x}_{1:t})$, is a Point Mass Filter (PMF) 
+\cite[p.87]{Bergman99recursivebayesian}, which is a non-parametric  Bayesian filter.
+In Figure \ref{fig:PMF} (\textit{Left}) we illustrate different time segments of the location belief recording
+during a demonstration. In Figure \ref{fig:PMF} (\textit{Right}) we illustrate the likelihood when an edge is sensed. 
 A PMF is chosen to represent the believed location of the plug as the sensing likelihoods are non-gaussian and 
 lead to multi-modal distributions. 
 
@@ -371,11 +413,11 @@ lead to multi-modal distributions.
 \end{figure*}
 
 The pdf is high dimensional and thus it is impractical to directly learn a statistical 
-policy ${\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{0:t}) \rightarrow \dot{x}_t}$ without some form of compression. 
+policy ${\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{1:t}) \rightarrow \dot{x} }$ without some form of compression. 
 We compress it to a belief space vector $b_t = [\hat{x}_t,U]^{\mathrm{T}}$ composed of the maximum a posteriori, 
 $\hat{x}_t \in \mathbb{R}^3$, and the differentiation entropy, $U = H\{p(x_t|y_{0:t},\dot{x}_{0:t})\} \in \mathbb{R}$.
 
-Each participant's demonstration results in a dataset $D=\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}$, 
+Each participant's demonstration results in a dataset ${D=\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}}$, 
 where the upper index $[i]$ references the ith search trajectory (also one execution of the task or one episode) and 
 subscript $1:T$ denotes the time steps during the trajectory from initialisation $t=1$ until the end $t=T$. 
 
@@ -389,8 +431,7 @@ by performing 15 PiH searches with socket A, followed by a 10 minute break, fini
 The members of group B performed the same protocol starting with socket B and ending with socket A.
 Figure \ref{fig:experiment_design} summarises a walk through of the experiment.
 The only exclusion criteria was the inability of the subject to accomplish the task. All participants gave written consent 
-for taking part in this study. Each participant carried out a total of 30 PiH-search experiments, giving a 
-total of 300 demonstrations
+for taking part in this study. A total of 300 demonstrations were gathered.
 Both groups A and B took $9\pm10$s to find the socket's edge, regardless of the socket type. This is to be expected since the sockets 
 are at the same location. It took a further $8\pm7$s on average for group B to connect
 socket B and $12\pm10$s on average for group A to connect socket A. As we can see this is not a straight forward task when considering
@@ -412,7 +453,6 @@ the sensory deprivation. See Figure \ref{fig:experiment_setup_data} (\textit{Bot
  \label{fig:experiment_design}
 \end{figure}
 
-
 \begin{figure}
  \centering
    \includegraphics[width=0.9\linewidth]{./Figure/time_taken.pdf}
@@ -428,11 +468,11 @@ to linear velocity $\pi_{\Param_1} : b_t \mapsto \dot{x}_t$ and the second from
 sensed wrench to angular velocity, $ \pi_{\Param_2} : \phi_t \mapsto \omega_t$.
 The belief policy $\pi_{\Param_1}$ is learned in a Fitted Actor-Critic framework 
 and the wrench policy $\pi_{\Param_2}$ directly from the demonstrated data as was done 
-in \cite[Chap. 5]{Kronander2015}, which proved to be efficient in overcoming jamming during the PiH. 
+in \cite[Chap. 5]{Kronander2015}, which proved to be efficient in overcoming jamming during the final insertion step of PiH. 
 Our objective is to maximise the parameters of the policy, $\pi_{\Param_1}: b \mapsto \dot{x}_t$, 
 with respect to the value function:
 \begin{equation}\label{eq:value_function}
-  V^{\pi_{\Param_1}}(b_t) = \mathbb{E}_{\pi_{\Param_1}}\Bigg\{ \sum_{t=0}^{\infty} \gamma^{t} r_{t+1} | b_0=b,\pi_{\Param_1}\Bigg\}
+  V^{\pi_{\Param_1}}(b) = \mathbb{E}_{\pi_{\Param_1}}\Bigg\{ \sum_{t=0}^{\infty} \gamma^{t} r_{t+1} | b_t=b,\pi_{\Param_1}\Bigg\}
 \end{equation}
 where $r_t \in \mathbb{R}$ is the reward and $\gamma \in [0,1)$ the discount factor. It is the expected future reward given the current 
 belief state and policy. For our PiH-search task we assign a reward of $r=0$ at each time step until the goal
@@ -503,17 +543,56 @@ As such we opt for an on-policy approach mentioned above.
 \paragraph{Policy improvement}
 
 %The TD error given by the critic is used to update the actor  \cite[Chap. 6]{sutton1998reinforcement}. 
-We update the policy to maximise the value function through a modification of the Maximisation 
-step in Expectation-Maximisation (EM) for Gaussian Mixture Models. We refer to this modification as 
-Q-EM which is strongly related to a Monte-Carlo EM-based policy search approach \cite[p.50]{p_search_surv_2011}.
-This leads to the following data log-likelihood objective function to be maximised:
+%We update the policy to maximise the value function through a modification of the Maximisation 
+%step in Expectation-Maximisation (EM) for Gaussian Mixture Models. We refer to this modification as 
+%Q-EM which is strongly related to a Monte-Carlo EM-based policy search approach \cite[p.50]{p_search_surv_2011}.
+%This leads to the following data log-likelihood objective function to be maximised:
+
+We update the Actor policy given the Critic value function through a modification of the Maximisation step in  Expectation-Maximisation (EM) 
+for Gaussian Mixture Models. We refer to this modification as Q-EM which is strongly related to a Monte-Carlo EM-based policy 
+search approach \cite[p.50]{p_search_surv_2011}. 
+
+The reward of a demonstrated trajectory (one episode) is given by the discounted return, Equation $\ref{eq:disc_return}$,
+\begin{equation}\label{eq:disc_return}
+ R(\B^{[i]},\U^{[i]}) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
+\end{equation}
+where the index $i$ stands for the $i$th episode.
+All policy gradient approaches seek to find a set of parameters, $\Param$, of the Actor,
+which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward},
+\begin{align}\label{eq:expected_reward}
+ J(\Param) &= \mathbb{E}_{p_{\Param}}\{R\} \nonumber \\
+	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i) 
+\end{align}
+where $\tau_i = \{(\U_0,\B_0),\cdots,(\U_T^{[i]},\B_T^{[i]}) \}$ are the state-action samples of the $i$th episode.
+To find the parameters which maximise the cost function, $\argmax_{\Param} J(\Param)$, its derivative is set to zero. 
+As this cannot be done directly, we maximise the logarithmic lower bound of the cost function which results in 
+Equation \ref{eq:grad_log_cost}, see \cite[p.50]{p_search_surv_2011} for the derivation. 
 
 \begin{equation} \label{eq:grad_log_cost}
   \nabla_{\Param}\mathcal{Q}(\Param,\Param') = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param}\log \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi_{\Param'}}(\U^{[i]}_t,\B^{[i]}_t)
 \end{equation}
-
+In the above equation $\Param'$ are the parameters used to generate the trajectories during the E-step.
+In most policy search approaches the policy is conditioned on the state space, $\pi_{\Param}(\U_t|\B_t)$. This leads 
+to complex expressions in the maximisation of Equation \ref{eq:grad_log_cost} and is restrictive in the case of the GMM as it fixes its input dimensions.
+Instead we optimise Equation \ref{eq:grad_log_cost} whilst considering the joint distribution and not the conditional. This has two beneficiary 
+outcomes. The first is that the input dimension (the state space) are no longer fixed allowing the basis functions of the GMM to move.
 Setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
 $\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM which is weighted by $Q^{\pi_{\Param'}}$.
+In \ref{eq:ch4:app:mu_max} we used the same notation and derivation as in \cite[Chap. 9.2.2]{Bishop_2006}, where $\gamma_k(\Bx^{[j]})$ is the responsibility factor, denoting 
+the probability that data point $\mathbf{x}^{[j]}$ belongs to  Gaussian function $k$. After rearrangement the new mean is given by Equation \ref{eq:ch4:app_new_mu}.
+
+\begin{figure}
+\begin{empheq}[box={\tcbhighmath[colback=blue!2,colframe=blue]}]{align}
+    \MuK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx \, \Bx^{[j]} }{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx} \nonumber \\
+    & \nonumber\\
+    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma_k(\Bx^{[j]})\, \Qpx (\Bx^{[j]} - \MuK)(\Bx^{[j]} - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx } \nonumber  \\
+    & \nonumber\\
+    w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{j=1}^{M} \Qpx \, \gamma_k(\Bx^{[j]})}{\sum\limits_{j=1}^{M} \Qpx} \nonumber
+\end{empheq}
+\caption{Q-EM Maximisation of the GMM parameters}
+\end{figure}
+
+
 The reader is referred to Appendix \ref{app:grad} for the Maximisation update step of Q-EM for a GMM parameterization of the policy. 
 We use the advantage function:
 \begin{equation}\label{eq:advantage_f}
@@ -601,7 +680,7 @@ whilst the worst trajectories are towards the edges of the wall and tend to foll
 We learned two policies, one solely from the original human demonstrations which we call GMM and the second which 
 is the result of \textbf{one iteration} of fitted policy iteration which we call Q-EM. 
 
-\section{Control architecture}\label{ch4:control_architecture}
+\section{Control architecture}\label{sec:control_architecture}
 
 %As detailed in Section \ref{sec:fpe}, a Gaussian Mixture Model was learned for both linear and angular velocity,
 %although only the linear control policy is active until the plug is within 
@@ -1023,8 +1102,11 @@ designing complicated reward functions. This is especially advantageous when onl
 \appendix
 
 
+
+
+
 \bibliographystyle{elsarticle-harv} 
-\bibliography{bib/peg_hole.bib,bib/pomdp.bib,bib/RL.bib,ch3-citations.bib,bib/DT.bib,bib/MLMF.bib,bib/spatial_navigation.bib}
+\bibliography{bib/ras_fpi.bib}
 
 \end{document}
 
