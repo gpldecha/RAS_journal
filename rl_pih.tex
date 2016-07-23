@@ -241,8 +241,9 @@ are considered continuous, a local optimisation with quantifiable actions (marco
 or alternatively heuristic approaches \cite{Lauri2016}, based on the most likely state, can be applied. 
 These approaches concede global optimality for a faster approximate solutions which depending on 
 the problem is often close to optimality. Solving continuous actions POMDPs via reinforcement learning 
-is difficult as the exploration-exploitation makes the dimensionality of the problem daunting which 
-lead to the development of local approximate methods in belief space planning [cite]. 
+is difficult as the autonomous exploration traditionally used in RL becomes quickly inefficient given 
+the size of the state and action space. This lead to the development of planning methods which guarantee 
+local optimality [cite]. 
 
 %\cite{Li2016352}
 
@@ -359,11 +360,12 @@ the value function approximator.
  \includegraphics[width=0.85\linewidth]{./Figure/Figure1.pdf}
  \caption{\textbf{Peg-in-Hole search task setup}.
   \textit{Top-left}: Three different sockets are used, socket A will be only used to gather training data whilst socket B and 
-  C will be used evaluation purposes:
- \textit{Bottom-left:} A participant (human teacher) is blindfolded and  placed within the orange rectangular area always 
-  facing the wall. \textit{Top-right:} Dimensions of the the wall and socket, and the orange area illustrates the possible starting 
-  locations. \textit{Bottom-right:} The KUKA LWR robot is equipped with a peg holder mounted with an ATI force torque sensor, 
-  it is reproducing a search and connection policy learned from the human demonstrations.}
+  C will be used for evaluation purposes.  \textit{Top-right:} Dimensions of the the wall and socket, the orange area illustrates the possible locations 
+  in which the human teacher will start the search.
+  \textit{Bottom-left:} A participant (human teacher) is blindfolded and  placed within the orange rectangular area always 
+  facing the wall. He is holding a cylinder equipped with a peg and an  ATI force torque sensor and OptiTrack markers. 
+  \textit{Bottom-right:} The KUKA LWR robot is equipped with a peg holder mounted with an ATI force torque sensor, it is reproducing a search 
+  and connection policy learned from the human demonstrations.}
     \label{fig:search_task_setup}
 \end{figure*}
 
@@ -892,21 +894,6 @@ to maintain an accurate position estimate.
     which replicate to some extent the pattern of making a jump (no contact with the wall) from the top right corner to the socket's edge.}
     \label{fig:experiment3}
  \end{figure*}
-% \begin{figure}
-%    \centering
-%    \includegraphics[width=\linewidth]{./Figures/Fig/gmm_v2c.pdf}
-%    \caption{Marginalised Gaussian Mixture parameters of the GMM and Q-EM learned from the demonstrations of teacher \#5. 
-%    The illustrated transparency of the Gaussian functions is proportional to their weight.
-%    \textit{Left column}: The Gaussian functions of the Q-EM have shifted from the left corner to the right. This is a result of the value function 
-%    being higher in the top right corner region, see Figure \ref{fig:value_function_subj_5}. \textit{Center column}:  The original data of the teacher 
-%    went quite far back which results in a Gaussian function given a direction which moves away from the wall (green arrow), whilst in the case
-%    of the Q-EM parameters this effect is reduced and moved closer towards the wall.  We can also see from the two plots of the Q-EM parameters 
-%    that they then follow the paths encoded by the value function.    
-%    \textit{Right column}: Rollouts of the policies learned from teacher \#5. We can see that trajectories from the GMM policy have not really 
-%    encoded a specific search patter, whilst the Q-EM policy gives many more consistent trajectories which replicate to some extent 
-%    the pattern of making a jump (no contact with the wall) from the top right corner to the socket's edge.}
-%    \label{fig:gmm_exp4}
-%\end{figure}
  
 Figure \ref{fig:experiment3} (\textit{Bottom-left}) illustrates the value function of the belief state learned from the data of teacher \# 5.
 The states with the highest values seem to create a path going from the socket towards the right edge of the wall. 
@@ -925,7 +912,10 @@ always does better than the GMM.
 \begin{figure}
  \centering
  \includegraphics[width=\linewidth]{./Figure/experiment3_stats.pdf}
- \caption{Results of a GMM and Q-EM policy under the same test conditions as Experiment 1. The Q-EM policy nearly always does much better than the GMM policy.}
+ \caption{Distance taken to reach the goal for the GMM and Q-EM policies when trained with the 
+ worst two teachers. The initial starting conditions are as in Experiment 1. 
+ The Q-EM policy nearly always does much better than the GMM policy for both when trained with data 
+ from subject \#5 or \#7.}
  \label{fig:experiment3_stats}
 \end{figure}
 
@@ -947,12 +937,11 @@ when we translated the socket's location it also translated the policy.
 
 \begin{figure*}
  \centering
-    \subfigure[]{\includegraphics[width=\linewidth]{./Figure/experiment4.pdf}}
-    \caption{\textbf{Experiment 4} Evaluation of generalisation. The socket is located in at the top right corner of the wall. We consider a 
-    \textit{Fixed} starting location for both the true and believed location of the end-effector. The red square depicts the 
-    extent of the initial uncertainty, which is uniform. (b) Distance taken to reach the socket's edge. For the Fixed setup (see (a) for 
-    the initial condition), both the Q-EM and GMM significantly outperform the Greedy. The other three conditions are the same as for 
-    Experiment 1. }
+    \includegraphics[width=\linewidth]{./Figure/experiment4.pdf}
+    \caption{\textbf{Experiment 4} Evaluation of generalisation. The socket is located at the top right corner of the wall. We consider a 
+    \textit{Fixed} starting location for both the true and believed location (most likely state $\hat{x}_t$) of the end-effector. The red square depicted 
+    in Figure \ref{fig:experiment12} is the extent of the initial uniform uncertainty. \textit{Right:} Distance taken to reach the socket's edge for four initial starting conditions, left, centre and right of 
+    Experiment 1 and the fourth is the fixed condition just described. For the Fixed setup both the Q-EM and GMM significantly outperform the Greedy.}
     \label{fig:experiment4}
 \end{figure*}
 
@@ -1014,10 +1003,11 @@ wander vertically up and down. Only when the uncertainty has been reduced does t
 \begin{figure*}
  \centering
  \includegraphics[width=0.95\textwidth]{./Figure/real_experiment_v2.pdf}
- \caption{\textit{Left}: 25 search trajectories for each of the three search policies for socket A. \textit{Right} KUKA LWR4 equipped with a holder mounted with a ATI 6-axis force-torque sensor. (a) The robot's end-effector starts to the 
- right of socket A. The second row shows screen captures taken of ROS Rviz data visualiser in which we see the Point Mass Filter 
+ \caption{\textit{Left}: 25 search trajectories for each of the three search policies for socket A. 
+ \textit{Right} KUKA LWR4 equipped with a holder mounted with a ATI 6-axis force-torque sensor. \textit{Socket A}: The robot's end-effector starts to the 
+ right of the socket. The second row shows screen captures taken of ROS Rviz data visualiser in which we see the Point Mass Filter 
  (red particles) and a yellow arrow indicating the direction given by the policy. In this particular run, the plug remained in contact with the ring of the socket until 
- the top was reached before making a connection. \textit{Bottom}: Socket C, same initial condition. The policy leads the plug down to 
+ the top was reached before making a connection. \textit{Socket C}: Same initial condition as for socket A. The policy leads the plug down to 
  the bottom corner of the socket before going the center of the top edge, localising itself, and then making a connection.}
  \label{fig:real_pictures}
 \end{figure*}
@@ -1044,12 +1034,13 @@ opposed to some of the human teachers. In actuality, humans are far less precise
 \begin{figure*}
  \centering
    \includegraphics[width=\linewidth]{./Figure/real_socket_human_all.pdf}
-  \caption{Distance taken to connect plug to socket once the socket is localised. (b) The human 
-  Group A are the set of teachers who first started with socket A. They had no previous training on another socket beforehand. Group 
+  \caption{ Distance taken to connect the plug to the socket (a) The Q-EM algorithm is the best for both socket A and C. 
+  For socket C, the Greedy algorithm does worse than the other two. This is because socket C has no informative features. 
+  (b) Group A are the set of teachers who first started with socket A. They had no previous training on another socket beforehand. Group 
   BA first gave demonstrations on Socket B before giving demonstrations on Socket A. Group BA
   is better than Group AA at doing the task. This is most likely a training effect. However all policy search methods are far better
   at connecting the plug to the socket. (c) Both Groups AB and BB are similar in terms   of the distance they took to 
-  insert the plug into the socket and as was the case for (b), the search policies travel less to accomplish the task.   } 
+  insert the plug into the socket, the search policies on the other hand travel less to accomplish the task.   } 
   \label{fig:real_statistics}
 \end{figure*}
 
