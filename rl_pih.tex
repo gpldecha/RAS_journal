@@ -1054,12 +1054,12 @@ following in the footsteps of our initial approach \cite{Chambrier2014}. Both th
 with data solely from the human demonstrations of the search with socket A.
 
 Four different aspects of the learned policies have been evaluated. Firstly, which of three policies, Q-EM, GMM and a Greedy policy, 
-took the least distance to find the socket. Across three different Experiments it was chosen that the Q-EM algorithm always performs
+took the least distance to find the socket. Across three different experiments it was shown that the Q-EM algorithm always performs
 the best. It was clear that the Q-EM policy was less random and more consistent than the GMM policy as it tried to enter in 
 contact with the wall at the same height as the socket thus increasing the chances of finding the socket.
 
 Secondly, the importance of the data provided by the human teachers was tested. The data from the two worst teachers was used to 
-trained an individual GMM and Q-EM policy for each of them. It was found that the performance of the Q-EM was better than the GMM in terms 
+train an individual GMM and Q-EM policy for each of them. It was found that the performance of the Q-EM was better than the GMM in terms 
 of distance travelled to find the socket. When qualitatively evaluating the trajectories of the GMM with respect to the 
 Q-EM for the worst teacher, it is clear that the Q-EM policy managed to extract a search pattern, which was not the case 
 for the GMM policy. A Q-EM policy was also learned from the data provided by a Greedy policy with explorative noise 
@@ -1068,8 +1068,8 @@ provided by the human teachers is necessary.
 
 Thirdly, the two policies (GMM and Q-EM) were tested to see whether they were able to generalise to a different socket location. 
 Under a specific condition, called \textit{Fixed}, both policies were significantly better than the Greedy policy. However for the \textit{Center}
-and \textit{Left} initial conditions the Greedy policy performed better. For the initial conditions in which the Greedy policy 
-enters in contact with the wall at an early stage, it also performs better than the GMM and Q-EM. The reason for this is that  
+and \textit{Left} initial conditions the Greedy policy performed better. When the Greedy policy 
+enters in contact with the wall at an early stage, it performs better than the GMM and Q-EM. The reason for this is that  
 the actions taken by the Greedy policy in this setting will always result in a decrease of entropy when the location
 of the socket is close to a corner, as opposed to being in the center of the wall.
 
