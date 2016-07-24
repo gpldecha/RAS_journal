@@ -1,0 +1,18 @@
+Aude Billard is Professor of Micro and Mechanical
+Engineering, and the head of the LASA Laboratory at the
+School of Engineering at the Swiss Federal Institute of
+Technology in Lausanne. She received an M.Sc. in Physics
+from EPFL (1995), an M.Sc. in Knowledge-based Systems
+(1996) and a Ph.D. in Artificial Intelligence (1998) from the
+University of Edinburgh. She was the recipient of the Intel
+Corporation Teaching award, the Swiss National Science
+Foundation career award in 2002, the Outstanding Young
+Person in Science and Innovation from the Swiss Chamber
+of Commerce and the IEEE-RAS Best Reviewer award in
+2012. Aude Billard served as an elected member of the Administrative Committee
+of the IEEE Robotics and Automation society (RAS) for two terms (2006–2008 and
+2009–2011) and is the chair of the IEEE-RAS Technical Committee on Humanoid
+Robotics. Her research interests focus on machine learning tools to support robot
+learning through human guidance. This extends also to research on complementary
+topics, including machine vision and its use in human–robot interaction and
+computational neuroscience to develop models of motor learning in humans.

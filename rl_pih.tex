@@ -151,43 +151,25 @@
 
 \address{}
 
-% A  concise  and  factual  abstract  is  required.  The  abstract  should  state  briefly  the  purpose  of  the
-% research, the principal results and major conclusions. An abstract is often presented separately from
-% the article, so it must be able to stand alone. For this reason, References should be avoided, but if
-% essential, then cite the author(s) and year(s). Also, non-standard or uncommon abbreviations should
-% be avoided, but if essential they must be defined at their first mention in the abstract itself
-%We consider two types of explanatory 
-%tasks for which the correct handling of uncertainty is necessary; The first is the peg-in-hole insertion task
-%which is widely present in manufacturing assembly processes, which requires a high level of 
-%precision on the millimetre scale. The second is search, such as looking for a patient in a hospital or finding 
-%people in search and rescue operations.
-%.
 
 \begin{abstract}
 
-% Introduce the Problem Acting optimally given environmental uncertainty is still currently a major concern for autonomous robotic 
-% systems. Uncertainty arises from the absence of informative prior knowledge, insufficient sensor capabilities 
-% and imprecise motion. Such uncertainty, if not considered appropriately by a policy or planner can lead 
-% to either sub-optimal task execution or failure. We consider a plug power-socket search and connection task 
-% also known as Peg-in-Hole (PiH) in which both a human and robot must be able to find a socket and connect a power 
-% plug to it without using any vision, making the state space partially observable, whilst solely relaying on haptic information.
-
+Acting optimally given state uncertainty  is necessary  for robotic systems to achieve autonomy.
+If not considered appropriately by a policy or planner can lead to either sub-optimal task execution or failure. 
+We consider a Peg-in-Hole (PiH) task in which both a human and robot apprentice must be able to find a socket 
+and connect a power plug to it without using any vision, making the state space partially observable, whilst solely relaying on haptic information.
 A search policy can be obtained by encoding the search tasks as a Partially Observable Markov Decision Process (POMDP) 
-which is subsequently solved by dynamic programming. This quickly becomes infeasible for relatively high-dimensional continuous tasks.  
-To address this problem we demonstrate how human intuition can be leveraged to learn a belief space policy. A group 
-of human teachers demonstrate a  PiH-search task putting a plug into a power socket while blindfolded. The position 
-uncertainty represented by a Point Mass Filter (PMF), is recorded and compressed to the most likely state and entropy. 
-A policy parametrised by a Gaussian Mixture Model (GMM) is learned and refined in an Actor-Critic Fitted reinforcement learning framework.
-The Actor-Critic policy, called Q-EM, is compared with both a Greedy and non-optimised GMM policy for the distance taken 
+which is subsequently solved by dynamic programming. This quickly becomes infeasible for continuous state and action spaces do 
+the curse of history and dimensionality which autonomous exploration-exploitation strategies are sensitive to.  
+We address this problem by demonstrating how human intuition can be leveraged in an Actor-Critic Fitted Policy Improvement (FPI) framework. 
+A group of human teachers demonstrate the PiH-search task whilst blindfolded. The position 
+uncertainty, represented by a Point Mass Filter (PMF), is recorded and compressed to the most likely state and entropy. 
+A belief space value function is learned in a Fitted RL framework is learned offline and used to update the parameters 
+of a Gaussian Mixture Model (GMM) policy. The GMM Actor-Critic policy, called Q-EM, is compared with both a Greedy and non-optimised GMM policy for the distance taken 
 to localise the socket and then establish a connection. The ability of the learned models to generalise to different socket types and locations
 is evaluated. The results show that the Actor-Critic policy is always more performant in terms of distance travelled to localise 
 the socket. For the same task, the Q-EM, GMM and Greedy policies were tested on the KUKA LWR robot for three different power sockets.
 The results show that when the socket has no distinctive features both data driven policies perform better than the Greedy. 
-However, when the socket has distinctive features the Greedy is as good or even better. 
-
-% We evaluate the learned policy in three ways; We first compare our policy against a greedy one. Secondly we compare the 
-% effect of using reinforcement learning against a purely statistical controller. Thirdly we evaluate the importance of 
-% the provided human demonstrations, the data.
 
 \end{abstract}
 
@@ -196,26 +178,6 @@ Fitted Reinforcement Learning, Actor-Critic, POMDP, GMM policy, Programming by D
 \end{keyword}
 
 \end{frontmatter}
-
-% State the objectives of the work and provide an adequate background, avoiding a detailed literature
-% survey or a summary of the results.
-% - Establish context of work being reported (POMDP, learning search behaviour, etc..), discuss primary 
-%   relevant research literature
-% - State the Purpose of the work in the form of hypothesis, question, or problem you investigate; and,
-%
-%    Quite literally, the Introduction must answer the questions, "What was I studying? Why was it an important question? 
-%    What did we know about it before I did this study? How will this study advance our knowledge?"
-%
-% - Structure: inverse pyramide, Start very general and then narrow down. Finally arrive at statement, purpose of rational.
-%
-% 1) Clearly identifying the subject area.
-
-% Background
-% 2) Establishing the context by providing a brief and balanced review of the pertinent published 
-%    literature that is available on the subject.
-% -> say what we knew before doing this problem. 
-
-% 3) Be sure to clearly state the purpose and / or hypothesis that you investigate
 
 \section{Introduction}
 
@@ -230,7 +192,6 @@ Partially Observable Markov Decision Process (POMDP) which is subsequently solve
 or reinforcement learning if the transition and observation models are unavailable. 
 However, solving a POMDP directly is infeasible even for the simplest problems \cite{PBVI}. 
 
-% Progress in applying POMDP optimal control to Planning and control probolems ?
 Advances have been made in applying approximate POMDP algorithms to robotic applications
 \cite{pomdp_peg_icra_2014}. However the optimisation often requires a discretisation of the 
 action space which is restrictive for tasks which are naturally continuous. In this case
@@ -239,9 +200,7 @@ approaches \cite{Lauri2016}, based on the most likely state, can be applied.
 These approaches trade global optimality for faster approximate solutions which depending on 
 the problem is often close to optimality. Solving continuous action POMDPs via reinforcement learning 
 is difficult as the autonomous exploration, traditionally used in RL, becomes quickly inefficient. 
-This leads to the development of planning methods which guarantee local optimality [cite]. 
-
-%\cite{Li2016352}
+This leads to the development of planning methods which guarantee local optimality. 
 
 In this paper we propose an approximate POMDP method for continuous belief-state and action space. We introduce a 
 Fitted Policy Iteration (FPI) Actor-Critic (AC) Reinforcement Learning (RL) method in which sample episodes (demonstrations)
@@ -341,7 +300,6 @@ We chose an on-policy approach to avoid the maximisation over the actions, as we
 A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
 the value function approximator.
 
-
 \section{Experiment methods}\label{sec:experiment_methods}
 
 \begin{figure*}
@@ -427,13 +385,6 @@ Both groups A and B took $9\pm10$s to find the socket's edge, regardless of the 
 are at the same location. It took a further $8\pm7$s on average for group B to connect
 socket B and $12\pm10$s on average for group A to connect socket A. As we can see this is not a straight forward task when considering
 the sensory deprivation. See Figure \ref{fig:experiment_setup_data} (\textit{Bottom}) for the time taken to connect the plug to the socket.
-
-%In Appendix \ref{app:anova_socket} we report the results of a non-parametric statistical analysis on the time taken to connect
-%the sockets and we find that it takes 4 seconds more to connect socket A than socket B. This is somewhat expected as 
-%socket B has a funnel which can help to contain the subject to within the vicinity of the holes.
-%As connecting to socket A is more difficult we will \textbf{using only these demonstrations} as training data to learn a policy. Both
-%socket B and C will be used solely to evaluate the generalisation of the policy.
-
 
 \begin{figure}
 \centering
@@ -527,14 +478,7 @@ ${\max_{\U_{t+1}} \hat{Q}(\U_{t+1},\B_{t+1})}$ is easily achievable.
 Given the dimensionality and continuity of our problem we assume this to be unrealistic 
 and we opt for an on-policy approach mentioned above.
 
-
 \paragraph{Policy improvement}
-
-%The TD error given by the critic is used to update the actor  \cite[Chap. 6]{sutton1998reinforcement}. 
-%We update the policy to maximise the value function through a modification of the Maximisation 
-%step in Expectation-Maximisation (EM) for Gaussian Mixture Models. We refer to this modification as 
-%Q-EM which is strongly related to a Monte-Carlo EM-based policy search approach \cite[p.50]{p_search_surv_2011}.
-%This leads to the following data log-likelihood objective function to be maximised:
 
 The Actor is updated given the Critic's value function through a modification of the Maximisation step in  Expectation-Maximisation (EM) 
 for Gaussian Mixture Models. This modification is referred to as Q-EM which is strongly related to a Monte-Carlo EM-based policy 
@@ -595,12 +539,6 @@ Each state-action sample $j$ has an associated weight, $\delta_j \in \mathbb{R}$
 $j$th state action-pair lead to an increase in the value function and $\delta_j < 0$ lead to 
 a decrease in the value function. The data log-likelihood is re-weighted accordingly, giving more importance to data points which lead to a gain. Since 
 the Q-EM update steps cannot allow negative weights, the TD error is rescaled to be between 0 and 1. 
-
-%Each state-action sample $j$ has an associated weight, $\delta_j \in \mathbb{R}$, where $\delta_j > 0$ means that the 
-%$j$th state action-pair lead to an increase in the value function and $\delta_j < 0$ lead to 
-%a decrease in the value function. The data log-likelihood is re-weighted accordingly, giving more importance to data points which lead to a gain. Since 
-%the Q-EM update steps cannot allow negative weights, the TD error is rescaled to be between 0 and 1. % we already sed this
-
 
 
 \paragraph{2D example fitted policy iteration}
@@ -677,9 +615,6 @@ are given the same amount of information.
 
 \section{Control architecture}\label{sec:control_architecture}
 
-%As detailed in Section \ref{sec:fpe}, a Gaussian Mixture Model was learned for both linear and angular velocity,
-%although only the linear control policy is active until the plug is within 
-%the socket's hole, as the orientation is constant.
 The direction to search is given by the conditional:
 
 \begin{equation}\label{eq:gmm_conditional}
@@ -718,8 +653,6 @@ Figure \ref{fig:policy_vf} illustrates the policy vector field for GMM and Q-EM,
   to be closer to a sink and there is less variation.}
   \label{fig:policy_vf}
 \end{figure}
- 
-%The amplitude of the velocity is computed separately and modulated according to sensed forces on the end-effector.
 
 \subsection{Robot Implementation}
 
@@ -740,31 +673,6 @@ force.  When a force $F_z$ of 5N is sensed, a rotation of $R_y(\pi/2)$ is applie
 getting over the edge. The direction velocity is always normalised up to this point. The amplitude of the velocity is a proportional
 controller based on the believed distance to the goal. Figure \ref{fig:control_flow} illustrates the complete control flow.
 
-%\begin{align}
-%  \nu     &= \max(\min(\beta_1,K_p (x_g - \hat{x}),\beta_2)\label{eq:prop_speed}\\ \nonumber
-%  \dot{x} &= \nu \dot{\underbar{x}}
-%\end{align}
-%where the lower and upper amplitude limits are given by $\beta_1$ and $\beta_2$, $x_g$ is the position of the
-%goal, and $K_p$ the proportional gain which was tuned through trials. 
-
-% $\omega_t = \mathrm{angleaxis}(\mathbf{R}^{\mathrm{T}} \mathbf{R}^r)$  $\mathbf{R}^r = I$
-
-%The above procedure can control the general behaviour of the search but is insufficient for a successful implementation on a robotic system 
-%such as the 7 Degree of Freedom $q\in\mathbb{R}^7$ KUKA LWR, which we illustrate in Figure \ref{fig:kuka}. 
-%The GMM policy $\dot{x} = \mathbb{E}_{\alpha}\{\pi_{\Param_1}(\dot{x}|b)\}$ outputs a linear velocity and the 
-%angular velocity is computed from a reference orientation which is constant. When the plug is to be connected to the socket, 
-%the angular velocity is the output of samples drawn from the conditional $\omega \sim \pi_{\Param_2}(\omega|\phi)$.
-%From both linear and angular velocities a reference position $x^r \in \mathbb{R}^{(3 \times 1)}$ and orientation $R^r \in \mathbb{R}^{(3 \times 3)}$ are computed and used to 
-%define a linear and angular error $x_e = x^r - x$, $\psi_e = \mathrm{angleaxis}(R^{\mathrm{T}}R^r)$ by using the  
-%the current position $x$ and orientation $R$.
-%Given the kinematic chain of the robot, the inverse of the Jacobian $J(q) \in \mathbb{R}^{6\times 7}$ is used in an impedance control to transform the 
-%Cartesian error $c_e = [x_e,\psi_e]^{\mathrm{T}} \in \mathbb{R}^{6 \times 1}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
-%\begin{equation}\label{eq:torque_control}
-% \tau_t = J^{\mathrm{T}}(q_t)\left(-K c_e - D \dot{c}_e \right) + g(q_t)
-%\end{equation}
-%where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices whose values were set experimentally 
-%and $g(q_t)$ compensates for gravity. Given an applied torque there is a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
-
 \begin{figure}
   \centering
   \includegraphics[width=0.45\textwidth]{./Figures/control_flow_final.pdf}
@@ -773,7 +681,6 @@ controller based on the believed distance to the goal. Figure \ref{fig:control_f
   both the GMM policy and the proportional speed controller.}
   \label{fig:control_flow}
 \end{figure}
-
 
 \section{Results}\label{sec:results}
 
@@ -1093,5 +1000,3 @@ designing complicated reward functions. This is especially advantageous when onl
 \end{document}
 
 \endinput
-%%
-%% End of file `elsarticle-template-harv.tex'.
