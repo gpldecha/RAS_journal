@@ -1,6 +1,5 @@
-﻿Guillaume de Chambrier has received in 2011 a Master degree from 
-the School of Informatics at the University of Edinburgh. From Feb. 2012,
-he joined the Department of Mechanical Engineering at École Polytechnique 
-Fédérale Lausanne (EPFL) in Switzerland, as a doctoral assistant. His current re-
-search interests mainly focus on belief space planning, reinforcement learning and
-state space estimation.
+﻿Guillaume de Chambrier has received in 2011 a Master degree from the School of 
+Informatics at the University of Edinburgh. From Feb. 2012, he joined the Department 
+of Mechanical Engineering at École Polytechnique Fédérale Lausanne (EPFL)
+ in Switzerland, as a doctoral assistant. His current research interests 
+mainly focus on belief space planning, reinforcement learning and state space estimation.
