@@ -151,25 +151,39 @@
 
 \address{}
 
+%The critic is learned offline in a Fitted RL framework A belief space value function using demonstration from a group of blindfolded human teachers. 
+%The demonstrations are compressed as sequences of the most likely state and entropy extracted by a Point Mass Filter (PMF). 
+%The critic is then used to train the actor policy represented as Gaussian Mixture Model (GMM)
+
+%A group of human teachers demonstrate the PiH-search task whilst blindfolded. The position uncertainty, 
+%represented by a Point Mass Filter (PMF), is recorded and compressed to the most likely state and entropy. 
+%A belief space value function is learned offline in a Fitted RL framework and it is used to update the parameters 
+%of a Gaussian Mixture Model (GMM) policy. 
+
+
+%The GMM Actor-Critic policy, called Q-EM, is compared with both a Greedy and non-optimised GMM policy for the distance taken 
+%to localise the socket and then establish a connection. The ability of the learned models to generalise to different socket types and locations
+%is evaluated. The results show that the Actor-Critic policy is always more performant in terms of distance travelled to localise 
+%the socket. For the same task, the Q-EM, GMM and Greedy policies were tested on the KUKA LWR robot for three different power sockets.
+%The results show that when the socket has no distinctive features both data driven policies perform better than the Greedy. 
+
 
 \begin{abstract}
 
 Acting optimally given state uncertainty  is necessary  for robotic systems to achieve autonomy.
 If uncertainty is not considered appropriately by a policy or planner it can lead to either sub-optimal task execution or failure. 
-We consider a Peg-in-Hole (PiH) search task in which both a human and robot apprentice must be able to find a socket 
-and connect a power plug to it without using any vision, making the state space partially observable, whilst solely relying on haptic information.
-A search policy can be obtained by encoding the search tasks as a Partially Observable Markov Decision Process (POMDP) 
-which is subsequently solved by dynamic programming. This quickly becomes infeasible for continuous state and action spaces 
-when autonomous exploration-exploitation strategies are used since they do not consider any prior knowledge.  
-We address this problem by demonstrating how human intuition can be leveraged in an Actor-Critic Fitted Policy Iteration (FPI) framework. 
-A group of human teachers demonstrate the PiH-search task whilst blindfolded. The position 
-uncertainty, represented by a Point Mass Filter (PMF), is recorded and compressed to the most likely state and entropy. 
-A belief space value function is learned offline in a Fitted RL framework and it is used to update the parameters 
-of a Gaussian Mixture Model (GMM) policy. The GMM Actor-Critic policy, called Q-EM, is compared with both a Greedy and non-optimised GMM policy for the distance taken 
-to localise the socket and then establish a connection. The ability of the learned models to generalise to different socket types and locations
-is evaluated. The results show that the Actor-Critic policy is always more performant in terms of distance travelled to localise 
-the socket. For the same task, the Q-EM, GMM and Greedy policies were tested on the KUKA LWR robot for three different power sockets.
-The results show that when the socket has no distinctive features both data driven policies perform better than the Greedy. 
+We consider a Peg-in-Hole (PiH) search task in which both a human teacher and robot apprentice must locate an electric socket 
+and connect it without using any vision, making the state space partially observable, whilst relying on haptic and proprioceptive information.
+A search policy can be obtained by applying dynamic programming to the Partially Observable Markov Decision Process (POMDP) formulation of 
+task. This quickly becomes infeasible for continuous state and action spaces when autonomous exploration-exploitation strategies 
+are used since they do not consider informative prior knowledge. We address this problem by demonstrating how human intuition can be leveraged 
+in an Actor-Critic Fitted Policy Iteration (FPI) framework. 
+A belief-space critic is learned offline in a Fitted RL framework from trajectory data demonstrated by a group of 
+blindfolded human teachers. The demonstrations are compresses as a sequence of most likely state and entropy extracted from 
+a Point Mass Filter (PMF). The critic is then used to train the actor policy represented as Gaussian Mixture Model (GMM).
+Evaluations performed both in simulation and on the KUKA LWR robot showed that the proposed algorithm outperforms 
+both a myopic and a purely data driven policy in terms of distance travelled to localise the socket and perform 
+better than these two alternative policies when the socket has no distinctive features.
 
 \end{abstract}
 
@@ -181,9 +195,9 @@ Fitted Reinforcement Learning, Actor-Critic, POMDP, GMM policy, Programming by D
 
 \section{Introduction}
 
-The ability to act optimally given uncertainty is paramount for all robotic systems required 
-to act in environments which are not fully observable. Depending on the task and structure of the uncertainty, 
-it uncertainty is not taken into consideration by the control policy, can lead to wasteful usage of resources 
+The ability to act optimally given state uncertainty is paramount for all robotic systems required 
+to act in environments which are not fully observable. Depending on the task and structure of the state
+uncertainty if it is not taken into consideration by the control policy can lead to wasteful usage of resources 
 and even failure. Given the potential adverse consequences (disastrous if considering a search and rescue task), 
 it is important to design uncertainty robust policies and planners.
 
@@ -195,9 +209,9 @@ However, solving a POMDP directly is infeasible even for the simplest problems \
 Advances have been made in applying approximate POMDP algorithms to robotic applications
 \cite{pomdp_peg_icra_2014}. However the optimisation often requires a discretisation of the 
 action space which is restrictive for tasks which are naturally continuous. In this case
-a local optimisation with quantifiable actions (marcos) \cite{toussain_2015} or alternatively heuristic 
+a local optimisation with quantifiable actions (macro) \cite{toussain_2015} or alternatively heuristic 
 approaches \cite{Lauri2016}, based on the most likely state, can be applied. 
-These approaches trade global optimality for faster approximate solutions which depending on 
+These approaches trade-off global optimality for faster approximate solutions which depending on 
 the problem is often close to optimality. Solving continuous action POMDPs via reinforcement learning 
 is difficult as the autonomous exploration, traditionally used in RL, becomes quickly inefficient. 
 This leads to the development of planning methods which guarantee local optimality. 
@@ -205,9 +219,9 @@ This leads to the development of planning methods which guarantee local optimali
 In this paper we propose an approximate POMDP method for continuous belief-state and action space. We introduce a 
 Fitted Policy Iteration (FPI) Actor-Critic (AC) Reinforcement Learning (RL) method in which sample episodes (demonstrations)
 are provided by human teachers in a Programming by Demonstration (PbD) framework. It is assumed that 
-a good mixture of explorative-exploitative behaviour is present.  It has been previously shown \cite{Chambrier2014} 
-that humans exhibit both risk-prone and averse behaviour which constitutes an ideal training set for RL, 
-removing the need for a costly autonomous exploration. A belief-space value function is learned from these 
+a good mixture of explorative-exploitative behaviour is present in the demonstrated trajectory data set.
+It has been previously shown \cite{Chambrier2014} that humans exhibit both risk-prone and averse behaviour which constitutes an ideal training set for RL, 
+removing the need for costly autonomous exploration. A belief-space value function is learned from these 
 human demonstrations using a Fitted RL approach and it is used to learn a Gaussian Mixture Model control policy.
 
 We consider a plug power-socket search and connection task, also known as Peg-in-Hole (PiH), in which a 
@@ -216,7 +230,7 @@ No vision system is used during the task and only haptic information, provided v
 a force-torque sensor mounted on the end-effector of the robot. This choice is motivated by two reasons:
 to validate that humans can be viable expert teachers under these conditions. The second is that PiH is a very important component 
 in manufacturing processes and we seek to demonstrate that this task can be accomplished without the need of
-a costly vision system.
+a costly vision system. 
 
 This paper is organised as follows: Section \ref{sec:related_work} overviews the 
 Peg-in-hole (PiH) and Actor-critic Fitted Reinforcement Learning literature. Section \ref{sec:experiment_methods} 
