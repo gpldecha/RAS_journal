@@ -1,171 +1,171 @@
 @INPROCEEDINGS{peg_personal_icra_2010,
-	author		={W. Meeussen and et. al},
-	booktitle 	={International Conference on Robotics and Automation (ICRA)},
-	title 		={Autonomous door opening and plugging in with a personal robot},
-	year 		={2010},
-	pages 		={729-736},
-	doi 		={10.1109/ROBOT.2010.5509556},
-	month	 	={May}
+	author		= {Wim Meeussen and Melonee Wise and Stuart Glaser and Sachin Chitta and et. al},
+	booktitle	= {International Conference on Robotics and Automation (ICRA)},
+	title		= {Autonomous door opening and plugging in with a personal robot},
+	year 		= {2010},
+	pages 		= {729--736},
+	month 		= {May},
+	url 	 	= {http://dx.doi.org/10.1109/ROBOT.2010.5509556}
 }
 
 @inbook{fast_peg_pbd_icmc_2014,
-	title  		= "Fast programming of peg-in-hole actions by human demonstration",
-	author  	= "Yang Yang and et al.",
+	title 		= "Fast programming of peg-in-hole actions by human demonstration",
+	booktitle 	= "International Conference on Mechatronics and Control (ICMC)",
+	author 		= "Yang Yang and Linglong Lin and Song, {Y. T.} and Bojan Nemec and Ales Ude and Buch, {Anders Glent} and Norbert Kruger and Savarimuthu, {Thiusius Rajeeth}",
 	year 		= "2014",
 	pages 		= "990--995",
-	booktitle 	= "International Conference on Mechatronics and Control (ICMC)",
-	doi  		= "10.1109/ICMC.2014.7231702"
+	url 		= "http://dx.doi.org/10.1109/ICMC.2014.7231702",
 }
 
-
 @inproceedings{learn_admittance_icra_1994,
-  author    = {Vijaykumar Gullapalli and Andrew G. Barto and Roderic A. Grupen},
-  title     = {Learning Admittance Mappings for Force-Guided Assembly},
-  booktitle = {International Conference on Robotics and Automation (ICRA)},
-  pages     = {2633--2638},
-  year      = {1994},
-  doi       = {10.1109/ROBOT.1994.351117}
+  	author    = {Gullapalli, Vijaykumar and Barto, Andrew and Grupen, Roderic},
+  	title     = {Learning Admittance Mappings for Force-Guided Assembly},
+  	booktitle = {International Conference on Robotics and Automation (ICRA)},
+  	pages     = {2633--2638},
+  	year      = {1994},
+  	month     = {may},
+  	url       = {http://dx.doi.org/10.1109/ROBOT.1994.351117}
 }
 
 
 @INPROCEEDINGS{online_gpr_icra_2014,
-	author 		={H. Cheng and H. Chen},
+	author		={Hongtai Cheng and Heping Chen},
 	booktitle	={International Conference on Robotics and Automation (ICRA)},
 	title		={Online parameter optimization in robotic force controlled assembly processes},
-	year 		={2014},
-	pages 		={3465-3470},
-	month 		={May},
-	doi		={10.1109/ICRA.2014.6907358}
+	year		={2014},
+	pages		={3465-3470},
+	month		={may},
+	url		={http://dx.doi.org/10.1109/ICRA.2014.6907358},
 }
 
+
 @INPROCEEDINGS{feed_icra_2010,
-	author		={B. Mayton and L. LeGrand and J. R. Smith},
-	booktitle 	={International Conference on Robotics and Automation (ICRA)},
-	title 		={Robot, feed thyself: Plugging in to unmodified electrical outlets by sensing emitted AC electric fields},
-	year 		={2010},
-	pages 		={715-722},
-	Month		={May},
-	doi 		={10.1109/ROBOT.2010.5509643}
+	author		= {Mayton, Brian and LeGrand, Louis and Smith, Joshua R.},
+	booktitle	= {International Conference on Robotics and Automoation (ICRA)},
+	title		= {Robot, feed thyself: Plugging in to unmodified electrical outlets by sensing emitted AC electric fields},
+	year		= {2010},
+	pages		= {715-722},
+	month		= {May},
+	url		= {http://dx.doi.org/10.1109/ROBOT.2010.5509643}
 }
 
 @INPROCEEDINGS{pomdp_peg_icra_2014,
-	author 	  ={H. Cheng and H. Chen and L. Hao and W. Li},
-	booktitle ={International Conference on Robotics and Automation (ICRA)},
-	title 	  ={Robot learning based on Partial Observable Markov Decision Process in unstructured environment},
-	year 	  ={2014},
-	pages 	  ={4399-4404},
-	month 	  ={May},
-	doi 	  ={10.1109/ICRA.2014.6907500}
+	author 		={Hongtai Cheng and Heping Chen and Lina Hao and Wei Li},
+	booktitle	={International Conference on Robotics and Automation (ICRA)},
+	title		={Robot learning based on Partial Observable Markov Decision Process in unstructured environment},
+	year		={2014},
+	pages		={4399--4404},
+	month		={May},
+	url		={http://dx.doi.org/10.1109/ICRA.2014.6907500}
 }
 
-
 @INPROCEEDINGS{search_strategies_icra_2001,
-	author 		={S. R. Chhatpar and M. S. Branicky},
-	booktitle	={International Conference on Intelligent Robots and Systems (IROS)},
-	title 		={Search strategies for peg-in-hole assemblies with position uncertainty},
-	year 		={2001},
-	volume 		={3},
-	pages 		={1465-1470},
-	doi 		={10.1109/IROS.2001.977187},
+	author		={Siddharth, Chhatpar and Branicky, Michael},
+	booktitle	={International Conference on Intelligent Robots and Systems (ICRA)},
+	title		={Search strategies for peg-in-hole assemblies with position uncertainty},
+	year		={2001},
+	volume		={3},
+	pages		={1465--1470},
+	url		={http://dx.doi.org/10.1109/IROS.2001.977187},
 }
 
 @article{sol_pdg_pbd_2014,
-	author  	= "Fares Abu-Dakka and Bojan Nemec and Aljaz Kramberger and Anders Glent Buch and Norbert Kr{\"u}ger and Ales Ude",
-	title 		= "Solving peg-in-hole tasks by human demonstration and exception strategies",
+	author 		= "Fares Abu-Dakka and Bojan Nemec and Aljaz Kramberger and Anders Glent Buch and Norbert Kr{\"u}ger and Ales Ude",
 	journal 	= "Industrial Robot",
 	number 		= "6",
 	pages 		= "575--584",
+	title 		= "Solving peg-in-hole tasks by human demonstration and exception strategies",
 	volume 		= "41",
 	year 		= "2014",
-	doi 		= "http://dx.doi.org/10.1108/IR-07-2014-0363"
+	url 		= "http://dx.doi.org/10.1108/IR-07-2014-0363"
 }
 
 @INPROCEEDINGS{learn_force_c_icirs_2011,
-	author 		={M. Kalakrishnan and L. Righetti and P. Pastor and S. Schaal},
-	booktitle	={International Conference on Intelligent Robots and Systems (IROS)},
-	title 		={Learning force control policies for compliant manipulation},
-	year 		={2011},
-	pages		={4639-4644},
-	month		={Sept},
-	doi 		={10.1109/IROS.2011.6095096}
+	author		= {Mrinal Kalakrishnan and Ludovic Righetti and Peter Pastor and Stefan Schaal},
+	booktitle	= {International Conference on Intelligent Robots and Systems (ICRA)},
+	title		= {Learning force control policies for compliant manipulation},
+	year		= {2011},
+	pages		= {4639--4644},
+	month		= {Sept},
+	url		= {http://dx.doi.org/10.1109/IROS.2011.6095096},
 }
 
 @INPROCEEDINGS{Schaal04learningmovement,
     	author 		= {Stefan Schaal and Jan Peters and Jun Nakanishi and Auke Ijspeert},
     	title 		= {Learning movement primitives},
-    	booktitle 	= {International Symposium on Robotics Research (ISRR)},
-    	year 		= {2004}
+    	booktitle 	= {11th International Symposium on Robotics Research (ISRR)},
+    	year 		= {2004},    	
+	url 		= {http://dx.doi.org/10.1007/11008941_60}
 }
 
 @INPROCEEDINGS{trans_workpiece_icra_2013,
-	author		={B. Nemec and F. J. Abu-Dakka and B. Ridge and A. Ude and J. A. Jorgensen and T. R. Savarimuthu and J. Jouffroy and H. G. Petersen and N. Kr\"uger},
-	booktitle 	={International Conference on Advanced Robotics},
-	title 		={Transfer of assembly operations to new workpiece poses by adaptation to the desired force profile},
-	year 		={2013},
-	pages 		={1-7},
-	month 		={Nov},
-	doi 		={10.1109/ICAR.2013.6766568},
+	author 		= {Bojan Nemec and Fares Abu-Dakka and Barry Ridge and et. al},
+	booktitle	= {International Conference on Advanced Robotics (ICAR)},
+	title		= {Transfer of assembly operations to new workpiece poses by adaptation to the desired force profile},
+	year		= {2013},
+	pages		= {1--7},
+	month		= {Nov},
+	url		= {http://dx.doi.org/10.1109/ICAR.2013.6766568}
 }	
 
-
 @INPROCEEDINGS{compliant_manip_icra_2008,
-	author		={Seung-kook Yun},
-	booktitle	={Robotics and Automation, 2008. ICRA 2008. IEEE International Conference on},
-	title 		={Compliant manipulation for peg-in-hole: Is passive compliance a key to learn contact motion?},
-	year 		={2008},
-	pages 		={1647-1652},
-	month		={May},
-	doi 		={10.1109/ROBOT.2008.4543437}
+	author		= {Seung-kook Yun},
+	booktitle	= {International Conference on Robotics and Automation (ICRA)},
+	title		= {Compliant manipulation for peg-in-hole: Is passive compliance a key to learn contact motion?},
+	year		= {2008},
+	pages		= {1647-1652},
+	month		= {May},
+	url		= {http://dx.doi.org/10.1109/ROBOT.2008.4543437}
 }
 
 @article{rl_gradient_survey_2013,
 	author 		= {Marc Peter Deisenroth and Gerhard Neumann and Jan Peters},
-	title 		= {A Survey on Policy Search for Robotics},
+	title	 	= {A Survey on Policy Search for Robotics},
 	year 		= {2013},
 	volume 		= {2},
 	journal 	= {Foundations and Trends in Robotics},
 	number 		= {1-2},
-	pages 		= {1-142},
-	doi 		= {10.1561/2300000021}
+	pages 		= {1--142},
+	url 		= {http://dx.doi.org/10.1561/2300000021}
 }
 
-
 @Article{Kober2011,
-	author 		="Kober, Jens and Peters, Jan",
-	title 		="Policy search for motor primitives in robotics",
+	author		="Kober, Jens and Peters, Jan",
+	title		="Policy search for motor primitives in robotics",
 	journal		="Machine Learning",
-	year 		="2011",
-	volume 		="84",
-	number 		="1",
-	pages 		="171--203",
-	doi 		="10.1007/s10994-010-5223-6"
+	year		="2011",
+	volume		="84",
+	number		="1",
+	pages		="171--203",
+	url		="http://dx.doi.org/10.1007/s10994-010-5223-6"
 }
 
 @article{Kormushev_MDPI_2013,
-  	author 		= {Kormushev, Petar and Calinon, Sylvain and Caldwell, Darwin G.},
+  	author 		= {Kormushev, Petar and Calinon, Sylvain and Caldwell, Darwin},
   	title 		= {Reinforcement Learning in Robotics: Applications and Real-World Challenges},
   	journal 	= {Robotics},
   	volume 		= {2},
   	year 		= {2013},
   	number 		= {3},
   	pages 		= {122--148},
-  	doi 		= {10.3390/robotics2030122}
+  	url 		= {http://dx.doi.org/10.3390/robotics2030122}
 }
 
 @INPROCEEDINGS{dmp_grasp_iros_2011,
-	author		={F. Stulp and E. Theodorou and M. Kalakrishnan and P. Pastor and L. Righetti and S. Schaal},
+	author		={Freek Stulp and Evangelos Theodorou and Mrinal Kalakrishnan and Peter Pastor and Ludovic Righetti and Stefan Schaal},
 	booktitle	={International Conference on Intelligent Robots and Systems (IROS)},
-	title 		={Learning motion primitive goals for robust manipulation},
-	year 		={2011},
-	pages 		={325-331},
-	month 		={Sept},
-	doi 		={10.1109/IROS.2011.6094877}
+	title		={Learning motion primitive goals for robust manipulation},
+	year		={2011},
+	pages		={325--331},
+	month		={Sept},
+	url		={http://dx.doi.org/10.1109/IROS.2011.6094877}
 }
+
 
 @Article{Chambrier2014,
 	author 		="Chambrier, Guillaume de and Billard, Aude",
 	title 		="Learning search policies from humans in a partially observable context",
-	journal 	="Robotics and Biomimetics",
+	journal 	="Journal of Robotics and Biomimetics",
 	year 		="2014",
 	volume 		="1",
 	number 		="1",
@@ -174,66 +174,74 @@
 }
 
 @article{peter_nac_2008,
-  	title  		= {Natural Actor-Critic},
-  	author 		= {Peters, J. and Schaal, S.},
-  	journal  	= {Neurocomputing},
+  	title 		= {Natural Actor-Critic},
+  	author 		= {Peters, Jan and Schaal, Stefan},
+  	journal 	= {Neurocomputing},
   	volume 		= {71},
-  	number  	= {7-9},
-  	pages  		= {1180-1190},
-  	year  		= {2008}
+  	number 		= {7-9},
+  	pages 		= {1180--1190},
+  	year 		= {2008},
+  	month 		= {mar},
+	url 		= {http://dx.doi.org/10.1016/j.neucom.2007.11.026}
+
 }
 
 @ARTICLE{gesture_calinon_2010,
-	author={S. Calinon and F. D'halluin and E. L. Sauser and D. G. Caldwell and A. G. Billard},
-	journal={IEEE Robotics Automation Magazine},
-	title={Learning and Reproduction of Gestures by Imitation},
-	year={2010},
-	volume={17},
-	number={2},
-	pages={44-54},
-	month={June}
+	author		={Sylvain Calinon and Florent D'halluin and Eric Sauser and Darwin Caldwell and Aude Billard},
+	journal		={IEEE Robotics Automation Magazine},
+	title		={Learning and Reproduction of Gestures by Imitation},
+	year		={2010},
+	volume		={17},
+	number 		={2},
+	pages	 	={44--54},
+	month		={jun},
+	url		={http://dx.doi.org/10.1109/MRA.2010.936947}, 
 }
 
 @phdthesis{gmr_2004,
-  author       = {Sung, H.G}, 
-  title        = {Gaussian Mixture Regression and Classification},
-  school       = {Rice University},
-  year         = 2004,
+  	author       	= {Sung, Hsi Guang}, 
+  	title        	= {Gaussian Mixture Regression and Classification},
+  	school       	= {Rice University},
+  	year         	= 2004
 }
-
 
 @article{DeisenrothNP2013,
-  title = {A Survey on Policy Search for Robotics, Foundations and Trends in Robotics},
-  author = {Deisenroth, MP. and Neumann, G. and Peters, J.},
-  journal = {Foundations and Trends in Robotics},
-  volume = {2},
-  number = {1-2},
-  pages = {1-142},
-  year = {2013}
+  	title 		= {A Survey on Policy Search for Robotics},
+  	author 		= {Marc Deisenroth, Gerhard Neumann and Jan Peters},
+  	journal  	= {Foundations and Trends in Robotics},
+  	volume 		= {2},
+  	number 		= {1-2},
+  	pages 		= {1--142},
+  	year 		= {2013},
+	url 		= {http://dx.doi.org/10.1561/2300000021}
 }
+
 
 @Book{Szepesvari:2010,
-  author =       "Szepesv{\'a}ri, Csaba",
-  title =        "Algorithms for Reinforcement Learning",
-  publisher =    "Morgan {\&} Claypool",
-  year =         "2010"
-}
+  	author 		= "Szepesv{\'a}ri, Csaba",
+  	title 		= "Algorithms for Reinforcement Learning",
+  	publisher 	= "Morgan {\&} Claypool",
+  	year 		= "2010",
+  	url 		= "http://www.sztaki.hu/~szcsaba/papers/RLAlgsInMDPs-lecture.pdf",
+  }
+
 
 @INPROCEEDINGS{Boyan95generalizationin,
-    author = {Justin A. Boyan and Andrew W. Moore},
-    title = {Generalization in Reinforcement Learning: Safely Approximating the Value Function},
-    booktitle = {Advances in Neural Information Processing Systems (NIPS)},
-    volume = {7},
-    year = {1995},
-    pages = {369--376}
+    	author 		= {Justin Boyan and Andrew Moore},
+    	title 		= {Generalization in Reinforcement Learning: Safely Approximating the Value Function},
+    	booktitle 	= {Advances in Neural Information Processing Systems (NIPS)},
+    	volume 		= {7},
+    	year 		= {1995},
+    	pages 		= {369--376}    
 }
 
 @ARTICLE{Atkeson97locallyweighted,
-    author = {Christopher G. Atkeson and Andrew W. Moore and Stefan Schaal},
-    title = {Locally weighted learning},
-    journal = {Artificial Intelligence review},
-    year = {1997},
-    pages = {11--73}
+    	author 		= {Christopher Atkeson and Andrew Moore and Stefan Schaal},
+    	title 		= {Locally weighted learning},
+    	journal 	= {Artificial Inteligence},
+    	year 		= {1997},
+    	pages 		= {11--73},
+	url 		= {http://dx.doi.org/10.1023/A:1006559212014}
 }
 
 @incollection{NIPS2008_3501,
@@ -247,12 +255,12 @@
 	year  		= {2009}
 }
 
-@book{sutton1998reinforcement,
-  author = {Sutton, R.S. and Barto, A.G.},
-  publisher = {Cambridge Univ Press},
-  title = {Reinforcement learning: An introduction},
-  volume = 116,
-  year = 1998
+@BOOK{sutton1998reinforcement,
+  	author 		= {Sutton, Richard S. and Barto, Andrew},
+  	title 		= {Reinforcement Learning: An Introduction},
+  	publisher 	= {MIT Press},
+  	year 		= {1998},
+  	address 	= {Cambridge, MA}
 }
 
 @Book{Bishop_2006,
@@ -264,43 +272,44 @@
 
 
 @article{EBurdet1999,
-	author 	= {Burdet, E and Nuttin, M},
-	journal = {Journal of Intelligent and Robotic Systems},
-	number 	= {1},
-	pages 	= {43--68},
-	title 	= {{Learning Complex Tasks Using a Stepwise Approach}},
-	volume 	= {24},
-	doi 	= {10.1023/A:1008058131402}
+	author 		= {Burdet, Etienne and Nuttin, Marnix},
+	journal 	= {Journal of Intelligent and Robotic Systems},
+	number 		= {1},
+	pages 		= {43--68},
+	title 		= {Learning Complex Tasks Using a Stepwise Approach},
+	volume 		= {24},
+	url 		= {http://dx.doi.org/10.1023/A:1008058131402}
 }
 
+
 @INPROCEEDINGS{Gullapalli_1994,
-	author 	  ={V. Gullapalli and A. G. Barto and R. A. Grupen},
-	booktitle ={Robotics and Automation, 1994. Proceedings., 1994 IEEE International Conference on},
-	title 	  ={Learning admittance mappings for force-guided assembly},
-	year 	  ={1994},
-	pages  	  ={2633-2638},
-	volume    ={3},
-	month     ={May},
-	doi  	  = {10.1023/A:1008058131402}
+	author		={Vijaykumar Gullapalli and Andrew Barto and Roderic Grupen},
+	booktitle	={International Conference on Robotics and Automation (ICRA)},
+	title 		={Learning admittance mappings for force-guided assembly},
+	year 		={1994},
+	pages		={2633-2638},
+	volume 		={3},
+	month 		={May},
+	url 		={http://dx.doi.org/10.1109/ROBOT.1994.351117}
 }
 
 @article{Abu-Dakka2014,
-	author     = {Abu-Dakka, Fares J. and Nemec, et. al},
-	title  	   = {{Solving peg-in-hole tasks by human demonstration and exception strategies}},
-	journal    = {Industrial Robot: An International Journal},
-	number     = {6},
-	pages  	   = {575--584},
-	volume     = {41},
-	year       = {2014},
-	doi 	   = {10.1108/IR-07-2014-0363}
+	author 		= {Abu-Dakka, Fares J. and Nemec, Bojan and Kramberger, Alja{\v{z}} and Buch, Anders Glent and Kr{\"{u}}ger, Norbert and Ude, Ales},
+	journal 	= {Industrial Robot: An International Journal},
+	number 		= {6},
+	pages 		= {575--584},
+	title 		= {Solving peg-in-hole tasks by human demonstration and exception strategies},
+	volume 		= {41},
+	year 		= {2014},
+	url 		= {http://dx.doi.org/10.1108/IR-07-2014-0363}
 }
 
 
 @TECHREPORT{Bergman99recursivebayesian,
-    author = {Niclas Bergman and C Niclas Bergman},
-    title = {Recursive Bayesian estimation: Navigation and tracking applications. Thesis No 579},
-    institution = {Link\"oping University, Link\"oping Studies in Science and Technology. Doctoral dissertation},
-    year = {1999}
+    	author 		= {Niclas Bergman and Niclas Bergman},
+    	title 		= {Recursive Bayesian estimation: Navigation and tracking applications. Thesis No 579},
+    	institution 	= {Link\"oping University, Link\"oping Studies in Science and Technology. Doctoral dissertation},
+    	year 		= {1999}
 }
 
 
@@ -318,25 +327,25 @@
 % RL
 
 @ARTICLE{rl_ac_surv_2012,
-	author={I. Grondman and L. Busoniu and G. A. D. Lopes and R. Babuska},
-	journal={IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews)},
-	title={A Survey of Actor-Critic Reinforcement Learning: Standard and Natural Policy Gradients},
-	year={2012},
-	volume={42},
-	number={6},
-	pages={1291-1307},
-	doi={10.1109/TSMCC.2012.2218595},
-	month={Nov}
+	author 		= {Ivo Grondman and Lucian Busoniu and Gabriel Lopes and Robert Babuska},
+	journal 	= {Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews)},
+	title 		= {A Survey of Actor-Critic Reinforcement Learning: Standard and Natural Policy Gradients},
+	year 		= {2012},
+	volume 		= {42},
+	number 		= {6},
+	pages 		= {1291--1307},
+	month 		= {Nov},
+	url 		= {http://dx.doi.org/10.1109/TSMCC.2012.2218595}
 }
 
 @INPROCEEDINGS{fvi_uav_2010,
-	author		={H. Bou-Ammar and H. Voos and W. Ertel},
-	booktitle	={International Conference on Control Applications},
-	title		={Controller design for quadrotor UAVs using reinforcement learning},
-	year		={2010},
-	pages 		={2130-2135},
-	month 		={Sept},
-	doi 		={10.1109/CCA.2010.5611206}
+	author 		= {Haitham Bou-Ammar and Holger Voos and Wolfgang Ertel},
+	booktitle 	= {International Conference on Control Applications},
+	title 		= {Controller design for quadrotor UAVs using reinforcement learning},
+	year 		= {2010},
+	pages 		= {2130--2135},
+	month 		= {Sept},
+	url 		= {http://dx.doi.org/10.1109/CCA.2010.5611206},
 }
 
 @Article{EGW05,
@@ -346,9 +355,8 @@
   	volume       = "6",
   	pages        = "503-556",
   	month        = "April",
-  	year         = "2005"
+  	year         = "2005",
  }
-
 
 @Inbook{Riedmiller2005,
 	author 		= "Riedmiller, Martin",
@@ -358,66 +366,65 @@
 	volume 		="16",
 	year 		="2005",
 	pages 		="317--328",
-	doi 		="10.1007/11564096_32"
+	url		="http://dx.doi.org/10.1007/11564096_32"
 }
 
 @article{NAC_2008,
-	author 		= "Jan Peters and Stefan Schaal",
 	title 		= "Natural Actor-Critic ",
 	journal 	= "European Symposium on Artificial Neural Networks ",
 	volume 		= "71",
 	number 		= "7-9",
-	pages 		= "1180-1190",
+	pages 		= "1180--1190",
 	year 		= "2008",
-	doi 		= "10.1016/j.neucom.2007.11.026",
+	author 		= "Jan Peters and Stefan Schaal",
+	url 		= "http://dx.doi.org/10.1016/j.neucom.2007.11.026"
 }
 
 @INPROCEEDINGS{rl_gmm_2010,
-	author 		={A. Agostini and E. Celaya},
-	booktitle	={International Joint Conference on Neural Networks (IJCNN)},
-	title 		={Reinforcement Learning with a Gaussian mixture model},
-	year 		={2010},
-	pages 		={1-8},
-	month  		={July},
-	doi 		={10.1109/IJCNN.2010.5596306}
+	author 		= {Alejandro Agostini and Enric Celaya},
+	booktitle	= {International Joint Conference on Neural Networks (IJCNN)},
+	title		= {Reinforcement Learning with a Gaussian mixture model},
+	year		= {2010},
+	pages		= {1--8},
+	month 		= {July},
+	url 		= {http://dx.doi.org/10.1109/IJCNN.2010.5596306}
 }
 
 
 @ARTICLE{kernel_rl_ormoneit_2002,
-	author		={D. Ormoneit and P. Glynn},
-	journal		={IEEE Transactions on Automatic Control},
-	title 		={Kernel-based reinforcement learning in average-cost problems},
-	year		={2002},
-	volume 		={47},
-	number 		={10},
-	pages 		={1624-1636},
-	month 		={Oct},
-	doi		={10.1109/TAC.2002.803530}
+	author		= {Dirk Ormoneit and Peter Glynn},
+	journal		= {Transactions on Automatic Control},
+	title		= {Kernel-based reinforcement learning in average-cost problems},
+	year		= {2002},
+	volume		= {47},
+	number		= {10},
+	pages		= {1624--1636},
+	month		= {Oct},
+	url		= {http://dx.doi.org/10.1109/TAC.2002.803530}
 }
 
 @InProceedings{stable_FA_gordon_1995,
- 	author 	  = {Gordon, Geoffrey J.},
+ 	author 	  = {Gordon, Geoffrey},
   	booktitle = {International Conference on Machine Learning (ICML)},
  	title 	  = {Stable Function Approximation in Dynamic Programming},
  	year 	  = {1995},
-	pages     = {261-268}
+ 	publisher = {Carnegie Mellon University},
+  	url 	  = {"http://www.cs.cmu.edu/~ggordon/ml95-stable-dp.ps.gz"}
 } 
-
-
 
 @inproceedings{fqi_nips_peter_2009,
   	title 		= {Fitted Q-iteration by Advantage Weighted Regression},
-  	author 		= {Neumann, G. and Peters, J.},
-  	booktitle 	= {Advances in neural information processing systems (NIPS)},
-	volume 		= {21},
+  	author 		= {Neumann, Gerhard and Peters, Jan},
+  	booktitle 	= {Advances in Neural Information Processing Systems (NIPS)},
+ 	volume 		= {21},
   	pages 		= {1177-1184},
-  	month 		= jun,
+  	month 		= {Jun},
   	year 		= {2009}
 }
 
 @INPROCEEDINGS{Lange_riedmiller_2010,
-	author 		={S. Lange and M. Riedmiller},
-	booktitle 	={The 2010 International Joint Conference on Neural Networks (IJCNN)},
+	author 		={Sascha Lange and Martin Riedmiller},
+	booktitle 	={International Joint Conference on Neural Networks (IJCNN)},
 	title 		={Deep auto-encoder neural networks in reinforcement learning},
 	year 		={2010},
 	pages	 	={1-8},
@@ -432,38 +439,41 @@
 	journal = {Foundations and Trends in Robotics},
 	title   = {A Survey on Policy Search for Robotics},
 	number  = {1-2},
-	pages   = {1-142},
-	doi 	= {10.1561/2300000021}
+	pages   = {1--142},
+	url 	= {http://dx.doi.org/10.1561/2300000021}
 }
 
+
 @INPROCEEDINGS{approx_rl_overview_2011,
-	author 		={L. Busoniu and D. Ernst and B. De Schutter and R. Babuska},
-	booktitle	={Symposium on Adaptive Dynamic Programming and Reinforcement Learning (ADPRL)},
-	title		={Approximate reinforcement learning: An overview},
-	year 		={2011},
-	pages 		={1-8},
-	month		={April},
-	doi 		={10.1109/ADPRL.2011.5967353}
+	author		= {Lucian Busoniu and Damien Ernst and Bart {de Schutter} and Robert. Babuska},
+	booktitle	= {Symposium on Adaptive Dynamic Programming and Reinforcement Learning (ADPRL)},
+	title		= {Approximate reinforcement learning: An overview},
+	year		= {2011},
+	pages		= {1-8},
+	month		= {April},
+	url		= {http://dx.doi.org/10.1109/ADPRL.2011.5967353}
 }
 
 
 @article{mnih-dqn-2015,
-	Author 		= {Mnih, Volodymyr and et. al},
-	Title 		= {Human-level control through deep reinforcement learning},
+	Author 		= {Mnih, Volodymyr},
 	Journal 	= {Nature},
-	Month 		= {feb},
+	Month 		= {02},
+	Number 		= {7540},
 	Pages 		= {529--533},
+	Publisher 	= {Nature Publishing Group, a division of Macmillan Publishers Limited. All Rights Reserved.},
+	Title 		= {Human-level control through deep reinforcement learning},
 	Volume 		= {518},
 	Year 		= {2015},
-	doi  		= {10.1038/nature14236}
+	url 		= {http://dx.doi.org/10.1038/nature14236}
 }
-
 
 @article{DRQ_AAAI_2015,
 	author 		= {Matthew Hausknecht and Peter Stone},
 	title 		= {Deep Recurrent Q-Learning for Partially Observable MDPs},
-  	journal   	= {CoRR},
-	year 		= {2015}
+	journal 	= {Association for the Advancement of Artificial Intelligence (AAAI)},
+	year 		= {2015},
+	url 		= {https://www.aaai.org/ocs/index.php/FSS/FSS15/paper/view/11673}
 }
 
 @book{RL_state_art_2012,
@@ -486,13 +496,13 @@
 % NEW
 
 @INPROCEEDINGS{toussain_2015,
-	author 		={N. A. Vien and M. Toussaint},
-	booktitle	={International Conference on Intelligent Robots and Systems (IROS)},
-	title		={POMDP manipulation via trajectory optimization},
-	year 		={2015},
-	pages 		={242-249},
-	doi 		={10.1109/IROS.2015.7353381},
-	month 		={Sept}
+	author		= {Ngo Vien and Marc Toussaint},
+	booktitle	= {International Conference on Intelligent Robots and Systems (IROS)},
+	title		= {POMDP manipulation via trajectory optimization},
+	year		= {2015},
+	pages		= {242--249},
+	month		= {Sept},
+	url		= {http://dx.doi.org/10.1109/IROS.2015.7353381}
 }
 
 @article{Li2016352,
@@ -515,8 +525,43 @@
 
 
 
+@article{Ross08onlineplanning,
+ 	author 	= {Ross, St{\'e}phane and Pineau, Joelle and Paquet, S{\'e}bastien and Chaib-draa, Brahim},
+ 	title 	= {Online Planning Algorithms for POMDPs},
+ 	journal = {Journal Artifcial Intelligence Research},
+ 	volume 	= {32},
+ 	number 	= {1},
+ 	month 	= {Jul},
+ 	year 	= {2008},
+ 	pages 	= {663--704},
+ 	url 	= {http://dl.acm.org/citation.cfm?id=1622673.1622690},
+} 
 
 
+
+@article{Milos_POMDP_2000,
+ 	author = {Hauskrecht, Milos},
+ 	title = {Value-function Approximations for Partially Observable Markov Decision Processes},
+ 	journal = {Journal of Artificial Intelligence Research},
+  	volume = {13},
+ 	number = {1},
+ 	month = {Aug},
+ 	year = {2000},
+ 	pages = {33--94},
+ 	url = {http://dl.acm.org/citation.cfm?id=1622262.1622264}
+ } 
+
+@article{Sondik_1973,
+	author 		= {Richard Smallwood and Edward Sondik},
+ 	title 		= {The Optimal Control of Partially Observable Markov Processes over a Finite Horizon},
+ 	journal 	= {Journal of Operational Research},
+ 	volume 		= {21},
+ 	number 		= {5},
+ 	month 		= {Oct},
+ 	year 		= {1973},
+ 	pages 		= {1071--1088},
+ 	url 		= {http://dx.doi.org/10.1287/opre.21.5.1071}
+}
 
 
 

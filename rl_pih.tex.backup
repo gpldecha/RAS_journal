@@ -267,17 +267,62 @@ Peg-in-hole and Fitted Reinforcement learning.
 \subsection{POMDP}
 % For reviewer 2
 % POMDP is not introduced in the paper. Despite it is a quite known model, it should be 
+%A Partially Observable Markov Decision Process (POMDP) is a generic framework for formulating a temporal decision process 
+%in which the underlying state space is not directly observable. A POMDP is defined by a tuple $\{S, A, O, T, Z, R,\gamma\}$, 
+%where $S$ is  the state space, $A$ is the action space, $O$ is the observation space, $T = p(s'|s,a)$ is the state space transition model,
+%$Z = p(o|s,a)$ is the observation model,  $R(s,a)$ is the reward model and $\gamma \in (0,1]$ the discount factor used to bound the reward function 
+%for infinite-horizon decision problems. As the state space is not observable it is common to cast the POMDP into a belief or information state MDP [cite]
+%which is defined by the tuple ${B,A,\tau,R,\gamma}$ where $B$ is the space of probability distributions over the state space and $\tau(b_t,y_t,a_t)$ is 
+%the belief state transition function.
+
+% To resolution of a POMDP consists of finding a policy which maximised the expected reward $\mathbb{E}[]$
+%(Astrom, 1965)
+% Because the state space is partially observable the expected reward has to be computed 
+% for each possible history of states, actions and observations. All approaches in the literature instead encapsulate all these possible histories
+
+
+A Partially Observable Markov Decision Process (POMDP) is a generic framework for formulating a temporal decision process 
+in which the state space is not directly observable. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,R,\gamma\}$, 
+where $X$, $U$ and $Y$ are the state, action and observation space, ${T:= p(x_t|x_{t-1},u_{t-1})}$ is the state transition probability 
+distribution, $\Omega := p(y_t|x_t)$ is the measurement model which gives the probability of $y_t$ given a state $x_t$,
+the reward function $R(x_t)$ defines the utility of a state and $\gamma \in (0,1]$ is the discount factor. 
+As the state space is not observable an action has to be chosen by the agent given the history of 
+measurements and actions $h_t = \{y_{0:t},u_{1:t}\}$ [cite Online planning algorithms for POMDPs]. 
+Instead of memorising the history $h_t$  it can be transformed to into a belief/information state ${b_t := p(x_t|h_t)}$ 
+which is a probability distribution over the state space given $h_t$.
+
+which leads to an alternate formulation of the POMDP as the tuple  $\{\mathcal{B},U,\tau,R,\gamma\}$ where 
+$\mathcal{B}$ is the set of all possible beliefs and $b_t = \tau(b_{t-1},u_{t-1},y_t)$ is a belief state transition function 
+which can be any Bayesian state space filter (eg. an Extended Kalman Filter or a Particle Filter).
+
+
+
+and use this new state description to cast the POMDP into a \textit{belief}-MDP (states are probability distributions, beliefs). 
+The new description of the problem is now in terms of belief spacThe reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original 
+reward function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$, see the Appendix \ref{app:bel-mdp} for a detailed derivation of all terms. The goal is to find an 
+optimal action for each belief such that the policy $\pi(b_t,u_t)$ maximises the expected reward, Equation \ref{eq:optimal_value_f}.
+
+\begin{equation}
+  R_B(b) = \sum\limits_{x} b(x)\, R(x)
+\end{equation}
+
+
+\begin{equation}
+  V^{*}(b) = R_B(b) + \gamma \max\limits_{a}\, \sum\limits_{y} p(y|b,a)\, V^*(\tau(b,a,y))
+\end{equation}
+
+
+
 % briefly introduced in the paper for completeness. 
 %
 
 % Explain what is a POMDP [for completeness]
 
 % Explain current approach is to solve the equivalent belief-MDP problem.
-
-% Explain what is the current drawback of the application of POMDP methods.
-
-% 
 %
+%
+% Explain what is the current drawback of the application of POMDP methods.
+% 
 %
 %
 %
