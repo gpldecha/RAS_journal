@@ -195,8 +195,8 @@ Fitted Reinforcement Learning, Actor-Critic, POMDP, GMM policy, Programming by D
 
 \section{Introduction}
 
-The ability to act optimally given state uncertainty is paramount for all robotic systems required 
-to act in environments which are not fully observable. Depending on the task and structure of the state
+The ability to act optimally given state uncertainty is paramount for all robotic systems acting in 
+environments which are not fully observable. Depending on the task and structure of the state
 uncertainty if it is not taken into consideration by the control policy can lead to wasteful usage of resources 
 and even failure. Given the potential adverse consequences (disastrous if considering a search and rescue task), 
 it is important to design uncertainty robust policies and planners.
@@ -204,7 +204,8 @@ it is important to design uncertainty robust policies and planners.
 The generic solution to such an optimal control problem is to formulate the task as a
 Partially Observable Markov Decision Process (POMDP) which is subsequently solved by dynamic programming
 or reinforcement learning if the transition and observation models are unavailable. 
-However, solving a POMDP directly is infeasible even for the simplest problems \cite{PBVI}. 
+However, solving a POMDP directly is infeasible even for the simplest problems \cite{PBVI}, which 
+lead to the development of approximate methods. 
 
 Advances have been made in applying approximate POMDP algorithms to robotic applications
 \cite{pomdp_peg_icra_2014}. However the optimisation often requires a discretisation of the 
@@ -212,7 +213,27 @@ action space which is restrictive for tasks which are naturally continuous. In t
 a local optimisation with quantifiable actions (macro) \cite{toussain_2015} or alternatively heuristic 
 approaches \cite{Lauri2016}, based on the most likely state, can be applied. 
 These approaches trade-off global optimality for faster approximate solutions which depending on 
-the problem is often close to optimality. Solving continuous action POMDPs via reinforcement learning 
+the problem is often close to optimality. 
+
+% ---------- What is the problem ? ----------
+% Cannot solve original POMDP problem!
+%
+%	o approximate techiques require a discretisation of the belief space.
+%	-> this is not good for tasks which are naturally continuous
+%
+%	o gradient methods are suitable when the number of parameters of the policy are small with 
+%	  respect to the size of th environment. 
+%	-> structure of the policy would require a precisable amout of domain knowledge.
+%
+%	o Actor-Critic allows the formulation both a continuous action and space representation.
+%	 -> But to guarantee convergence during online learning both action an policy parameterisation is restrictive
+%
+% Our solution:
+%
+%	o Offline batch reinforcement learning.
+%
+
+Solving continuous action POMDPs via reinforcement learning 
 is difficult as the autonomous exploration, traditionally used in RL, becomes quickly inefficient. 
 This leads to the development of planning methods which guarantee local optimality. 
 
@@ -230,11 +251,10 @@ No vision system is used during the task and only haptic information, provided v
 a force-torque sensor mounted on the end-effector of the robot. This choice is motivated by two reasons:
 to validate that humans can be viable expert teachers under these conditions. The second is that PiH is a very important component 
 in manufacturing processes and we seek to demonstrate that this task can be accomplished without the need of
-a costly vision system.
+a costly vision system. 
 
-This paper is organised as follows: Section \ref{sec:related_work} overviews the 
-Peg-in-hole (PiH) and Actor-critic Fitted Reinforcement Learning literature. Section \ref{sec:experiment_methods} 
-details the PiH-search task, the formulation of the belief space and the recorded data. Section \ref{sec:learning-value-actor} presents the Fitted Policy Iteration (FPI) algorithm.
+This paper is organised as follows: Section \ref{sec:related_work} overviews the Peg-in-hole (PiH) and Actor-critic Fitted Reinforcement 
+Learning literature. Section \ref{sec:experiment_methods} details the PiH-search task, the formulation of the belief space and the recorded data. Section \ref{sec:learning-value-actor} presents the Fitted Policy Iteration (FPI) algorithm.
 Section \ref{sec:control_architecture} details the control architecture. Section \ref{sec:results} describes the experiments 
 conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusion}, provides a discussion and the conclusion.
 
@@ -243,6 +263,25 @@ conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusio
 
 There are two research domains which are closely related this work;
 Peg-in-hole and Fitted Reinforcement learning.
+
+\subsection{POMDP}
+% For reviewer 2
+% POMDP is not introduced in the paper. Despite it is a quite known model, it should be 
+% briefly introduced in the paper for completeness. 
+%
+
+% Explain what is a POMDP [for completeness]
+
+% Explain current approach is to solve the equivalent belief-MDP problem.
+
+% Explain what is the current drawback of the application of POMDP methods.
+
+% 
+%
+%
+%
+%
+
 
 \subsection{Peg-in-hole}
 
