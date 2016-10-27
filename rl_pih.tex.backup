@@ -259,10 +259,7 @@ Section \ref{sec:control_architecture} details the control architecture. Section
 conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusion}, provides a discussion and the conclusion.
 
 
-\section{Related work}\label{sec:related_work}
-
-There are two research domains which are closely related this work;
-Peg-in-hole and Fitted Reinforcement learning.
+\section{Background}\label{sec:related_work}
 
 \subsection{POMDP}
 % For reviewer 2
@@ -282,53 +279,120 @@ Peg-in-hole and Fitted Reinforcement learning.
 
 
 A Partially Observable Markov Decision Process (POMDP) is a generic framework for formulating a temporal decision process 
-in which the state space is not directly observable. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,R,\gamma\}$, 
-where $X$, $U$ and $Y$ are the state, action and observation space, ${T:= p(x_t|x_{t-1},u_{t-1})}$ is the state transition probability 
-distribution, $\Omega := p(y_t|x_t)$ is the measurement model which gives the probability of $y_t$ given a state $x_t$,
-the reward function $R(x_t)$ defines the utility of a state and $\gamma \in (0,1]$ is the discount factor. 
-As the state space is not observable an action has to be chosen by the agent given the history of 
-measurements and actions $h_t = \{y_{0:t},u_{1:t}\}$ [cite Online planning algorithms for POMDPs]. 
-Instead of memorising the history $h_t$  it can be transformed to into a belief/information state ${b_t := p(x_t|h_t)}$ 
-which is a probability distribution over the state space given $h_t$.
+given that the state space is not directly observable \cite{Sondik_1973}. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,R,\gamma\}$, 
+where $X$, $U$ and $Y$ are the state, action and observation spaces (which can be discrete or continuous);
+${T:= p(x_t|x_{t-1},u_{t-1})}$ is the state transition probability distribution; $\Omega := p(y_t|x_t)$ is 
+the observation model which gives the probability of a measurement $y_t \in Y$ given a state $x_t \in X$; 
+$R(x_t) \in \mathbb{R}$ is the reward function which gives the utility of a state and $\gamma \in (0,1]$ is the discount factor. As the state space is not 
+observable the agent must consider the entire history $h := \{y_{0:t},u_{1:t-1}\}$ of measurements and actions
+when deciding which action $u_t \in U$ to take \cite{Ross08onlineplanning}. Instead of memorising the entire history $h_t$, 
+it can be iteratively integrated into a belief/information state ${b_t := p(x_t|h)}$, which 
+is a probability distribution over the state space, without losing any information \cite{Milos_POMDP_2000}.
+This leads to a reformulation of the tuple as a \textit{belief}-MDP $\{\mathcal{B},U,\tau,R_B,\gamma\}$, where $b_t \in \mathcal{B}$ is 
+the set of all possible beliefs and $\tau$ is a belief state transition function $b_t = \tau(b_{t-1},u_{t-1},y_t)$ 
+which can be any Bayesian state space filter (eg. an Extended Kalman Filter or a Particle Filter). Both the state $T$ and observation 
+$\Omega$ models become part of $\tau$. The belief reward function $R_B$ becomes a function of the state reward function \ref{eq:bel_reward_back}. 
 
-which leads to an alternate formulation of the POMDP as the tuple  $\{\mathcal{B},U,\tau,R,\gamma\}$ where 
-$\mathcal{B}$ is the set of all possible beliefs and $b_t = \tau(b_{t-1},u_{t-1},y_t)$ is a belief state transition function 
-which can be any Bayesian state space filter (eg. an Extended Kalman Filter or a Particle Filter).
-
-
-
-and use this new state description to cast the POMDP into a \textit{belief}-MDP (states are probability distributions, beliefs). 
-The new description of the problem is now in terms of belief spacThe reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original 
-reward function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$, see the Appendix \ref{app:bel-mdp} for a detailed derivation of all terms. The goal is to find an 
-optimal action for each belief such that the policy $\pi(b_t,u_t)$ maximises the expected reward, Equation \ref{eq:optimal_value_f}.
-
-\begin{equation}
+\begin{equation}\label{eq:bel_reward_back}
   R_B(b) = \sum\limits_{x} b(x)\, R(x)
 \end{equation}
 
+The advantage of the \textit{belief}-MDP formulation is that dynamic programming and reinforcement
+learning can be applied as $\mathcal{B}$ is observable.  The objective is to find a 
+policy Equation \ref{eq:policy} which is maximises the infinite-horizon expected reward, Equation 
+\ref{eq:expected_reward_back}, where $r_t \in R_B$. 
 
-\begin{equation}
-  V^{*}(b) = R_B(b) + \gamma \max\limits_{a}\, \sum\limits_{y} p(y|b,a)\, V^*(\tau(b,a,y))
+\begin{equation}\label{eq:policy}
+  \pi_{\Param} : b \mapsto u
 \end{equation}
 
+\begin{equation}\label{eq:expected_reward_back}
+ V^{\pi_{\Param}}(b) = \mathbb{E}_{\pi_{\Param}} \left\{  \sum^{\infty}_{k=0} \gamma^k r_{t+k+1} \Bigg\lvert b_t = b \right\}
+\end{equation}
+
+which can be iteratively evaluated with on-policy value iteration, Equation \ref{eq:optimal_value_f}, and an optimal policy can be found 
+by Generalized Policy Iteration \cite[Chap. 4.6]{sutton1998reinforcement}.
+
+\begin{equation} \label{eq:optimal_value_f}
+  V^{\pi_{\Param}}(b) = R_B(b) + \sum\limits_{u}\, \pi_{\Param}(b,u)\, \gamma \, \sum\limits_{y} p(y|b,a)\, V^{\pi_{\Param}}(\tau(b,a,y))
+\end{equation}
+
+% Need to throw in the fact that POMDP is piece wise linear and convex.
+Solving discrete state space POMDP problems is a difficult as the number of parameters of the value function grows 
+at a rate exponential with respect to the decision horizon \cite[Chap. 15]{Thrun_Burgard_Fox_2005}\cite{Sondik_1973} doe 
+to the efforts to preserve the Piece Wise Linear and Convex PWLC of the value function. Recent research has focused 
+on pruning, belief selection and exploration strategies \cite{SARSOP}, \cite{POMDP_approach_2010}, methods known as 
+Point-based Value Iteration (PBVI). However these Value Iteration (VI) approaches are not easily transferable to a 
+continuous domains [cite] such as 7 degree of freedom robot. 
+
+When learning a POMDP policy for a robotic system it is typical to use Policy Search methods [cite]
+were the parameters of the policy are directly optimised to maximise the reward function without 
+estimating a value function. Such approach yield a smooth policy, however the POMDP solution is only 
+guarantee to be local. Policy search methods work well when the number of parameters are relatively low but 
+as the number of parameters increase the learning becomes slow. In our task we do not want to make any assumptions
+regarding the structure of the policy and as a result should be non-parametric. 
+
+Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement} have two separate parameterisations, one for 
+the policy (actor) and one for the value function (critic) and the critic is used to update both the policy and 
+value function parameters.
+
+They allow to have have a smooth continuous policy,
+ideal for a robotic controller, whilst the value function reduced the variance 
+
+ACs have been reported and proven \cite{rl_ac_surv_2012} to 
+be faster than policy search methods, as the variance in the gradient estimate is smaller. Their flexibility allows to 
+take both advantage 
+
+%An Actor-Critic (AC) framework allows to have a smooth continuous policy whilst the critic (value function) allows 
+%to retain witnessed.
+
+% Learning value function and making the policy its derivative: because very discontinuous movements not good [cite],
+% this renders most of the above approaches ill-suited. 
+
+% Policy search methods in which the parameters of a policy are directly optimised to maximise the reward function without 
+% evaluating the value function tipically require the number of parameters to be orders of magnitude smaller than the state space [cite].
+%
+% In an Actor-Critic (AC) formulation, Learning a value function and using it to improve the paramters of a policy cab reduced the variance of the gradient 
+% estimate and speed up the learning. 
 
 
-% briefly introduced in the paper for completeness. 
-%
 
-% Explain what is a POMDP [for completeness]
+\subsection{Related work}
+There are two research domains which are closely related this work;
+% Peg-in-hole and Fitted Reinforcement learning.
+\subsubsection{Actor-Critic \& Fitted Reinforcement Learning}
 
-% Explain current approach is to solve the equivalent belief-MDP problem.
-%
-%
-% Explain what is the current drawback of the application of POMDP methods.
-% 
-%
-%
-%
+ AC is advantageous in that the policy can be chosen which 
+is computationally efficient in evaluating actions whilst the value function can have a more complex representation.
+
+To guarantee convergence (in model based RL) during temporal difference learning, 
+the value function approximator has to be an averager (tile coding, k-nearest-neighbour, locally weighted averaging) 
+\cite{stable_FA_gordon_1995}. The extension to a model-free approach with a kernel function approximator 
+(locally weighted averaging, the kernel is a Gaussian function) known as Kernel-Based Approximate Dynamic Programming (KBDP) \cite{kernel_rl_ormoneit_2002}
+has proven to be globally optimal in a continuous-space framework. This leads to the wider application of Batch RL methods 
+such as Fitted Value Iteration (FVI) \cite{fvi_uav_2010} and Fitted Q-Iteration (FQI) \cite{EGW05} (Q-approximator is a random forest ensemble),
+\cite{fqi_nips_peter_2009} in RL problems. By remembering all the state transition pairs and by applying multiple 
+synchronous Dynamic Programming (DP) and function approximation updates, the problem of diverging value function approximators is resolved. 
+
+By retaining all the data, it is easy in practice to apply function approximators which are not averagers, such as neural networks,
+to RL problems. A successful example is Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which 
+uses a multi-layer perceptron to represent the Q-function for the cart-pole and mountain car problems and 
+shows rapid convergence to optimal policies. It has since been used in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}.
+This has lead to the application of more sophisticated regression methods such as 
+Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} which is used to learn visual control policies
+and with recent work including learning to play ATRI and ping-pong games \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015}. 
+
+The reader is referred to \cite{approx_rl_overview_2011} and \cite[Chap 2]{RL_state_art_2012} for a literature 
+review which includes a taxonomy of Batch RL methods and a concise description of Batch RL from its origins, 
+through how it became popular with Fitted RL approaches and its continuation into Deep Learning.
+
+The Fitted Policy Iteration which we apply to our belief space PiH search task is part of this family of methods.
+We chose an on-policy approach to avoid the maximisation over the actions, as we are in continuous action space.
+A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
+the value function approximator.
 
 
-\subsection{Peg-in-hole}
+\subsubsection{Peg-in-hole}
 
 The Peg-in-Hole (PiH) task is one of the most widespread steps in industrial processes, 
 with examples including the assembly of vehicular transmission components \cite{search_strategies_icra_2001} and 
@@ -365,38 +429,6 @@ and a 6 dimensional output (linear and angular velocity) neural network is learn
 This work has a similar approach, however instead of considering autonomous rollouts common in RL, 
 relies solely on the data provided by human teachers.
 
-\subsection{Actor-Critic \& Fitted Reinforcement Learning}
-
-Actor-critic (AC) \cite[Chap. 6.6]{sutton1998reinforcement} have two separate parameterisations, one for the policy (actor) and
-one for the value function (critic). Actor-critic has been reported and proven \cite{rl_ac_surv_2012} to be faster than other policy 
-search methods, as the variance in the gradient estimate is smaller. AC is advantageous in that the policy can be chosen which 
-is computationally efficient in evaluating actions whilst the value function can have a more complex representation.
-
-To guarantee convergence (in model based RL) during temporal difference learning, 
-the value function approximator has to be an averager (tile coding, k-nearest-neighbour, locally weighted averaging) 
-\cite{stable_FA_gordon_1995}. The extension to a model-free approach with a kernel function approximator 
-(locally weighted averaging, the kernel is a Gaussian function) known as Kernel-Based Approximate Dynamic Programming (KBDP) \cite{kernel_rl_ormoneit_2002}
-has proven to be globally optimal in a continuous-space framework. This leads to the wider application of Batch RL methods 
-such as Fitted Value Iteration (FVI) \cite{fvi_uav_2010} and Fitted Q-Iteration (FQI) \cite{EGW05} (Q-approximator is a random forest ensemble),
-\cite{fqi_nips_peter_2009} in RL problems. By remembering all the state transition pairs and by applying multiple 
-synchronous Dynamic Programming (DP) and function approximation updates, the problem of diverging value function approximators is resolved. 
-
-By retaining all the data, it is easy in practice to apply function approximators which are not averagers, such as neural networks,
-to RL problems. A successful example is Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which 
-uses a multi-layer perceptron to represent the Q-function for the cart-pole and mountain car problems and 
-shows rapid convergence to optimal policies. It has since been used in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}.
-This has lead to the application of more sophisticated regression methods such as 
-Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} which is used to learn visual control policies
-and with recent work including learning to play ATRI and ping-pong games \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015}. 
-
-The reader is referred to \cite{approx_rl_overview_2011} and \cite[Chap 2]{RL_state_art_2012} for a literature 
-review which includes a taxonomy of Batch RL methods and a concise description of Batch RL from its origins, 
-through how it became popular with Fitted RL approaches and its continuation into Deep Learning.
-
-The Fitted Policy Iteration which we apply to our belief space PiH search task is part of this family of methods.
-We chose an on-policy approach to avoid the maximisation over the actions, as we are in continuous action space.
-A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
-the value function approximator.
 
 \section{Experiment methods}\label{sec:experiment_methods}
 

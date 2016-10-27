@@ -1,52 +1,54 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rl_pih.aux
 The style file: elsarticle-harv.bst
 Database file #1: bib/ras_fpi.bib.bib
+Warning--empty pages in POMDP_approach_2010
 Warning--empty pages in stable_FA_gordon_1995
+Warning--empty pages in SARSOP
 Warning--empty chapter and pages in Riedmiller2005
 Warning--empty pages in Schaal04learningmovement
 Warning--empty publisher in fast_peg_pbd_icmc_2014
 Warning--empty chapter and pages in fast_peg_pbd_icmc_2014
-You've used 41 entries,
+You've used 44 entries,
             2821 wiz_defined-function locations,
-            914 strings with 13032 characters,
-and the built_in function-call counts, 22864 in all, are:
-= -- 2383
-> -- 1017
+            929 strings with 13640 characters,
+and the built_in function-call counts, 24418 in all, are:
+= -- 2522
+> -- 1122
 < -- 45
-+ -- 386
-- -- 337
-* -- 1934
-:= -- 3808
-add.period$ -- 142
-call.type$ -- 41
-change.case$ -- 346
-chr.to.int$ -- 39
-cite$ -- 46
-duplicate$ -- 948
-empty$ -- 1649
-format.name$ -- 481
-if$ -- 4821
++ -- 427
+- -- 373
+* -- 2073
+:= -- 4089
+add.period$ -- 151
+call.type$ -- 44
+change.case$ -- 376
+chr.to.int$ -- 42
+cite$ -- 51
+duplicate$ -- 1010
+empty$ -- 1757
+format.name$ -- 526
+if$ -- 5132
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 43
-newline$ -- 158
-num.names$ -- 166
-pop$ -- 389
+missing$ -- 47
+newline$ -- 167
+num.names$ -- 178
+pop$ -- 430
 preamble$ -- 1
-purify$ -- 275
+purify$ -- 299
 quote$ -- 0
-skip$ -- 739
+skip$ -- 780
 stack$ -- 0
-substring$ -- 1332
-swap$ -- 277
+substring$ -- 1367
+swap$ -- 283
 text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 354
-warning$ -- 5
-while$ -- 197
+type$ -- 378
+warning$ -- 7
+while$ -- 206
 width$ -- 0
-write$ -- 480
-(There were 5 warnings)
+write$ -- 510
+(There were 7 warnings)

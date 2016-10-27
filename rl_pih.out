@@ -2,8 +2,8 @@
 \BOOKMARK [1][-]{section.2}{Background}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{POMDP}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Related work}{section.2}% 4
-\BOOKMARK [3][-]{subsubsection.2.2.1}{Peg-in-hole}{subsection.2.2}% 5
-\BOOKMARK [3][-]{subsubsection.2.2.2}{Actor-Critic \046 Fitted Reinforcement Learning}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Actor-Critic \046 Fitted Reinforcement Learning}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Peg-in-hole}{subsection.2.2}% 6
 \BOOKMARK [1][-]{section.3}{Experiment methods}{}% 7
 \BOOKMARK [2][-]{subsection.3.1}{Belief state}{section.3}% 8
 \BOOKMARK [2][-]{subsection.3.2}{Participants and experiment protocol}{section.3}% 9
