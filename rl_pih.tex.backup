@@ -264,19 +264,6 @@ conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusio
 \subsection{POMDP}
 % For reviewer 2
 % POMDP is not introduced in the paper. Despite it is a quite known model, it should be 
-%A Partially Observable Markov Decision Process (POMDP) is a generic framework for formulating a temporal decision process 
-%in which the underlying state space is not directly observable. A POMDP is defined by a tuple $\{S, A, O, T, Z, R,\gamma\}$, 
-%where $S$ is  the state space, $A$ is the action space, $O$ is the observation space, $T = p(s'|s,a)$ is the state space transition model,
-%$Z = p(o|s,a)$ is the observation model,  $R(s,a)$ is the reward model and $\gamma \in (0,1]$ the discount factor used to bound the reward function 
-%for infinite-horizon decision problems. As the state space is not observable it is common to cast the POMDP into a belief or information state MDP [cite]
-%which is defined by the tuple ${B,A,\tau,R,\gamma}$ where $B$ is the space of probability distributions over the state space and $\tau(b_t,y_t,a_t)$ is 
-%the belief state transition function.
-
-% To resolution of a POMDP consists of finding a policy which maximised the expected reward $\mathbb{E}[]$
-%(Astrom, 1965)
-% Because the state space is partially observable the expected reward has to be computed 
-% for each possible history of states, actions and observations. All approaches in the literature instead encapsulate all these possible histories
-
 
 A Partially Observable Markov Decision Process (POMDP) is a generic framework for formulating a temporal decision process 
 given that the state space is not directly observable \cite{Sondik_1973}. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,R,\gamma\}$, 
@@ -294,7 +281,7 @@ which can be any Bayesian state space filter (eg. an Extended Kalman Filter or a
 $\Omega$ models become part of $\tau$. The belief reward function $R_B$ becomes a function of the state reward function \ref{eq:bel_reward_back}. 
 
 \begin{equation}\label{eq:bel_reward_back}
-  R_B(b) = \sum\limits_{x} b(x)\, R(x)
+  R_B(b) = \sum\limits_{x \in X} b(x)\, R(x)
 \end{equation}
 
 The advantage of the \textit{belief}-MDP formulation is that dynamic programming and reinforcement
@@ -314,34 +301,36 @@ which can be iteratively evaluated with on-policy value iteration, Equation \ref
 by Generalized Policy Iteration \cite[Chap. 4.6]{sutton1998reinforcement}.
 
 \begin{equation} \label{eq:optimal_value_f}
-  V^{\pi_{\Param}}(b) = R_B(b) + \sum\limits_{u}\, \pi_{\Param}(b,u)\, \gamma \, \sum\limits_{y} p(y|b,a)\, V^{\pi_{\Param}}(\tau(b,a,y))
+  V^{\pi_{\Param}}(b) = R_B(b) + \sum\limits_{u \in U}\, \pi_{\Param}(b,u)\, \gamma \sum\limits_{y\in Y} p(y|b,u)\, V^{\pi_{\Param}}(\tau(b,u,y))
 \end{equation}
 
-% Need to throw in the fact that POMDP is piece wise linear and convex.
 Solving discrete state space POMDP problems is a difficult as the number of parameters of the value function grows 
-at a rate exponential with respect to the decision horizon \cite[Chap. 15]{Thrun_Burgard_Fox_2005}\cite{Sondik_1973} doe 
-to the efforts to preserve the Piece Wise Linear and Convex PWLC of the value function. Recent research has focused 
-on pruning, belief selection and exploration strategies \cite{SARSOP}, \cite{POMDP_approach_2010}, methods known as 
-Point-based Value Iteration (PBVI). However these Value Iteration (VI) approaches are not easily transferable to a 
-continuous domains [cite] such as 7 degree of freedom robot. 
+exponentially with respect to the decision horizon \cite[Chap. 15]{Thrun_Burgard_Fox_2005}\cite{Sondik_1973},
+a by-product of preserving the Piece Wise Linear and Convex (PWLC) property of the value function. Recent 
+advances for discrete POMDPs are  Point-based Value Iteration (PBVI) methods \cite{PBVI_2003}, which focus
+on pruning, belief selection and exploration strategies, see \cite{Veiga14aaai}, \cite{POMDP_approach_2010}.
+However these Value Iteration (VI) approaches do not naturally transfer to a 
+continuous domains \cite{cPBVI_2006}. 
 
-When learning a POMDP policy for a robotic system it is typical to use Policy Search methods [cite]
-were the parameters of the policy are directly optimised to maximise the reward function without 
+Policy Search (PS) methods directly optimised the parameters of policy without estimating a value function. The 
+advantage o
+
+to maximise the reward function without 
 estimating a value function. Such approach yield a smooth policy, however the POMDP solution is only 
 guarantee to be local. Policy search methods work well when the number of parameters are relatively low but 
 as the number of parameters increase the learning becomes slow. In our task we do not want to make any assumptions
 regarding the structure of the policy and as a result should be non-parametric. 
 
 Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement} have two separate parameterisations, one for 
-the policy (actor) and one for the value function (critic) and the critic is used to update both the policy and 
-value function parameters.
+the policy (actor) and one for the value function (critic). The critic is used to update both the policy and 
+value function parameters such to maximise the expected reward. Having a separate policy and value function
+guarantees a smooth control output, ideal for a robotic controller, whist faster convergence when compared 
+to PS methods  \cite{rl_ac_surv_2012}. As the belief space is continuous 
 
-They allow to have have a smooth continuous policy,
-ideal for a robotic controller, whilst the value function reduced the variance 
 
-ACs have been reported and proven \cite{rl_ac_surv_2012} to 
-be faster than policy search methods, as the variance in the gradient estimate is smaller. Their flexibility allows to 
-take both advantage 
+%ACs have been reported and proven \cite{rl_ac_surv_2012} to 
+%be faster than policy search methods, as the variance in the gradient estimate is smaller. Their flexibility allows to 
+%take both advantage 
 
 %An Actor-Critic (AC) framework allows to have a smooth continuous policy whilst the critic (value function) allows 
 %to retain witnessed.

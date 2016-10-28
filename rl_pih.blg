@@ -5,50 +5,49 @@ The style file: elsarticle-harv.bst
 Database file #1: bib/ras_fpi.bib.bib
 Warning--empty pages in POMDP_approach_2010
 Warning--empty pages in stable_FA_gordon_1995
-Warning--empty pages in SARSOP
 Warning--empty chapter and pages in Riedmiller2005
 Warning--empty pages in Schaal04learningmovement
 Warning--empty publisher in fast_peg_pbd_icmc_2014
 Warning--empty chapter and pages in fast_peg_pbd_icmc_2014
-You've used 44 entries,
+You've used 46 entries,
             2821 wiz_defined-function locations,
-            929 strings with 13640 characters,
-and the built_in function-call counts, 24418 in all, are:
-= -- 2522
-> -- 1122
-< -- 45
-+ -- 427
-- -- 373
-* -- 2073
-:= -- 4089
-add.period$ -- 151
-call.type$ -- 44
-change.case$ -- 376
-chr.to.int$ -- 42
-cite$ -- 51
-duplicate$ -- 1010
-empty$ -- 1757
-format.name$ -- 526
-if$ -- 5132
+            947 strings with 14118 characters,
+and the built_in function-call counts, 25879 in all, are:
+= -- 2689
+> -- 1176
+< -- 50
++ -- 447
+- -- 391
+* -- 2195
+:= -- 4311
+add.period$ -- 161
+call.type$ -- 46
+change.case$ -- 394
+chr.to.int$ -- 44
+cite$ -- 52
+duplicate$ -- 1069
+empty$ -- 1860
+format.name$ -- 552
+if$ -- 5452
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 47
-newline$ -- 167
-num.names$ -- 178
-pop$ -- 430
+missing$ -- 49
+newline$ -- 175
+num.names$ -- 186
+pop$ -- 447
 preamble$ -- 1
-purify$ -- 299
+purify$ -- 313
 quote$ -- 0
-skip$ -- 780
+skip$ -- 832
 stack$ -- 0
-substring$ -- 1367
-swap$ -- 283
-text.length$ -- 21
+substring$ -- 1488
+swap$ -- 309
+text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 378
-warning$ -- 7
-while$ -- 206
+type$ -- 396
+warning$ -- 6
+while$ -- 221
 width$ -- 0
-write$ -- 510
-(There were 7 warnings)
+write$ -- 538
+(There were 6 warnings)

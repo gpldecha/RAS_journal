@@ -18,7 +18,7 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \emailauthor{guillaume.dechambrier@epfl.ch}{Guillaume de Chambrier\corref {cor1}\fnref {fn1}}
 \emailauthor{aude.billard@epfl.ch}{Aude Billard}
-\citation{PBVI}
+\citation{PBVI_2003}
 \citation{pomdp_peg_icra_2014}
 \citation{toussain_2015}
 \citation{Lauri2016}
@@ -33,8 +33,13 @@
 \citation{sutton1998reinforcement}
 \citation{Thrun_Burgard_Fox_2005}
 \citation{Sondik_1973}
-\citation{SARSOP}
+\citation{PBVI_2003}
+\citation{Veiga14aaai}
 \citation{POMDP_approach_2010}
+\citation{cPBVI_2006}
+\citation{p_search_surv_2011}
+\citation{Baxter_GPOMDP_2000}
+\citation{rl_ac_surv_2012}
 \citation{sutton1998reinforcement}
 \citation{rl_ac_surv_2012}
 \citation{stable_FA_gordon_1995}
@@ -80,7 +85,6 @@
 \newlabel{fig:PMF}{{2}{4}{\textit {Left:} Point Mass Filter (PMF) update of a particular human demonstration. (1) Initial uniform distribution spread over the starting region. Each grid cell represents a hypothetical position of the plug. The orientation is assumed to be known. (2) First contact, the distribution is spread across the surface of the wall. The red trace is the trajectory history. (3) motion noise increases the uncertainty. (4) The plug is in contact with a socket edge. See \href {http://lasa.epfl.ch/videos/gpldecha/pih-search/subject_PMF_belief_location.wmv}{Video 3} for an illustration of the PMF for a subject's search. \textit {Right}: \textbf {World model}: The plug is modelled by its three plug tips and the wall and sockets are fitted with bounding boxes. \textbf {Likelihood}: The plug enters in contact with the left edge of the socket. As a result, the value of the likelihood in all the regions, $x_t$, close the left edge take a value of one (red points) whilst the others have a value zero (blue points) and areas around the socket's central ring have a value of one}{figure.2}{}}
 \citation{Kronander2015}
 \citation{Atkeson97locallyweighted}
-\citation{EGW05}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Experiment protocol. The participants are divided in two groups of 5, Group A begins with socket A and after a short break repeats the task with socket B. The same logic holds for Group B. For each socket 15 executions of the task are recorded.}}{5}{figure.3}}
 \newlabel{fig:experiment_design}{{3}{5}{Experiment protocol. The participants are divided in two groups of 5, Group A begins with socket A and after a short break repeats the task with socket B. The same logic holds for Group B. For each socket 15 executions of the task are recorded}{figure.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Participants and experiment protocol}{5}{subsection.3.2}}
@@ -91,6 +95,7 @@
 \newlabel{eq:value_function}{{5}{5}{Learning Actor and Critic}{equation.4.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Actor \& Critic}{5}{subsection.4.1}}
 \newlabel{eq:GMM}{{6}{5}{Actor \& Critic}{equation.4.6}{}}
+\citation{EGW05}
 \citation{NIPS2008_3501,EGW05,Riedmiller2005}
 \citation{p_search_surv_2011}
 \citation{p_search_surv_2011}
@@ -105,21 +110,21 @@
 \@writefile{toc}{\contentsline {paragraph}{Policy improvement}{6}{section*.2}}
 \newlabel{eq:disc_return}{{7}{6}{Policy improvement}{equation.4.7}{}}
 \newlabel{eq:expected_reward}{{8}{6}{Policy improvement}{equation.4.8}{}}
-\newlabel{eq:grad_log_cost}{{9}{6}{Policy improvement}{equation.4.9}{}}
 \newlabel{fig:Q-EM}{{2}{6}{Policy improvement}{equation.4.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Q-EM Maximisation of the GMM parameters. We used the same notation and derivation as in \cite  [Chap. 9.2.2]{Bishop_2006}, where $\gamma _k(\mathbf  {x}^{[j]})$ is the responsibility factor, denoting the probability that data point $\mathbf  {x}^{[j]} = [\mathaccentV {dot}05F{x}^{[j]},b^{[j]}]^{\mathrm  {T}}$ belongs to Gaussian function $k$.}}{6}{figure.5}}
+\newlabel{eq:grad_log_cost}{{9}{6}{Policy improvement}{equation.4.9}{}}
 \newlabel{eq:advantage_f}{{10}{6}{Policy improvement}{equation.4.10}{}}
-\citation{gesture_calinon_2010}
-\citation{gmr_2004}
 \@writefile{toc}{\contentsline {paragraph}{2D example fitted policy iteration}{7}{section*.3}}
 \@writefile{toc}{\contentsline {paragraph}{Belief state fitted policy evaluation}{7}{section*.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Control architecture}{7}{section.5}}
 \newlabel{sec:control_architecture}{{5}{7}{Control architecture}{section.5}{}}
-\newlabel{eq:gmm_conditional}{{11}{7}{Control architecture}{equation.5.11}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Fitted policy evaluation \& improvement example. \textit  {Top-left:} The goal of the task is to reach the goal state. The first teacher (blue) demonstrates five trajectories which contour the obstacle in front of the goal. The second teacher (red) demonstrates 5 trajectories which initially deviate from the goal before passing between the two obstacles. \textit  {Bottom-left:} The EM algorithm is used to fit a GMM to the teachers' original data. The marginal $\pi _{\boldsymbol  {\theta }}(x)$ is plotted in blue and trajectories generated by the policy $\mathbb  {E}\{\pi _{\boldsymbol  {\theta }}(\mathaccentV {dot}05F{x}|x)\}$ in orange. \textit  {Top-right} \textit  {Policy Evaluation:}. Value function after fitted policy evaluation terminated, the reward function is binary, $r_T=1$ at the goal and zero otherwise, and a discount factor $\gamma = 0.99$ is used. \textit  {Bottom-right} \textit  {Policy Improvement:} the GMM is learned with the Q-EM algorithm in which each data point's weight is proportional to the advantage function. }}{7}{figure.6}}
 \newlabel{fig:fpe_example}{{6}{7}{Fitted policy evaluation \& improvement example. \textit {Top-left:} The goal of the task is to reach the goal state. The first teacher (blue) demonstrates five trajectories which contour the obstacle in front of the goal. The second teacher (red) demonstrates 5 trajectories which initially deviate from the goal before passing between the two obstacles. \textit {Bottom-left:} The EM algorithm is used to fit a GMM to the teachers' original data. The marginal $\pi _{\Param }(\X )$ is plotted in blue and trajectories generated by the policy $\mathbb {E}\{\pi _{\Param }(\U |\X )\}$ in orange. \textit {Top-right} \textit {Policy Evaluation:}. Value function after fitted policy evaluation terminated, the reward function is binary, $r_T=1$ at the goal and zero otherwise, and a discount factor $\gamma = 0.99$ is used. \textit {Bottom-right} \textit {Policy Improvement:} the GMM is learned with the Q-EM algorithm in which each data point's weight is proportional to the advantage function}{figure.6}{}}
+\citation{gesture_calinon_2010}
+\citation{gmr_2004}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \textit  {Left}: LWR value function approximate $\mathaccentV {hat}05E{V}^{\pi }(\mathaccentV {hat}05E{x})$ for the most likely state $\mathaccentV {hat}05E{x}$. The red plane is to help visualise where the value function is above and below the axis $z=0$. Only states with values above $0.25$ are plotted. The red arrow indicates the heading of the human teacher when performing the search task. The discount factor was $\gamma =0.99$ and the variance of the kernel variance of 1 [cm], which was set experimentally. \textit  {Middle-right}: Best and worst trajectories. The red demonstrated trajectories are the best in terms of the amount of value function gain whilst the blue are the worst. The red arrow indicates the teacher's heading. The blue trajectories tend towards the sides of the wall as the initial starting position is on the border of the wall. The red trajectories are centred along the y-axis of socket and tend to move in a straight line towards the wall whilst aligning themselves with the axis $z=0$. }}{8}{figure.7}}
 \newlabel{fig:ch4:Figure1}{{7}{8}{\textit {Left}: LWR value function approximate $\hat {V}^{\pi }(\hat {x})$ for the most likely state $\hat {x}$. The red plane is to help visualise where the value function is above and below the axis $z=0$. Only states with values above $0.25$ are plotted. The red arrow indicates the heading of the human teacher when performing the search task. The discount factor was $\gamma =0.99$ and the variance of the kernel variance of 1 [cm], which was set experimentally. \textit {Middle-right}: Best and worst trajectories. The red demonstrated trajectories are the best in terms of the amount of value function gain whilst the blue are the worst. The red arrow indicates the teacher's heading. The blue trajectories tend towards the sides of the wall as the initial starting position is on the border of the wall. The red trajectories are centred along the y-axis of socket and tend to move in a straight line towards the wall whilst aligning themselves with the axis $z=0$}{figure.7}{}}
+\newlabel{eq:gmm_conditional}{{11}{8}{Control architecture}{equation.5.11}{}}
 \newlabel{eq:alpha_eq}{{12}{8}{Control architecture}{equation.5.12}{}}
 \newlabel{eq:alpha_expectation}{{13}{8}{Control architecture}{equation.5.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Robot Implementation}{8}{subsection.5.1}}
@@ -153,25 +158,25 @@
 \bibcite{sol_pdg_pbd_2014}{{1}{2014}{{Abu-Dakka et~al.}}{{Abu-Dakka, Nemec, Kramberger, Buch, Kr{\"u}ger, and Ude}}}
 \bibcite{rl_gmm_2010}{{2}{2010}{{Agostini and Celaya}}{{}}}
 \bibcite{Atkeson97locallyweighted}{{3}{1997}{{Atkeson et~al.}}{{Atkeson, Moore, and Schaal}}}
-\bibcite{Bergman99recursivebayesian}{{4}{1999}{{Bergman and Bergman}}{{}}}
-\bibcite{Bishop_2006}{{5}{2006}{{Bishop}}{{}}}
-\bibcite{fvi_uav_2010}{{6}{2010}{{Bou-Ammar et~al.}}{{Bou-Ammar, Voos, and Ertel}}}
-\bibcite{approx_rl_overview_2011}{{7}{2011}{{Busoniu et~al.}}{{Busoniu, Ernst, {de Schutter}, and Babuska}}}
-\bibcite{gesture_calinon_2010}{{8}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
-\bibcite{Chambrier2014}{{9}{2014}{{Chambrier and Billard}}{{}}}
-\bibcite{online_gpr_icra_2014}{{10}{2014}{{Cheng and Chen}}{{}}}
-\bibcite{pomdp_peg_icra_2014}{{11}{2014}{{Cheng et~al.}}{{Cheng, Chen, Hao, and Li}}}
-\bibcite{p_search_surv_2011}{{12}{2011}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
-\bibcite{POMDP_approach_2010}{{13}{2010}{{Du et~al.}}{{Du, Hsu, Kurniawati, Lee, Ong, and Png}}}
-\bibcite{EGW05}{{14}{2005}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
-\bibcite{stable_FA_gordon_1995}{{15}{1995}{{Gordon}}{{}}}
-\bibcite{rl_ac_surv_2012}{{16}{2012}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
-\bibcite{learn_admittance_icra_1994}{{17}{1994}{{Gullapalli et~al.}}{{Gullapalli, Barto, and Grupen}}}
-\bibcite{DRQ_AAAI_2015}{{18}{2015}{{Hausknecht and Stone}}{{}}}
-\bibcite{Milos_POMDP_2000}{{19}{2000}{{Hauskrecht}}{{}}}
-\bibcite{learn_force_c_icirs_2011}{{20}{2011}{{Kalakrishnan et~al.}}{{Kalakrishnan, Righetti, Pastor, and Schaal}}}
-\bibcite{Kronander2015}{{21}{2015}{{Kronander}}{{}}}
-\bibcite{SARSOP}{{22}{2008}{{Kurniawati et~al.}}{{Kurniawati, Hsu, and Lee}}}
+\bibcite{Baxter_GPOMDP_2000}{{4}{2000}{{Baxter and Bartlett}}{{}}}
+\bibcite{Bergman99recursivebayesian}{{5}{1999}{{Bergman and Bergman}}{{}}}
+\bibcite{Bishop_2006}{{6}{2006}{{Bishop}}{{}}}
+\bibcite{fvi_uav_2010}{{7}{2010}{{Bou-Ammar et~al.}}{{Bou-Ammar, Voos, and Ertel}}}
+\bibcite{approx_rl_overview_2011}{{8}{2011}{{Busoniu et~al.}}{{Busoniu, Ernst, {de Schutter}, and Babuska}}}
+\bibcite{gesture_calinon_2010}{{9}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
+\bibcite{Chambrier2014}{{10}{2014}{{Chambrier and Billard}}{{}}}
+\bibcite{online_gpr_icra_2014}{{11}{2014}{{Cheng and Chen}}{{}}}
+\bibcite{pomdp_peg_icra_2014}{{12}{2014}{{Cheng et~al.}}{{Cheng, Chen, Hao, and Li}}}
+\bibcite{p_search_surv_2011}{{13}{2013}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{POMDP_approach_2010}{{14}{2010}{{Du et~al.}}{{Du, Hsu, Kurniawati, Lee, Ong, and Png}}}
+\bibcite{EGW05}{{15}{2005}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
+\bibcite{stable_FA_gordon_1995}{{16}{1995}{{Gordon}}{{}}}
+\bibcite{rl_ac_surv_2012}{{17}{2012}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
+\bibcite{learn_admittance_icra_1994}{{18}{1994}{{Gullapalli et~al.}}{{Gullapalli, Barto, and Grupen}}}
+\bibcite{DRQ_AAAI_2015}{{19}{2015}{{Hausknecht and Stone}}{{}}}
+\bibcite{Milos_POMDP_2000}{{20}{2000}{{Hauskrecht}}{{}}}
+\bibcite{learn_force_c_icirs_2011}{{21}{2011}{{Kalakrishnan et~al.}}{{Kalakrishnan, Righetti, Pastor, and Schaal}}}
+\bibcite{Kronander2015}{{22}{2015}{{Kronander}}{{}}}
 \bibcite{Lange_riedmiller_2010}{{23}{2010}{{Lange and Riedmiller}}{{}}}
 \bibcite{Lauri2016}{{24}{2016}{{Lauri and Ritala}}{{}}}
 \bibcite{peg_personal_icra_2010}{{25}{2010}{{Meeussen et~al.}}{{Meeussen, Wise, Glaser, Chitta, and et. al}}}
@@ -184,15 +189,17 @@
 \bibcite{kernel_rl_ormoneit_2002}{{30}{2002}{{Ormoneit and Glynn}}{{}}}
 \bibcite{NAC_2008}{{31}{2008{}}{{Peters and Schaal}}{{}}}
 \bibcite{peter_nac_2008}{{32}{2008{}}{{Peters and Schaal}}{{}}}
-\bibcite{PBVI}{{33}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
-\bibcite{Riedmiller2005}{{34}{2005}{{Riedmiller}}{{}}}
-\bibcite{Ross08onlineplanning}{{35}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
-\bibcite{Schaal04learningmovement}{{36}{2004}{{Schaal et~al.}}{{Schaal, Peters, Nakanishi, and Ijspeert}}}
-\bibcite{search_strategies_icra_2001}{{37}{2001}{{Siddharth and Branicky}}{{}}}
-\bibcite{Sondik_1973}{{38}{1973}{{Smallwood and Sondik}}{{}}}
-\bibcite{gmr_2004}{{39}{2004}{{Sung}}{{}}}
-\bibcite{sutton1998reinforcement}{{40}{1998}{{Sutton and Barto}}{{}}}
-\bibcite{Thrun_Burgard_Fox_2005}{{41}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
-\bibcite{toussain_2015}{{42}{2015}{{Vien and Toussaint}}{{}}}
-\bibcite{RL_state_art_2012}{{43}{2012}{{Wiering and van Otterio}}{{}}}
-\bibcite{fast_peg_pbd_icmc_2014}{{44}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and Savarimuthu}}}
+\bibcite{PBVI_2003}{{33}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
+\bibcite{cPBVI_2006}{{34}{2006}{{Porta et~al.}}{{Porta, Vlassis, Spaan, and Poupart}}}
+\bibcite{Riedmiller2005}{{35}{2005}{{Riedmiller}}{{}}}
+\bibcite{Ross08onlineplanning}{{36}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
+\bibcite{Schaal04learningmovement}{{37}{2004}{{Schaal et~al.}}{{Schaal, Peters, Nakanishi, and Ijspeert}}}
+\bibcite{search_strategies_icra_2001}{{38}{2001}{{Siddharth and Branicky}}{{}}}
+\bibcite{Sondik_1973}{{39}{1973}{{Smallwood and Sondik}}{{}}}
+\bibcite{gmr_2004}{{40}{2004}{{Sung}}{{}}}
+\bibcite{sutton1998reinforcement}{{41}{1998}{{Sutton and Barto}}{{}}}
+\bibcite{Thrun_Burgard_Fox_2005}{{42}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
+\bibcite{Veiga14aaai}{{43}{2014}{{Veiga et~al.}}{{Veiga, Spaan, and Lima}}}
+\bibcite{toussain_2015}{{44}{2015}{{Vien and Toussaint}}{{}}}
+\bibcite{RL_state_art_2012}{{45}{2012}{{Wiering and van Otterio}}{{}}}
+\bibcite{fast_peg_pbd_icmc_2014}{{46}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and Savarimuthu}}}
