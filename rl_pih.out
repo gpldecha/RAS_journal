@@ -1,20 +1,18 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Background}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{POMDP}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Related work}{section.2}% 4
-\BOOKMARK [3][-]{subsubsection.2.2.1}{Actor-Critic \046 Fitted Reinforcement Learning}{subsection.2.2}% 5
-\BOOKMARK [3][-]{subsubsection.2.2.2}{Peg-in-hole}{subsection.2.2}% 6
-\BOOKMARK [1][-]{section.3}{Experiment methods}{}% 7
-\BOOKMARK [2][-]{subsection.3.1}{Belief state}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Participants and experiment protocol}{section.3}% 9
-\BOOKMARK [1][-]{section.4}{Learning Actor and Critic}{}% 10
-\BOOKMARK [2][-]{subsection.4.1}{Actor \046 Critic}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.2}{Fitted Policy Iteration}{section.4}% 12
-\BOOKMARK [1][-]{section.5}{Control architecture}{}% 13
-\BOOKMARK [2][-]{subsection.5.1}{Robot Implementation}{section.5}% 14
-\BOOKMARK [1][-]{section.6}{Results}{}% 15
-\BOOKMARK [2][-]{subsection.6.1}{Distance taken to reach the socket's edge}{section.6}% 16
-\BOOKMARK [2][-]{subsection.6.2}{Importance of data}{section.6}% 17
-\BOOKMARK [2][-]{subsection.6.3}{Generalisation}{section.6}% 18
-\BOOKMARK [2][-]{subsection.6.4}{Distance taken to connect the plug to the socket}{section.6}% 19
-\BOOKMARK [1][-]{section.7}{Discussion \046 Conclusion}{}% 20
+\BOOKMARK [2][-]{subsection.2.2}{Fitted Reinforcement Learning}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Peg-in-hole}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Methodology}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{PiH-search experimental setup}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Data collection}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Learning}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Fitted Policy Iteration}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Control architecture}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Robot Implementation}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Results}{}% 13
+\BOOKMARK [2][-]{subsection.6.1}{Distance taken to reach the socket's edge}{section.6}% 14
+\BOOKMARK [2][-]{subsection.6.2}{Importance of data}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.3}{Generalisation}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.4}{Distance taken to connect the plug to the socket}{section.6}% 17
+\BOOKMARK [1][-]{section.7}{Discussion \046 Conclusion}{}% 18

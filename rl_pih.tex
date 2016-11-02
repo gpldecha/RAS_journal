@@ -177,18 +177,19 @@ and connect it without using any vision, making the state space partially observ
 A search policy can be obtained by applying dynamic programming to the Partially Observable Markov Decision Process (POMDP) formulation of 
 task. This quickly becomes infeasible for continuous state and action spaces when autonomous exploration-exploitation strategies 
 are used since they do not consider informative prior knowledge. We address this problem by demonstrating how human intuition can be leveraged 
-in an Actor-Critic Fitted Policy Iteration (FPI) framework. 
-A belief-space critic is learned offline in a Fitted RL framework from trajectory data demonstrated by a group of 
+in an Fitted Policy Iteration (FPI) framework in which we introduce a fitted \textit{policy evaluation} and a 
+Monte-Carlo Expectation-Maximisation (MC-EM) \textit{policy improvement} step.
+A belief space value function is learned offline from trajectory data demonstrated by a group of 
 blindfolded human teachers. The demonstrations are compresses as a sequence of most likely state and entropy extracted from 
-a Point Mass Filter (PMF). The critic is then used to train the actor policy represented as Gaussian Mixture Model (GMM).
-Evaluations performed both in simulation and on the KUKA LWR robot showed that the proposed algorithm outperforms 
+a Point Mass Filter (PMF). The gradient of the value function is used to train the policy policy 
+represented as Gaussian Mixture Model (GMM). Evaluations performed both in simulation and on the KUKA LWR robot showed that the proposed algorithm outperforms 
 both a myopic and a purely data driven policy in terms of distance travelled to localise the socket and perform 
 better than these two alternative policies when the socket has no distinctive features.
 
 \end{abstract}
 
 \begin{keyword} 
-Fitted Reinforcement Learning, Actor-Critic, POMDP, GMM policy, Programming by Demonstration
+Fitted Reinforcement Learning, POMDP, Gaussian Mixture Model, Programming by Demonstration
 \end{keyword}
 
 \end{frontmatter}
@@ -215,6 +216,10 @@ approaches \cite{Lauri2016}, based on the most likely state, can be applied.
 These approaches trade-off global optimality for faster approximate solutions which depending on 
 the problem is often close to optimality. 
 
+Solving continuous action POMDPs with policy search methods, given a large number of policy parameters,
+can be difficult as the autonomous exploration, traditionally used in RL, becomes quickly inefficient and 
+learning is slow due to large variance in the gradient estimate.
+
 % ---------- What is the problem ? ----------
 % Cannot solve original POMDP problem!
 %
@@ -233,17 +238,17 @@ the problem is often close to optimality.
 %	o Offline batch reinforcement learning.
 %
 
-Solving continuous action POMDPs via reinforcement learning 
-is difficult as the autonomous exploration, traditionally used in RL, becomes quickly inefficient. 
-This leads to the development of planning methods which guarantee local optimality. 
+
+%This leads to the development of planning methods which guarantee local optimality. 
 
 In this paper we propose an approximate POMDP method for continuous belief-state and action space. We introduce a 
-Fitted Policy Iteration (FPI) Actor-Critic (AC) Reinforcement Learning (RL) method in which sample episodes (demonstrations)
+Fitted Policy Iteration (FPI) method in which sample episodes (demonstrations)
 are provided by human teachers in a Programming by Demonstration (PbD) framework. It is assumed that 
 a good mixture of explorative-exploitative behaviour is present in the demonstrated trajectory data set.
-It has been previously shown \cite{Chambrier2014} that humans exhibit both risk-prone and averse behaviour which constitutes an ideal training set for RL, 
-removing the need for costly autonomous exploration. A belief-space value function is learned from these 
-human demonstrations using a Fitted RL approach and it is used to learn a Gaussian Mixture Model control policy.
+It has been previously shown \cite{Chambrier2014} that humans exhibit both risk-prone and averse behaviour which 
+constitutes an ideal training set for RL, removing the need for costly autonomous exploration. 
+A belief-space value function is learned from these human demonstrations using a Fitted policy evaluation approach 
+and it is used to learn a Gaussian Mixture Model control policy.
 
 We consider a plug power-socket search and connection task, also known as Peg-in-Hole (PiH), in which a 
 robot apprentice must localise a power socket and establish a connection. 
@@ -323,33 +328,36 @@ Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement},\cite{rl_ac_
 separate parameterisations, one for the policy (actor) and one for the value function (critic). The critic 
 is used to update both the policy and value function parameters such to maximise the expected reward. 
 Having a separate policy and value function guarantees a smooth control output, ideal for a robotic controller, whist 
-faster convergence as the critic supplies the actor with low-variance knowledge of the performance.
+faster convergence as the critic supplies the actor with low-variance knowledge of the performance. The problem with 
+AC methods is that function approximation combined with temporal difference learning can lead to divergence. Fitted
+Reinforcement Learning methods are robust against divergence, which we cover next.
 
+% However using function approximation with temporal difference learning can lead to diverence.
+%\subsection{Related work}
+%There are two research domains which are closely related this work;
+%Fitted Reinforcement learning and Peg-in-hole.
+\subsection{Fitted Reinforcement Learning}
 
-\subsection{Related work}
-There are two research domains which are closely related this work;
-% Peg-in-hole and Fitted Reinforcement learning.
-\subsubsection{Actor-Critic \& Fitted Reinforcement Learning}
+%AC is advantageous in that the policy can be chosen which 
+%is computationally efficient in evaluating actions whilst the value function can have a more complex representation.
+% By retaining all the data and applying Batch RL the chance of the function approximator diverging when it is 
+% not an averager (a neural network for instance) is reduced.
 
- AC is advantageous in that the policy can be chosen which 
-is computationally efficient in evaluating actions whilst the value function can have a more complex representation.
-
-To guarantee convergence (in model based RL) during temporal difference learning, 
-the value function approximator has to be an averager (tile coding, k-nearest-neighbour, locally weighted averaging) 
-\cite{stable_FA_gordon_1995}. The extension to a model-free approach with a kernel function approximator 
-(locally weighted averaging, the kernel is a Gaussian function) known as Kernel-Based Approximate Dynamic Programming (KBDP) \cite{kernel_rl_ormoneit_2002}
-has proven to be globally optimal in a continuous-space framework. This leads to the wider application of Batch RL methods 
-such as Fitted Value Iteration (FVI) \cite{fvi_uav_2010} and Fitted Q-Iteration (FQI) \cite{EGW05} (Q-approximator is a random forest ensemble),
-\cite{fqi_nips_peter_2009} in RL problems. By remembering all the state transition pairs and by applying multiple 
-synchronous Dynamic Programming (DP) and function approximation updates, the problem of diverging value function approximators is resolved. 
-
-By retaining all the data, it is easy in practice to apply function approximators which are not averagers, such as neural networks,
-to RL problems. A successful example is Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which 
+To guarantee convergence of a value function approximator, in model based RL, when combined with 
+temporal difference learning, the functional parameterisation has to be an averager 
+(tile coding, k-nearest-neighbour, locally weighted averaging) \cite{stable_FA_gordon_1995}. 
+The extension to a model-free approach with a kernel function approximator known as Kernel-Based Approximate 
+Dynamic Programming (KBDP) \cite{kernel_rl_ormoneit_2002} has proven to be globally optimal in a continuous-space framework. 
+These convergence guarantees lead to an increase in the popularity of Batch RL methods such as Fitted Value Iteration (FVI) \cite{fvi_uav_2010} and Fitted Q-Iteration (FQI) \cite{EGW05,fqi_nips_peter_2009}.
+By remembering all the state transition pairs and by separating the Dynamic Programming (DP) backup operator with function approximation learning (fitting), 
+the problem of diverging value function approximators is resolved. 
+A successful example is Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which 
 uses a multi-layer perceptron to represent the Q-function for the cart-pole and mountain car problems and 
 shows rapid convergence to optimal policies. It has since been used in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}.
 This has lead to the application of more sophisticated regression methods such as 
-Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} which is used to learn visual control policies
-and with recent work including learning to play ATRI and ping-pong games \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015}. 
+Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} which learned a visual control policy from directly mapping pixel 
+input to control output. Since then deep neural networks are becoming more popular, with recent work including learning 
+to play ATRI and ping-pong games \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015}. 
 
 The reader is referred to \cite{approx_rl_overview_2011} and \cite[Chap 2]{RL_state_art_2012} for a literature 
 review which includes a taxonomy of Batch RL methods and a concise description of Batch RL from its origins, 
@@ -360,8 +368,7 @@ We chose an on-policy approach to avoid the maximisation over the actions, as we
 A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
 the value function approximator.
 
-
-\subsubsection{Peg-in-hole}
+\subsection{Peg-in-hole}
 
 The Peg-in-Hole (PiH) task is one of the most widespread steps in industrial processes, 
 with examples including the assembly of vehicular transmission components \cite{search_strategies_icra_2001} and 
@@ -399,7 +406,9 @@ This work has a similar approach, however instead of considering autonomous roll
 relies solely on the data provided by human teachers.
 
 
-\section{Experiment methods}\label{sec:experiment_methods}
+\section{Methodology}\label{sec:experiment_methods}
+
+\subsection{PiH-search experimental setup}
 
 \begin{figure*}
  \centering
@@ -425,29 +434,73 @@ Power \textit{socket A}, has a ring around its holes, \textit{socket B} has a fu
 it easier to connect, and \textit{socket C} has a flat elevated surface. See Figure \ref{fig:search_task_setup}
 (\textit{Top-left}) for an illustration. 
 
+To perform the PiH search tasks we recruited 10 student volunteers to be teachers (all male Master's and PhD students).
+The participants were aged between 24 and 30 with an average age of 26 years and a standard deviation of 2.4 years.
+Each participant carried out 30 demonstrations of the PiH search-task and each session lasted approximately 50 minutes and 
+never exceeded one hour. The 10 participants were divided equally in two groups, A and B. Each member of group A began 
+by performing 15 PiH searches with socket A (AA), followed by a 10 minute break, finishing with an additional 15 searches with socket B (AB). 
+The members of group B performed the same protocol starting with socket B (BB) and ending with socket A (BA).
+Figure \ref{fig:experiment_design} summarises a walk through of the experiment.
+The only exclusion criteria was the inability of the subject to accomplish the task. All participants gave written consent 
+for taking part in this study. A total of 300 demonstrations were gathered.
+
+\begin{figure}
+\centering
+ \includegraphics[width=0.9\linewidth]{./Figures/Fig/experiment_design_v2.pdf}
+ \caption{Experiment protocol. The participants are divided in two groups of 5, Group A begins with socket A 
+ and after a short break repeats the task with socket B. The same logic holds for Group B.
+ For each socket 15 executions of the task are recorded.}
+ \label{fig:experiment_design}
+\end{figure}
+
+\subsection{Data collection}
+
+\begin{figure*}\label{fig:data-flow}
+\centering
+\includegraphics[width=0.9\linewidth]{./Figure/parameters-system-only-two.pdf}
+ \caption{\textit{Left:} The Point Mass Filter is updated with velocities, $u$ from the 
+ Optitrack vision system when human demonstrations are being recorded. When the policy is active the PMF uses 
+ the velocity output of policy $\pi_{\Param_1}$. The sensed wrench $\phi$ is transformed to a multivariate binary 
+ feature vector which is used in the PMF state estimator. The filtered probability density, $b$ is compressed to a lower 
+ dimensional feature vector $F$ before given as input to the linear velocity policy $\pi_{\Param_1}$. The second policy 
+ $\pi_{\Param_2}$ outputs angular velocities $\omega$ given a sensed wrench $\phi$ and is used during the insertion stage of the PiH. 
+ \textit{Right:} Data pipeline. First a set of $M$ demonstrates a dataset is created consisting of two subsets. Secondly, the left 
+ dataset is used to learn policy $\pi_{\Param_1}$ in an Actor-Critic framework the dataset on the right is used 
+ to directly learn the statistical policy $\pi_{\Param_2}$.}
+\end{figure*}
+
+
 The human teacher holds the plug which is attached to a cylindrical handle with 
 an ATI 6 axis force torque sensor (Nano25 \footnote{http://www.ati-ia.com/products/ft/sensors.aspx}) 
-to provide \textbf{raw} wrench $\phi \in \mathbb{R}^6$ measurements. We define the \textbf{actual} measurement 
-to be a function of the raw wrench, $\tilde{y}_t = h(\phi_t)$, which is a binary feature vector. The feature vector encodes whether a contact is present 
+to provide wrench $\phi \in \mathbb{R}^6$ measurements. We define measurement binary multivariate
+feature to be a function of the wrench, $y = h(\phi)$. The feature vector encodes whether a contact is present 
 and the direction in which it occurs, which is discretized to the four cardinalities.
 
 On top of the cylinder there is a set of markers used by a motion capture system 
 OptiTrack\footnote{http://www.optitrack.com/} (which has millimeter tracking accuracy) to measure 
-both linear, $\dot{x} \in \mathbb{R}^3$, and angular velocity, $\omega \in \mathbb{R}^3$, at each 
-time step which is recorded at a rate of 100 Hz along with the F/T information.
+both linear, $u \in \mathbb{R}^3$, and angular velocity, $\omega \in \mathbb{R}^3$, at each 
+time step which is recorded at a rate of 100 Hz along with the F/T information. 
 
-The human's location belief is represented by a probability density function (pdf) which 
-is assumed to be uniformly distributed in the orange area. All subsequent beliefs can 
-be inferred from the measured velocity and measurements provided by the ATI and OptiTrack sensors.
 
-\subsection{Belief state}
+The location belief of the human teacher and robot apprentice is represented by a probability density function (pdf) ${b_t: = p(x_t|y_{0:t},u_{1:t})}$
+which is represented by a Point Mass Filter (PMF) \cite[p.87]{Bergman99recursivebayesian}. PMF is chosen to represent the 
+believed location of the plug as the sensing likelihoods are non-gaussian and lead to multi-modal distributions. 
+Both $u$ and $y$ are used in the state transition and measurement model defined in the POMDP. Figure \ref{fig:PMF} (\textit{Left}) 
+illustrates different time segments of the location belief recording during a demonstration. Figure \ref{fig:PMF} (\textit{Right}) illustrates 
+the measurement likelihood function $\Omega := p(y_t|x_t)$ when an edge is sensed. 
 
-The belief probability density function,  $p(x_t|y_{0:t},\dot{x}_{1:t})$, is a Point Mass Filter (PMF) 
-\cite[p.87]{Bergman99recursivebayesian}, which is a non-parametric  Bayesian filter.
-Figure \ref{fig:PMF} (\textit{Left}) illustrates different time segments of the location belief recording
-during a demonstration. Figure \ref{fig:PMF} (\textit{Right}) illustrates the likelihood when an edge is sensed. 
-A PMF is chosen to represent the believed location of the plug as the sensing likelihoods are non-gaussian and 
-lead to multi-modal distributions. 
+As the belief is high dimensional it is impractical to directly learn a statistical policy ${\pi_{\theta} : b \rightarrow u }$ without 
+some form of compression. We apply a compression function $f : b \mapsto F$ which transforms the belief to a lower 
+dimensional feature vector  $F_t = [\hat{x}_t,U]^{\mathrm{T}}$ which for our purpose composed of 
+the Most Likely State (MLS) $\hat{x}_t \in \mathbb{R}^3$ and differential entropy $U = H(b_t) \in \mathbb{R}$.
+
+%which is assumed to be uniformly distributed in the orange area (refferece). All subsequent beliefs can be inferred from 
+%the measured velocity and measurements provided by the ATI and OptiTrack sensors.
+
+Each participant's demonstration results in a dataset ${D=\{u^{[i]}_{1:T},F^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T}\}}$, 
+where the upper index $[i]$ references the ith search trajectory (one episode) and subscript $1:T$ denotes the time 
+steps during the trajectory from initialisation $t=1$ until the end $t=T$. The information  flow is summarised in
+Figure \ref{fig:data-flow} (\textit{Left}).
 
 \begin{figure*}
  \centering
@@ -463,97 +516,72 @@ lead to multi-modal distributions.
   \label{fig:PMF}
 \end{figure*}
 
-As pdf is high dimensional it is impractical to directly learn a statistical 
-policy ${\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{1:t}) \rightarrow \dot{x} }$ without some form of compression. 
-We compress the pdf to a belief space vector $b_t = [\hat{x}_t,U]^{\mathrm{T}}$ composed of the maximum a posteriori, 
-$\hat{x}_t \in \mathbb{R}^3$, and the differentiation entropy, $U = H\{p(x_t|y_{0:t},\dot{x}_{0:t})\} \in \mathbb{R}$.
-
-Each participant's demonstration results in a dataset ${D=\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}}$, 
-where the upper index $[i]$ references the ith search trajectory (one episode) and 
-subscript $1:T$ denotes the time steps during the trajectory from initialisation $t=1$ until the end $t=T$. 
-
-\subsection{Participants and experiment protocol}
-
-To perform the PiH search tasks we recruited 10 student volunteers to be teachers (all male Master's and PhD students).
-The participants were aged between 24 and 30 with an average age of 26 years and a standard deviation of 2.4 years.
-Each participant carried out 30 demonstrations of the PiH search-task and each session lasted approximately 50 minutes and 
-never exceeded one hour. The 10 participants were divided equally in two groups, A and B. Each member of group A began 
-by performing 15 PiH searches with socket A (AA), followed by a 10 minute break, finishing with an additional 15 searches with socket B (AB). 
-The members of group B performed the same protocol starting with socket B (BB) and ending with socket A (BA).
-Figure \ref{fig:experiment_design} summarises a walk through of the experiment.
-The only exclusion criteria was the inability of the subject to accomplish the task. All participants gave written consent 
-for taking part in this study. A total of 300 demonstrations were gathered.
-Both groups A and B took $9\pm10$s to find the socket's edge, regardless of the socket type. This is to be expected since the sockets 
-are at the same location. It took a further $8\pm7$s on average for group B to connect
-socket B and $12\pm10$s on average for group A to connect socket A. As we can see this is not a straight forward task when considering
-the sensory deprivation. See Figure \ref{fig:experiment_setup_data} (\textit{Bottom}) for the time taken to connect the plug to the socket.
-
-\begin{figure}
-\centering
- \includegraphics[width=0.9\linewidth]{./Figures/Fig/experiment_design_v2.pdf}
- \caption{Experiment protocol. The participants are divided in two groups of 5, Group A begins with socket A 
- and after a short break repeats the task with socket B. The same logic holds for Group B.
- For each socket 15 executions of the task are recorded.}
- \label{fig:experiment_design}
-\end{figure}
 
 \begin{figure}
  \centering
-   \includegraphics[width=0.9\linewidth]{./Figure/example_trajectories.pdf}
-   \caption{\textit{Top}: Black points represent the starting position of the end-effector
+   \includegraphics[width=0.9\linewidth]{./Figure/demonstrations.pdf}
+   \caption{Black points represent the starting position of the end-effector
    for all the demonstrations. Four trajectories are illustrated.}
   \label{fig:experiment_setup_data}
 \end{figure}
 
-\section{Learning Actor and Critic}\label{sec:learning-value-actor}
+\section{Learning}\label{sec:learning-value-actor}
 
-Two policies are learned: one to map belief space 
-to linear velocity $\pi_{\Param_1} : b_t \mapsto \dot{x}_t$ and other to map sensed wrench to angular 
-velocity, $ \pi_{\Param_2} : \phi_t \mapsto \omega_t$. The belief policy $\pi_{\Param_1}$ is learned in a Fitted Actor-Critic framework 
-and the wrench policy $\pi_{\Param_2}$ directly from the demonstrated data as was done 
-in \cite[Chap. 5]{Kronander2015}. This proves to be efficient in overcoming jamming during the final insertion step of PiH. 
-We maximise the parameters of the policy, $\pi_{\Param_1}: b \mapsto \dot{x}_t$, 
-with respect to the value function:
-\begin{equation}\label{eq:value_function}
-  V^{\pi_{\Param_1}}(b) = \mathbb{E}_{\pi_{\Param_1}}\Bigg\{ \sum_{t=0}^{\infty} \gamma^{t} r_{t+1} | b_t=b,\pi_{\Param_1}\Bigg\}
-\end{equation}
-where $r_t \in \mathbb{R}$ is the reward and $\gamma \in [0,1)$ the discount factor. It is the expected future reward given the current 
-belief state and policy. For our PiH-search task a reward of ${r=0}$ is assigned at each time step until the goal
-(plug-socket connection) is achieved, where a reward of $r_{T}=100$ is obtained. Given the continuous nature and 
-dimensionality of the belief space Locally Weighted Regression \cite{Atkeson97locallyweighted} (LWR) is used as a function 
-approximator of the value function, $V^{\pi}(b)$.
-
-In an Actor-Critic setting, the temporal difference error, ${\delta^{\pi}_t = r_{t+1} + \gamma V^{\pi}(b_{t+1}) - V^{\pi}(b_t)}$, of the value 
-function is used as a learning signal to update simultaneously itself and the actor.
-
-\subsection{Actor \& Critic}
-Both the linear and angular velocity policies are parameterised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
+Two policies are learned: one maps a belief feature vector 
+to linear velocity $\pi_{\Param_1} : F \mapsto u$ and the other to maps sensed wrench to angular 
+velocity, $ \pi_{\Param_2} : \phi \mapsto \omega$.  Both linear and angular velocity policies are 
+parameterised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 
 \begin{equation}
- \pi_{\Param_1}(\U,\B) = \sum\limits_{k=1}^{K} \piK \, g(\U,\B;\MuK,\SigK) \label{eq:GMM}
+ \pi_{\Param}(\xi_1,\xi_2) = \sum\limits_{k=1}^{K} \piK \, g(\xi_1,\xi_2;\MuK,\SigK) \label{eq:GMM}
 \end{equation}
-The parameters $\Param_1 = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
-of the individual Gaussian functions, $g(.)$,
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+of the individual Gaussian functions $g(\cdot)$
 \begin{center}
-$\MuK =  \begin{bmatrix} \MuK_{\U} \\ \MuK_{\B} \end{bmatrix}$, 
+$\MuK =  \begin{bmatrix} \MuK_{\xi_1} \\ \MuK_{\xi_2} \end{bmatrix}$\hspace*{0.5cm}
 $\SigK =  \begin{bmatrix} 
-	  \SigK_{\U\U} & \SigK_{\U\B} \\
-	  \SigK_{\B\U} & \SigK_{\B\B}
+	  \SigK_{\xi_1\xi_1} & \SigK_{\xi_1\xi_2} \\
+	  \SigK_{\xi_2\xi_1} & \SigK_{\xi_2\xi_2}
 	  \end{bmatrix}$
 \end{center}
-where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in \mathbb{R}^{4}$.
-In both cases the Bayesian Information Criterion is used to determine the number of Gaussian functions.
-The next section shows how the parameters of $\pi_{\Param_1}$ can be adapted by the value function.
+and $\sum_{k} w^{[k]} = 1$. For the linear policy policy $\pi_{\Param_1}$: ${\xi_1 = u}$ and ${\xi_2 = F}$.
+For the angular policy $\pi_{\Param_2}$: ${\xi_1 = \omega}$ and ${\xi_2 = \phi}$. In both cases the Bayesian Information Criterion is used to 
+determine the number of Gaussian functions.
+
+The parameters of the linear velocity policy $\pi_{\Param_1}$ are learned in a Fitted Policy Iteration framework
+whilst the parameters of the angular velocity policy $\pi_{\Param_2}$ are directly learned from the demonstrations following 
+the methodology outlined in \cite[Chap. 5]{Kronander2015}. 
+%This proves to be efficient in overcoming jamming during the final insertion step of PiH. 
 
 \subsection{Fitted Policy Iteration}\label{sec:FPI}
 
+Policy Iteration is an on-policy reinforcement learning method which through successive iterations of policy \textit{evaluation} and \textit{improvement} 
+both value function and policy converge to their optimal parameters \cite[Chap. 4.6]{sutton1998reinforcement}.
+
+
+
 \paragraph{Policy evaluation}
+%s and then policy is maximised it with respect to its parameters.
 
-To learn the value function we take Fitted RL \cite{EGW05} approach is taken. This is an 
-offline method which applies multiple sweeps of the Bellman backup operator 
-over a dataset of tuples $\{(\Bi_t,r^{[i]}_{t},\Bi_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual,
-$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)||$, converges, see Algorithm \ref{alg:fpe}.
 
+
+%In an Actor-Critic setting, the temporal difference error, ${\delta^{\pi}_t = r_{t+1} + \gamma \hat{V}^{\pi}(F_{t+1}) - \hat{V}^{\pi}(F_t)}$, 
+%of the value function is used as a learning signal to update simultaneously itself and the actor.
+
+A value function, Equation \ref{eq:value_function}, of the belief state feature vector $F$ is  learned from the 
+trajectory data provided by the teachers.
+
+\begin{equation}\label{eq:value_function}
+  V^{\pi_{\Param_1}}(F) = \mathbb{E}_{\pi_{\Param_1}}\Bigg\{  \sum^{\infty}_{k=0} \gamma^k r_{t+k+1} \Bigg\lvert  F_t=F\Bigg\}
+\end{equation}
+
+A reward of ${r=0}$ is assigned at each time step until the goal (plug-socket connection) is achieved, where a reward of $r_{T}=100$ is obtained. 
+Given the continuous nature of the belief feature vector Locally Weighted Regression (LWR) \cite{Atkeson97locallyweighted}  is used as a function 
+approximator of the value function.
+
+To learn the value function Fitted/Batch RL approach is taken\cite{EGW05}, an offline method which applies multiple sweeps of the Bellman backup operator 
+to a dataset of tuples $\{(F_t,r^{[i]}_{t},F_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual, ${||\hat{V}^{\pi}_{k+1}(F) - \hat{V}^{\pi}_{k}(F)||}$, converges, 
+see Algorithm \ref{alg:fpe}.
 
 \begin{center}
 \begin{minipage}{\linewidth}
@@ -562,11 +590,11 @@ $||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)||$, converges, see Algorithm 
 \label{alg:fpe}
 \SetKwInOut{Input}{input}
 \SetKwInOut{Output}{output}
-\Input{$\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
-\Output{$\hat{V}^{\pi}_{k}(\B_t)$}
+\Input{$\epsilon$, $\{(F^{[i]}_t,r^{[i]},F^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
+\Output{$\hat{V}^{\pi}_{k}(F_t)$}
 \BlankLine
-\While{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| < \epsilon$}{
-  $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1}))$
+\While{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| > \epsilon$}{
+  $\hat{V}^{\pi}_{k+1}(F_t)$ = Regress($F$, $r_t + \gamma \hat{V}^{\pi}_k(F_{t+1}))$
 }
 \caption{Fitted Policy Evaluation}
 \end{algorithm*} 
@@ -576,9 +604,8 @@ $||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)||$, converges, see Algorithm 
 Most Fitted RL methods have focused on learning the Q-value function directly (Fitted Q-Iteration) 
 \cite{NIPS2008_3501,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
 of the action space or assumes quantifiable actions, so that maximisation in the Q-Bellman backup
-${\max_{\U_{t+1}} \hat{Q}(\U_{t+1},\B_{t+1})}$ is easily achievable. 
-Given the dimensionality and continuity of our problem we assume this to be unrealistic 
-and we opt for an on-policy approach mentioned above.
+${\max_{u_{t+1}} \hat{Q}(u_{t+1},F_{t+1})}$ is easily achievable. Given the dimensionality and continuity 
+of our problem we assume this to be unrealistic and we opt for an on-policy approach mentioned above.
 
 \paragraph{Policy improvement}
 
@@ -597,6 +624,7 @@ which will maximise the expected reward, Equation \ref{eq:expected_reward},
  J(\Param) &= \mathbb{E}_{p_{\Param}}\{R\} \nonumber \\
 	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i) 
 \end{align}
+
 By setting the derivative to zero, the parameters which maximise the cost function $\argmax_{\Param} J(\Param)$
 can be found. This cannot be done directly, instead the logarithmic lower bound of the cost function is maximised which results in 
 Equation \ref{eq:grad_log_cost}. See \cite[p.50]{p_search_surv_2011} for the derivation. 
