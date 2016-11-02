@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{45}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -32,6 +32,11 @@ Baxter, J., Bartlett, P., 2000. Reinforcement learning in pomdp's via direct
 Bergman, N., Bergman, N., 1999. Recursive bayesian estimation: Navigation and
   tracking applications. thesis no 579. Tech. rep., Link\"oping University,
   Link\"oping Studies in Science and Technology. Doctoral dissertation.
+
+\bibitem[{Bilmes(1997)}]{Bilmes97agentle}
+Bilmes, J., 1997. A gentle tutorial on the em algorithm and its application to
+  parameter estimation for gaussian mixture and hidden markov models. Tech.
+  rep.
 
 \bibitem[{Bishop(2006)}]{Bishop_2006}
 Bishop, C.~M., 2006. Pattern Recognition and Machine Learning. Springer.
@@ -95,14 +100,6 @@ Gordon, G., 1995. Stable function approximation in dynamic programming. In:
   International Conference on Machine Learning (ICML). Carnegie Mellon
   University.
 \newline\urlprefix\url{"http://www.cs.cmu.edu/~ggordon/ml95-stable-dp.ps.gz"}
-
-\bibitem[{Grondman et~al.(2012)Grondman, Busoniu, Lopes, and
-  Babuska}]{rl_ac_surv_2012}
-Grondman, I., Busoniu, L., Lopes, G., Babuska, R., Nov 2012. A survey of
-  actor-critic reinforcement learning: Standard and natural policy gradients.
-  Transactions on Systems, Man, and Cybernetics, Part C (Applications and
-  Reviews) 42~(6), 1291--1307.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/TSMCC.2012.2218595}
 
 \bibitem[{Gullapalli et~al.(1994)Gullapalli, Barto, and
   Grupen}]{learn_admittance_icra_1994}
@@ -210,12 +207,6 @@ Ross, S., Pineau, J., Paquet, S., Chaib-draa, B., Jul 2008. Online planning
   algorithms for pomdps. Journal Artifcial Intelligence Research 32~(1),
   663--704.
 \newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=1622673.1622690}
-
-\bibitem[{Schaal et~al.(2004)Schaal, Peters, Nakanishi, and
-  Ijspeert}]{Schaal04learningmovement}
-Schaal, S., Peters, J., Nakanishi, J., Ijspeert, A., 2004. Learning movement
-  primitives. In: 11th International Symposium on Robotics Research (ISRR).
-\newline\urlprefix\url{http://dx.doi.org/10.1007/11008941_60}
 
 \bibitem[{Siddharth and Branicky(2001)}]{search_strategies_icra_2001}
 Siddharth, C., Branicky, M., 2001. Search strategies for peg-in-hole assemblies

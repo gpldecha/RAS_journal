@@ -177,18 +177,19 @@ and connect it without using any vision, making the state space partially observ
 A search policy can be obtained by applying dynamic programming to the Partially Observable Markov Decision Process (POMDP) formulation of 
 task. This quickly becomes infeasible for continuous state and action spaces when autonomous exploration-exploitation strategies 
 are used since they do not consider informative prior knowledge. We address this problem by demonstrating how human intuition can be leveraged 
-in an Fitted Policy Iteration (FPI) framework. 
-A belief-space critic is learned offline in a Fitted RL framework from trajectory data demonstrated by a group of 
+in an Fitted Policy Iteration (FPI) framework in which we introduce a fitted \textit{policy evaluation} and a 
+Monte-Carlo Expectation-Maximisation (MC-EM) \textit{policy improvement} step.
+A belief space value function is learned offline from trajectory data demonstrated by a group of 
 blindfolded human teachers. The demonstrations are compresses as a sequence of most likely state and entropy extracted from 
-a Point Mass Filter (PMF). The critic is then used to train the actor policy represented as Gaussian Mixture Model (GMM).
-Evaluations performed both in simulation and on the KUKA LWR robot showed that the proposed algorithm outperforms 
+a Point Mass Filter (PMF). The gradient of the value function is used to train the policy policy 
+represented as Gaussian Mixture Model (GMM). Evaluations performed both in simulation and on the KUKA LWR robot showed that the proposed algorithm outperforms 
 both a myopic and a purely data driven policy in terms of distance travelled to localise the socket and perform 
 better than these two alternative policies when the socket has no distinctive features.
 
 \end{abstract}
 
 \begin{keyword} 
-Fitted Reinforcement Learning, Actor-Critic, POMDP, GMM policy, Programming by Demonstration
+Fitted Reinforcement Learning, POMDP, Gaussian Mixture Model, Programming by Demonstration
 \end{keyword}
 
 \end{frontmatter}
@@ -211,39 +212,51 @@ Advances have been made in applying approximate POMDP algorithms to robotic appl
 \cite{pomdp_peg_icra_2014}. However the optimisation often requires a discretisation of the 
 action space which is restrictive for tasks which are naturally continuous. In this case
 a local optimisation with quantifiable actions (macro) \cite{toussain_2015} or alternatively heuristic 
-approaches \cite{Lauri2016}, based on the most likely state, can be applied. 
-These approaches trade-off global optimality for faster approximate solutions which depending on 
-the problem is often close to optimality. 
+approaches \cite{Lauri2016}, based on the most likely state, can be applied. However these approaches require 
+the engineering of action and are locally optimal. 
 
-% ---------- What is the problem ? ----------
-% Cannot solve original POMDP problem!
-%
-%	o approximate techiques require a discretisation of the belief space.
-%	-> this is not good for tasks which are naturally continuous
-%
-%	o gradient methods are suitable when the number of parameters of the policy are small with 
-%	  respect to the size of th environment. 
-%	-> structure of the policy would require a precisable amout of domain knowledge.
-%
-%	o Actor-Critic allows the formulation both a continuous action and space representation.
-%	 -> But to guarantee convergence during online learning both action an policy parameterisation is restrictive
-%
-% Our solution:
-%
-%	o Offline batch reinforcement learning.
-%
+% Both result in a large amount of rollouts, necessary to solve the RL problem, which is undesirable.
+%Alternative Policy Search (PS) methods \cite{p_search_surv_2011} naturally support continuous actions and directly optimise 
+%the parameters of a parametric policy through gradient descent on the reward function without estimating a belief 
+%space value function. PS is suitable when the number of parameters of the policy is small with respect to the size of 
+%the state space as the variance of the gradient estimate is large making learning slow \cite{rl_ac_surv_2012}.
+%Having a separate policy and value function guarantees a smooth control output, 
+%ideal for a robotic controller, whist faster convergence as the critic supplies the actor with low-variance knowledge of the performance. 
+%The drawback is that function approximation combined with temporal difference learning can lead to divergence. Fitted
+%Reinforcement Learning methods are robust against such divergence [cite].
 
-Solving continuous action POMDPs via reinforcement learning 
-is difficult as the autonomous exploration, traditionally used in RL, becomes quickly inefficient. 
-This leads to the development of planning methods which guarantee local optimality. 
+An alternative is Policy Search (PS)\cite{p_search_surv_2011} in which the policy is a parameterised function 
+which is naturally continuous in the action space. The parameters are updated in order to maximise the reward function (gradient descent) without evaluating a value function. 
+Solving continuous POMDPs (both state and action) with a large number of policy parameters (up to a point 
+in which we can consider it to be non-parametric) can be difficult as the autonomous exploration and gradient 
+descent becomes inefficient. Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement} address 
+the inefficiency of learning by having a separate parameterisation of the policy (actor) and value function 
+(critic). The critic is used to update both the actor and critic parameters such to maximise the expected reward.
+AC are advantageous over critic only methods (policy search) as bootstrapping reduces the variance of 
+the gradient which results in faster learning and they are advantageous over critic only methods as 
+making the policy the derivative of the value function, even when small approximation errors are present, can lead 
+to sub-optimal greedy policies \cite{Baxter_GPOMDP_2000}. The drawback of AC is that function approximation 
+combined with bootstrapping [cite] can lead to divergence. Only when both actor and critic share the same 
+linear functional form (but different parameters) is there a guarantee of convergence [cite] which is 
+restrictive. The divergence problem can be addressed by moving from on-line to off-line learning, such 
+as fitted/batch reinforcement learning methods.
 
-In this paper we propose an approximate POMDP method for continuous belief-state and action space. We introduce a 
-Fitted Policy Iteration (FPI) method in which sample episodes (demonstrations)
-are provided by human teachers in a Programming by Demonstration (PbD) framework. It is assumed that 
-a good mixture of explorative-exploitative behaviour is present in the demonstrated trajectory data set.
-It has been previously shown \cite{Chambrier2014} that humans exhibit both risk-prone and averse behaviour which 
-constitutes an ideal training set for RL, removing the need for costly autonomous exploration. 
-A belief-space value function is learned from these human demonstrations using a Fitted RL approach and it is used to learn a Gaussian Mixture Model control policy.
+%By first computing the value function until convergence off-line in a fitted setting 
+%resolves the divergence issue and the gradient estimate, computed from the value function, of the policy's parameters 
+%will have low variance.
+
+In this paper we propose a Fitted Policy Iteration (FPI) method suited for POMDP and MDP problems which have large continuous belief-state 
+and action spaces and for which random exploration is considered infeasible. 
+We address the exploration-exploitation dilemma by using sample episodes (demonstrations) provided by human 
+teachers in a Programming by Demonstration (PbD) framework. It has been previously shown \cite{Chambrier2014} 
+that humans exhibit both risk-prone and averse behaviour which constitutes an ideal training set 
+(mixture of explorative-exploitative behaviour) for a reinforcement learning problem, removing the 
+need for costly autonomous exploration. 
+The Fitted Policy Iteration method is based on an on-policy Actor-Critic framework. A belief-space value function 
+is learned from human teacher demonstrations by fitted policy evaluation which computes the value function, off-line, 
+from a dataset of episodes. The derivative of the value function is used in a Monte-Carlo Expectation-Maximisation[cite] policy search 
+method adapted for a Gaussian Mixture Model (GMM) policy by modifying the GMM Expectation-Maximisation (EM) \cite{Bilmes97agentle} algorithm, 
+which we call Q-EM. The Q-EM approach is close to GMM-EM making it intuitive and easy to implement.
 
 We consider a plug power-socket search and connection task, also known as Peg-in-Hole (PiH), in which a 
 robot apprentice must localise a power socket and establish a connection. 
@@ -253,7 +266,7 @@ to validate that humans can be viable expert teachers under these conditions. Th
 in manufacturing processes and we seek to demonstrate that this task can be accomplished without the need of
 a costly vision system. 
 
-This paper is organised as follows: Section \ref{sec:related_work} overviews the Peg-in-hole (PiH) and Actor-critic Fitted Reinforcement 
+This paper is organised as follows: Section \ref{sec:related_work} overviews the POMDP model and Actor-critic Fitted Reinforcement 
 Learning literature. Section \ref{sec:experiment_methods} details the PiH-search task, the formulation of the belief space and the recorded data. Section \ref{sec:learning-value-actor} presents the Fitted Policy Iteration (FPI) algorithm.
 Section \ref{sec:control_architecture} details the control architecture. Section \ref{sec:results} describes the experiments 
 conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusion}, provides a discussion and the conclusion.
@@ -266,7 +279,7 @@ conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusio
 % POMDP is not introduced in the paper. Despite it is a quite known model, it should be 
 
 A Partially Observable Markov Decision Process (POMDP) is a generic framework for formulating a temporal decision process 
-given that the state space is not directly observable \cite{Sondik_1973}. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,R,\gamma\}$, 
+given that the state space is not directly observable \cite{Sondik_1973}. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,r,\gamma\}$, 
 where $X$, $U$ and $Y$ are the state, action and observation spaces (which can be discrete or continuous);
 ${T:= p(x_t|x_{t-1},u_{t-1})}$ is the state transition probability distribution; $\Omega := p(y_t|x_t)$ is 
 the observation model which gives the probability of a measurement $y_t \in Y$ given a state $x_t \in X$; 
@@ -312,20 +325,12 @@ on pruning, belief selection and exploration strategies, see \cite{Veiga14aaai},
 However these Value Iteration (VI) approaches do not naturally transfer to a 
 continuous domains \cite{cPBVI_2006}. 
 
-Policy Search (PS) methods \cite{p_search_surv_2011} directly optimised the policy's parameters without estimating 
-a value function. The advantage is that convergence (local) can be guaranteed and the policy is smooth as taking the derivative of 
-the value function, even when small approximation errors are present, can lead to sub-optimal greedy policies 
-\cite{Baxter_GPOMDP_2000}. Policy search methods work well when the number of parameters are relatively low but 
-as the number of parameters increase the learning becomes slow as the variance of the policy's gradient estimate 
-is high \cite{rl_ac_surv_2012}. 
-
-Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement},\cite{rl_ac_surv_2012} have two 
-separate parameterisations, one for the policy (actor) and one for the value function (critic). The critic 
-is used to update both the policy and value function parameters such to maximise the expected reward. 
-Having a separate policy and value function guarantees a smooth control output, ideal for a robotic controller, whist 
-faster convergence as the critic supplies the actor with low-variance knowledge of the performance. The problem with 
-AC methods is that function approximation combined with temporal difference learning can lead to divergence. Fitted
-Reinforcement Learning methods are robust against divergence, which we cover next.
+%Policy Search (PS) methods \cite{p_search_surv_2011} directly optimised the policy's parameters without estimating 
+%a value function. The advantage is that convergence (local) can be guaranteed and the policy is smooth as taking the derivative of 
+%the value function, even when small approximation errors are present, can lead to sub-optimal greedy policies 
+%\cite{Baxter_GPOMDP_2000}. Policy search methods work well when the number of parameters are relatively low but 
+%as the number of parameters increase the learning becomes slow as the variance of the policy's gradient estimate 
+%is high \cite{rl_ac_surv_2012}. 
 
 % However using function approximation with temporal difference learning can lead to diverence.
 %\subsection{Related work}
@@ -363,7 +368,20 @@ We chose an on-policy approach to avoid the maximisation over the actions, as we
 A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
 the value function approximator.
 
+\subsection{Monte-Carlo Expectation-Maximisation policy search}
+
 \subsection{Peg-in-hole}
+
+%Another approach consists of learning task space policies and gradually adapting the parameters based on a reference
+%Force/Torque profile. In \cite{fast_peg_pbd_icmc_2014} the authors learned a time-dependent Dynamic Movement 
+%Primitive (DMP) \cite{Schaal04learningmovement} Cartesian end-effector policy for the Cranfield benchmark 
+%object from human teleoperated demonstrations. Similarly in \cite{trans_workpiece_icra_2013,sol_pdg_pbd_2014}, 
+%a F/T profile is encoded separately by a regressor function along the DMP policy. Successive refinements of 
+%the DMP policy are achieved through using force feedback to adapt the parameters of an admittance controller such 
+%so as to reproduce the same F/T (encoded by a separate regressor).
+%Reproducing exactly the same force torque profile for the complete trajectory could be 
+%unnecessary as the force torque profile is used predominantly during the final stage of the PiH task, 
+%to avoid jamming during insertion \cite[Chap. 5]{Kronander2015}. 
 
 The Peg-in-Hole (PiH) task is one of the most widespread steps in industrial processes, 
 with examples including the assembly of vehicular transmission components \cite{search_strategies_icra_2001} and 
@@ -377,33 +395,22 @@ the robot's manipulator. One approach is to apply blind search patterns, such as
 motions \cite{search_strategies_icra_2001}, which do not consider the actual state uncertainty. 
 These approaches work well when the peg is within the vicinity of the hole. In this work, with 
 no visual information, high state uncertainty makes the direct application of such blind 
-search methods ill-suited.
+search methods ill-suited.  Many approaches consider visual information and are based on 
+reproducing Force/Torque profiles as state uncertainty is not explicitly considered we will not 
+give a detailed review here, the interested reader can refer to \cite{fast_peg_pbd_icmc_2014,trans_workpiece_icra_2013,sol_pdg_pbd_2014}.
 
-Another approach consists of learning task space policies and gradually adapting the parameters based on a reference
-Force/Torque profile. In \cite{fast_peg_pbd_icmc_2014} the authors learned a time-dependent Dynamic Movement 
-Primitive (DMP) \cite{Schaal04learningmovement} Cartesian end-effector policy for the Cranfield benchmark 
-object from human teleoperated demonstrations. Similarly in \cite{trans_workpiece_icra_2013,sol_pdg_pbd_2014}, 
-a F/T profile is encoded separately by a regressor function along the DMP policy. Successive refinements of 
-the DMP policy are achieved through using force feedback to adapt the parameters of an admittance controller such 
-so as to reproduce the same F/T (encoded by a separate regressor).
-
-Reproducing exactly the same force torque profile for the complete trajectory could be 
-unnecessary as the force torque profile is used predominantly during the final stage of the PiH task, 
-to avoid jamming during insertion \cite[Chap. 5]{Kronander2015}. 
-
-% RL
-Reinforcement learning has also been applied to PiH. In \cite{learn_force_c_icirs_2011} a DMP policy is 
+Reinforcement learning has been applied to PiH problems. In \cite{learn_force_c_icirs_2011} a Dynamic Movement Primitive (DMP) policy is 
 initialised with kinesthetic demonstrations of picking up a pen. The recorded Cartesian 
-trajectories are encoded in a parameterised DMP policy and augmented with a F/T profile. 
+trajectories are encoded in the parameters of the DMP policy and augmented with a F/T profile. 
 After 110 trials the policy was found to be a 100\% successful. In \cite{learn_admittance_icra_1994} a 18 dimensional input 
 and a 6 dimensional output (linear and angular velocity) neural network is learned and successful after a 100 episodes. 
-This work has a similar approach, however instead of considering autonomous rollouts common in RL, 
-relies solely on the data provided by human teachers.
+This work has a similar approach, however instead of considering autonomous rollouts common in RL, relies solely on 
+the data provided by human teachers.
 
 
 \section{Methodology}\label{sec:experiment_methods}
 
-\subsection{PiH-search experimental setup}
+\subsection{PiH-search experiment}
 
 \begin{figure*}
  \centering
@@ -543,23 +550,18 @@ and $\sum_{k} w^{[k]} = 1$. For the linear policy policy $\pi_{\Param_1}$: ${\xi
 For the angular policy $\pi_{\Param_2}$: ${\xi_1 = \omega}$ and ${\xi_2 = \phi}$. In both cases the Bayesian Information Criterion is used to 
 determine the number of Gaussian functions.
 
-The parameters of the linear velocity policy $\pi_{\Param_1}$ are learned in a Fitted Policy Iteration framework
+The parameters of the linear velocity policy $\pi_{\Param_1}$ are learned in our Fitted Policy Iteration framework
 whilst the parameters of the angular velocity policy $\pi_{\Param_2}$ are directly learned from the demonstrations following 
 the methodology outlined in \cite[Chap. 5]{Kronander2015}. 
 %This proves to be efficient in overcoming jamming during the final insertion step of PiH. 
 
 \subsection{Fitted Policy Iteration}\label{sec:FPI}
 
-Policy Iteration is an on-policy reinforcement learning method which through successive iterations of policy \textit{evaluation} and \textit{improvement} 
-both value function and policy converge to their optimal parameters \cite[Chap. 4.6]{sutton1998reinforcement}.
-
-
+Policy Iteration is an on-policy off-line reinforcement learning method which through successive iterations of policy \textit{evaluation} 
+and \textit{improvement} both value function and policy converge to their optimal parameters \cite[Chap. 4.6]{sutton1998reinforcement}.
 
 \paragraph{Policy evaluation}
 %s and then policy is maximised it with respect to its parameters.
-
-
-
 %In an Actor-Critic setting, the temporal difference error, ${\delta^{\pi}_t = r_{t+1} + \gamma \hat{V}^{\pi}(F_{t+1}) - \hat{V}^{\pi}(F_t)}$, 
 %of the value function is used as a learning signal to update simultaneously itself and the actor.
 
@@ -570,13 +572,14 @@ trajectory data provided by the teachers.
   V^{\pi_{\Param_1}}(F) = \mathbb{E}_{\pi_{\Param_1}}\Bigg\{  \sum^{\infty}_{k=0} \gamma^k r_{t+k+1} \Bigg\lvert  F_t=F\Bigg\}
 \end{equation}
 
-A reward of ${r=0}$ is assigned at each time step until the goal (plug-socket connection) is achieved, where a reward of $r_{T}=100$ is obtained. 
-Given the continuous nature of the belief feature vector Locally Weighted Regression (LWR) \cite{Atkeson97locallyweighted}  is used as a function 
-approximator of the value function.
+A reward of ${r=0}$ is assigned at each time step until the goal (plug-socket connection) is achieved, where a 
+reward of $r_{T}=100$ is obtained. Given the continuous nature of the belief feature vector Locally Weighted Regression
+(LWR) \cite{Atkeson97locallyweighted}  is used as a function approximator of the value function.
 
-To learn the value function Fitted/Batch RL approach is taken\cite{EGW05}, an offline method which applies multiple sweeps of the Bellman backup operator 
-to a dataset of tuples $\{(F_t,r^{[i]}_{t},F_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual, ${||\hat{V}^{\pi}_{k+1}(F) - \hat{V}^{\pi}_{k}(F)||}$, converges, 
-see Algorithm \ref{alg:fpe}.
+To learn the value function Fitted/Batch RL approach is taken\cite{EGW05}, an offline method which applies multiple 
+sweeps of the Bellman backup operator followed by fitting the value function through regression to a dataset of 
+tuples $\{(F^{[i]}_t,r^{[i]}_t,F^{[i]}_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual 
+converges, see Algorithm \ref{alg:fpe}.
 
 \begin{center}
 \begin{minipage}{\linewidth}
@@ -586,10 +589,10 @@ see Algorithm \ref{alg:fpe}.
 \SetKwInOut{Input}{input}
 \SetKwInOut{Output}{output}
 \Input{$\epsilon$, $\{(F^{[i]}_t,r^{[i]},F^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
-\Output{$\hat{V}^{\pi}_{k}(F_t)$}
+\Output{$\hat{V}^{\pi}_{k}(F)$}
 \BlankLine
 \While{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| > \epsilon$}{
-  $\hat{V}^{\pi}_{k+1}(F_t)$ = Regress($F$, $r_t + \gamma \hat{V}^{\pi}_k(F_{t+1}))$
+  $\hat{V}^{\pi}_{k+1}(F)$ = Regress($F_t$, $r_t + \gamma \hat{V}^{\pi}_k(F_{t+1}))$
 }
 \caption{Fitted Policy Evaluation}
 \end{algorithm*} 
@@ -600,7 +603,7 @@ Most Fitted RL methods have focused on learning the Q-value function directly (F
 \cite{NIPS2008_3501,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
 of the action space or assumes quantifiable actions, so that maximisation in the Q-Bellman backup
 ${\max_{u_{t+1}} \hat{Q}(u_{t+1},F_{t+1})}$ is easily achievable. Given the dimensionality and continuity 
-of our problem we assume this to be unrealistic and we opt for an on-policy approach mentioned above.
+of our problem we assume this to be unrealistic and we opt for a fitted .
 
 \paragraph{Policy improvement}
 
@@ -610,15 +613,16 @@ search approach \cite[p.50]{p_search_surv_2011}.
 
 The reward of a demonstrated trajectory (one episode) is given by the discounted return, Equation $\ref{eq:disc_return}$,
 \begin{equation}\label{eq:disc_return}
- R(\tau_i) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
+ R(\tau_i) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(u^{[i]}_t,F^{[i]}_t)
 \end{equation}
-where $\tau_i = \{(\U_0,\B_0),\cdots,(\U_T^{[i]},\B_T^{[i]}) \}$ are the state-action samples of the $i$th episode.
+where $\tau_i = \{(u_0,F_0),\cdots,(u_T^{[i]},F_T^{[i]}) \}$ are the state-action samples of the $i$th episode.
 All policy gradient approaches seek to find a set of parameters, $\Param$, of the Actor,
 which will maximise the expected reward, Equation \ref{eq:expected_reward},
-\begin{align}\label{eq:expected_reward}
- J(\Param) &= \mathbb{E}_{p_{\Param}}\{R\} \nonumber \\
-	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i) 
-\end{align}
+
+\begin{equation}\label{eq:expected_reward}
+ J(\Param) = \mathbb{E}_{p_{\Param}}\{R\} = \sum\limits_{i=1}^{N}
+ \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i) 
+\end{equation}
 
 By setting the derivative to zero, the parameters which maximise the cost function $\argmax_{\Param} J(\Param)$
 can be found. This cannot be done directly, instead the logarithmic lower bound of the cost function is maximised which results in 
