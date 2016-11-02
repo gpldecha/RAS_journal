@@ -459,7 +459,7 @@ for taking part in this study. A total of 300 demonstrations were gathered.
 
 \begin{figure*}\label{fig:data-flow}
 \centering
-\includegraphics[width=0.9\linewidth]{./Figure/parameters-system-only-two.pdf}
+\includegraphics[width=0.9\linewidth]{./Figure/parameters-system-only-two-v2.pdf}
  \caption{\textit{Left:} The Point Mass Filter is updated with velocities, $u$ from the 
  Optitrack vision system when human demonstrations are being recorded. When the policy is active the PMF uses 
  the velocity output of policy $\pi_{\Param_1}$. The sensed wrench $\phi$ is transformed to a multivariate binary 
@@ -800,16 +800,15 @@ where $R_y$ and $R_z$ are $(3 \times 3)$ rotation matrices around the $y$ and $z
 force.  When a force $F_z$ of 5N is sensed, a rotation of $R_y(\pi/2)$ is applied to the original direction resulting in the robot
 getting over the edge. The direction velocity is always normalised up to this point. The amplitude of the velocity is a proportional
 controller based on the believed distance to the goal. 
-
-Figure \ref{fig:control_flow} illustrates the complete control flow.
-\begin{figure}
-  \centering
-  \includegraphics[width=0.45\textwidth]{./Figures/control_flow_final.pdf}
-  \caption{Control architecture. The PMF (belief) receives a measured velocity, $\dot{\tilde{x}}$, and 
-  a sensor measurement $\tilde{y}$ and is updated via Bayes rule. The belief is compressed and used by 
-  both the GMM policy and the proportional speed controller.}
-  \label{fig:control_flow}
-\end{figure}
+%Figure \ref{fig:control_flow} illustrates the complete control flow.
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.45\textwidth]{./Figures/control_flow_final.pdf}
+%  \caption{Control architecture. The PMF (belief) receives a measured velocity, $\dot{\tilde{x}}$, and 
+%  a sensor measurement $\tilde{y}$ and is updated via Bayes rule. The belief is compressed and used by 
+%  both the GMM policy and the proportional speed controller.}
+%  \label{fig:control_flow}
+%\end{figure}
 
 \section{Results}\label{sec:results}
 
