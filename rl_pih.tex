@@ -225,10 +225,11 @@ the engineering of action and are locally optimal.
 %The drawback is that function approximation combined with temporal difference learning can lead to divergence. Fitted
 %Reinforcement Learning methods are robust against such divergence [cite].
 
-An alternative is Policy Search (PS)\cite{p_search_surv_2011} in which the policy is a parameterised function 
-which is naturally continuous in the action space. The parameters are updated in order to maximise the reward function (gradient descent) without evaluating a value function. 
-Solving continuous POMDPs (both state and action) with a large number of policy parameters (up to a point 
-in which we can consider it to be non-parametric) can be difficult as the autonomous exploration and gradient 
+An alternative is Policy Search (PS) methods \cite{p_search_surv_2011} in which the policy is a parameterised function 
+which naturally supports continuous actions. The parameters are updated in order to maximise the 
+reward function (gradient descent) without evaluating a value function. Solving continuous POMDPs (both state and action) 
+with a large number of policy parameters (up to a point in which we can consider it to be non-parametric) can 
+be difficult as the autonomous exploration and gradient 
 descent becomes inefficient. Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement} address 
 the inefficiency of learning by having a separate parameterisation of the policy (actor) and value function 
 (critic). The critic is used to update both the actor and critic parameters such to maximise the expected reward.
@@ -238,8 +239,8 @@ making the policy the derivative of the value function, even when small approxim
 to sub-optimal greedy policies \cite{Baxter_GPOMDP_2000}. The drawback of AC is that function approximation 
 combined with bootstrapping [cite] can lead to divergence. Only when both actor and critic share the same 
 linear functional form (but different parameters) is there a guarantee of convergence [cite] which is 
-restrictive. The divergence problem can be addressed by moving from on-line to off-line learning, such 
-as fitted/batch reinforcement learning methods.
+restrictive. The divergence problem can be addressed by moving from on-line to off-line learning methods such 
+as fitted/batch reinforcement learning.
 
 %By first computing the value function until convergence off-line in a fitted setting 
 %resolves the divergence issue and the gradient estimate, computed from the value function, of the policy's parameters 
