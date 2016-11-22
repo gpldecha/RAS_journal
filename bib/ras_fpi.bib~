@@ -313,16 +313,46 @@
 }
 
 
-@inproceedings{PBVI,
-   author 	= "Joelle Pineau and Geoffrey Gordon and Sebastian Thrun",
-   title 	= "Point-based value iteration: An anytime algorithm for POMDPs",
-   booktitle 	= "International Joint Conference on Artificial Intelligence (IJCAI)",
-   pages 	= "1025-1032",
-   month 	= "August",
-   year 	= "2003"
-} 
+@INPROCEEDINGS{PBVI_2003,
+  	author 		= {Pineau, Joelle and Gordon, Geoff and Thrun, Sebastian},
+  	title 		= {Point-based value iteration: an anytime algorithm for POMDPs},
+  	booktitle 	= {International Joint Conference on Artificial Intelligence (IJCAI)},
+  	year 		= {2003},
+	month		= {Aug},
+  	pages 		= {1025--1030},
+ 	url 		= {http://dl.acm.org/citation.cfm?id=1630659.1630806}
+}
+
+@article{cPBVI_2006,
+ 	author 		= {Porta, Josep and Vlassis, Nikos and Spaan, Matthijs and Poupart, Pascal},
+ 	title 		= {Point-Based Value Iteration for Continuous POMDPs},
+ 	journal 	= {J. Mach. Learn. Res.},
+ 	volume 		= {7},
+ 	month 		= {Dec},
+ 	year 		= {2006},
+ 	pages 		= {2329--2367},
+ 	url 		= {http://dl.acm.org/citation.cfm?id=1248547.1248630},
+ } 
+
+@INPROCEEDINGS{Baxter_GPOMDP_2000,
+    	author 		= {Jonathan Baxter and Peter Bartlett},
+    	title 		= {Reinforcement Learning in POMDP's via Direct Gradient Ascent},
+    	booktitle 	= {International Conference on Machine Learning},
+    	year 		= {2000},
+	volume 		= {17},
+    	pages 		= {41--48},
+    	publisher 	= {Morgan Kaufmann}
+}
 
 
+@InProceedings{Veiga14aaai,
+  	author 		= {Tiago Veiga and Matthijs Spaan and Pedro Lima},
+  	title 		= {Point-based {POMDP} Solving with Factored Value Function Approximation},
+  	booktitle 	= {Conference on Artificial Intelligence (AAAI)},
+  	volume    	= {28},
+  	year 		= {2014},
+  	pages 		= {2512--2518}
+}
 
 % RL
 
@@ -412,6 +442,19 @@
   	url 	  = {"http://www.cs.cmu.edu/~ggordon/ml95-stable-dp.ps.gz"}
 } 
 
+
+@incollection{NIPS1995_1133,
+	author 		= {Gordon, Geoffrey},
+	booktitle 	= {Advances in Neural Information Processing Systems (NIPS)},
+	volume 		= {8},
+	pages 		= {1052--1058},
+	publisher 	= {MIT Press},
+	title 		= {{Stable Fitted Reinforcement Learning}},
+	url 		= {http://papers.nips.cc/paper/1133-stable-fitted-reinforcement-learning.pdf},
+	year 		= {1996}
+}
+
+
 @inproceedings{fqi_nips_peter_2009,
   	title 		= {Fitted Q-iteration by Advantage Weighted Regression},
   	author 		= {Neumann, Gerhard and Peters, Jan},
@@ -434,7 +477,7 @@
 
 @article{p_search_surv_2011,
 	author 	= {Marc Peter Deisenroth and Gerhard Neumann and Jan Peters},
-	year 	= {2011},
+	year 	= {2013},
 	volume  = {2},
 	journal = {Foundations and Trends in Robotics},
 	title   = {A Survey on Policy Search for Robotics},
@@ -564,10 +607,148 @@
 }
 
 
+@BOOK{Thrun_Burgard_Fox_2005,
+  	author 		= {Thrun, Sebastian and Burgard, Wolfram and Fox, Dieter},
+  	title 		= {Probabilistic Robotics},
+  	publisher 	= {The MIT Press},
+  	year 		= {2005}
+}
+
+
+
+@INPROCEEDINGS{SARSOP,
+  	author 		= {Hanna Kurniawati and David Hsu and Wee Sun Lee},
+  	title 		= {SARSOP: Efficient point-based POMDP planning by approximating optimally reachable belief spaces},
+  	booktitle 	= {Robotics Science and Systems (RSS)},
+  	year 		= {2008}
+}
+
+@INPROCEEDINGS{POMDP_approach_2010,
+	AUTHOR = "Yanzhu Du and David Hsu and Hanna Kurniawati and Wee Lee and Sylvie Ong and Shao Png",
+	TITLE = "A POMDP Approach to Robot Motion Planning under Uncertainty",
+	BOOKTITLE = "International Conference on Automated Planning and Scheduling, Workshop on Solving Real-World POMDP Problems",
+	YEAR = "2010"
+}
+
+@TECHREPORT{Bilmes97agentle,
+    author = {Jeff Bilmes},
+    title = {A gentle tutorial on the EM algorithm and its application to parameter estimation for gaussian mixture and hidden markov models},
+    year = {1997},
+    doi={10.1.1.28.613}
+}
+
+
+
+@incollection{Thrun_1999,
+	author 		= {Thrun, Sebastian},
+	booktitle 	= {Advances in Neural Information Processing Systems (NIPS)},
+	volume 		= {12},
+	pages 		= {1064--1070},
+	publisher 	= {MIT Press},
+	title 		= {{Monte Carlo POMDPs}},
+	url 		= {http://papers.nips.cc/paper/1772-monte-carlo-pomdps.pdf},
+	year 		= {2000}
+}
+
+
+@inbook{Jodogne2006,
+	author 		= {Jodogne, S{\'{e}}bastien and Briquet, Cyril and Piater, Justus H},
+	booktitle 	= {Machine Learning: ECML 2006: 17th European Conference on Machine Learning Berlin, Germany, September 18-22, 2006 Proceedings},
+	doi 		= {10.1007/11871842_23},
+	pages 		= {210--221},
+	publisher 	= {Springer Berlin Heidelberg},
+	title 		= {{Approximate Policy Iteration for Closed-Loop Learning of Visual Tasks}},
+	url 		= {http://dx.doi.org/10.1007/11871842{\_}23},
+	year 		= {2006}
+}
 
 
 
 
+@inbook{Melo2008,
+	author 		= {Melo, Francisco S and Lopes, Manuel},
+	booktitle 	= {Machine Learning and Knowledge Discovery in Databases},
+	doi 		= {10.1007/978-3-540-87481-2_5},
+	editor 		= {Daelemans, Walter and Goethals, Bart and Morik, Katharina},
+	isbn 		= {978-3-540-87481-2},
+	pages 		= {66--81},
+	publisher 	= {Springer Berlin Heidelberg},
+	title 		= {{Fitted Natural Actor-Critic: A New Algorithm for Continuous State-Action MDPs}},
+	url 		= {http://dx.doi.org/10.1007/978-3-540-87481-2{\_}5},
+	year 		= {2008}
+}
 
 
 
+@article{PPOMDP_2006,
+	author = {Brooks, Alex and Makarenko, Alexei and Williams, Stefan and Durrant-Whyte, Hugh},
+	doi = {http://dx.doi.org/10.1016/j.robot.2006.05.007},
+	issn = {0921-8890},
+	journal = {Robotics and Autonomous Systems},
+	number = {11},
+	pages = {887--897},
+	title = {{Parametric {\{}POMDPs{\}} for planning in continuous state spaces}},
+	url = {http://www.sciencedirect.com/science/article/pii/S0921889006000960},
+	volume = {54},
+	year = {2006}
+}
+
+@article{LSPI_2003,
+ 	author 		= {Lagoudakis, Michail G. and Parr, Ronald},
+ 	title 		= {Least-squares Policy Iteration},
+ 	journal 	= {Journal of Machine Learning Research},
+ 	volume 		= {4},
+ 	month 		= {dec},
+ 	year 		= {2003},
+ 	pages 		= {1107--1149},
+ 	url 		= {http://dl.acm.org/citation.cfm?id=945365.964290}
+} 
+
+@article{Calinon2013369,
+	author 		= {Calinon, Sylvain and Kormushev, Petar and Caldwell, Darwin G},
+	doi 		= {http://dx.doi.org/10.1016/j.robot.2012.09.012},
+	issn 		= {0921-8890},
+	journal 	= {Robotics and Autonomous Systems},
+	keywords 	= {Dynamical systems,Expectation-maximization,Gaussian mixture model,Learning by imitation,Reinforcement learning,Skills transfer},
+	number 		= {4},
+	pages 		= {369--379},
+	title 		= {{Compliant skills acquisition and multi-optima policy search with EM-based reinforcement learning}},
+	url 		= {http://www.sciencedirect.com/science/article/pii/S0921889012001662},
+	volume 		= {61},
+	year 		= {2013}
+}
+
+@inproceedings{Kormushev2010Humanoids,
+  	author		= "Kormushev, Petar and Calinon, S. and Saegusa, R. and Metta, G.",
+  	title 		= "Learning the skill of archery by a humanoid robot {iCub}",
+  	booktitle 	= "International Conference on Humanoid Robots ({H}umanoids)",
+  	month 		= "December",
+  	year 		= "2010",
+  	address 	= "Nashville, USA",
+  	pages		= "417-423",
+  	url 		= "http://kormushev.com/papers/Kormushev_Humanoids-2010.pdf"
+}
+
+
+
+@INPROCEEDINGS{Baird95,
+    author 		= {Leemon Baird},
+    title 		= {Residual Algorithms: Reinforcement Learning with Function Approximation},
+    booktitle 		= {In Proceedings of the Twelfth International Conference on Machine Learning},
+    year 		= {1995},
+    pages 		= {30--37},
+    publisher 		= {Morgan Kaufmann}
+}
+
+
+
+@INPROCEEDINGS{Sutton00policygradient,
+    author 		= {Richard S. Sutton and David Mcallester and Satinder Singh and Yishay Mansour},
+    title 		= {Policy gradient methods for reinforcement learning with function approximation},
+    booktitle 		= {Neural Information Processing Systems (NIPS)},
+    doi 	        = {10.1.1.79.5189},
+    volume 		= {12},
+    year 		= {2000},
+    pages 		= {1057--1063},
+    publisher 		= {MIT Press}
+}

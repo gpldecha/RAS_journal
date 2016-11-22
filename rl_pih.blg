@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rl_pih.aux
 The style file: elsarticle-harv.bst
@@ -6,48 +6,51 @@ Database file #1: bib/ras_fpi.bib.bib
 Warning--empty institution in Bilmes97agentle
 Warning--empty pages in POMDP_approach_2010
 Warning--empty pages in stable_FA_gordon_1995
+Warning--empty chapter and pages in Jodogne2006
+Warning--can't use both author and editor fields in Melo2008
+Warning--empty chapter and pages in Melo2008
 Warning--empty chapter and pages in Riedmiller2005
 Warning--empty publisher in fast_peg_pbd_icmc_2014
 Warning--empty chapter and pages in fast_peg_pbd_icmc_2014
-You've used 45 entries,
+You've used 56 entries,
             2821 wiz_defined-function locations,
-            938 strings with 13748 characters,
-and the built_in function-call counts, 25071 in all, are:
-= -- 2615
-> -- 1116
-< -- 51
-+ -- 425
-- -- 370
-* -- 2103
-:= -- 4175
-add.period$ -- 158
-call.type$ -- 45
-change.case$ -- 381
-chr.to.int$ -- 43
-cite$ -- 51
-duplicate$ -- 1044
-empty$ -- 1809
-format.name$ -- 526
-if$ -- 5292
+            1014 strings with 16348 characters,
+and the built_in function-call counts, 31810 in all, are:
+= -- 3332
+> -- 1387
+< -- 66
++ -- 528
+- -- 460
+* -- 2665
+:= -- 5252
+add.period$ -- 199
+call.type$ -- 56
+change.case$ -- 474
+chr.to.int$ -- 54
+cite$ -- 65
+duplicate$ -- 1328
+empty$ -- 2316
+format.name$ -- 651
+if$ -- 6750
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 47
-newline$ -- 170
-num.names$ -- 182
-pop$ -- 430
+missing$ -- 60
+newline$ -- 211
+num.names$ -- 226
+pop$ -- 541
 preamble$ -- 1
-purify$ -- 302
+purify$ -- 376
 quote$ -- 0
-skip$ -- 821
+skip$ -- 1047
 stack$ -- 0
-substring$ -- 1446
-swap$ -- 305
-text.length$ -- 25
+substring$ -- 1901
+swap$ -- 398
+text.length$ -- 35
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 387
-warning$ -- 6
-while$ -- 216
+type$ -- 480
+warning$ -- 9
+while$ -- 277
 width$ -- 0
-write$ -- 525
-(There were 6 warnings)
+write$ -- 661
+(There were 9 warnings)

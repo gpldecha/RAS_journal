@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{56}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -22,6 +22,11 @@ Agostini, A., Celaya, E., July 2010. Reinforcement learning with a gaussian
 Atkeson, C., Moore, A., Schaal, S., 1997. Locally weighted learning. Artificial
   Inteligence, 11--73.
 \newline\urlprefix\url{http://dx.doi.org/10.1023/A:1006559212014}
+
+\bibitem[{Baird(1995)}]{Baird95}
+Baird, L., 1995. Residual algorithms: Reinforcement learning with function
+  approximation. In: In Proceedings of the Twelfth International Conference on
+  Machine Learning. Morgan Kaufmann, pp. 30--37.
 
 \bibitem[{Baxter and Bartlett(2000)}]{Baxter_GPOMDP_2000}
 Baxter, J., Bartlett, P., 2000. Reinforcement learning in pomdp's via direct
@@ -47,6 +52,18 @@ Bou-Ammar, H., Voos, H., Ertel, W., Sept 2010. Controller design for quadrotor
   Applications. pp. 2130--2135.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/CCA.2010.5611206}
 
+\bibitem[{Boyan and Moore(1995)}]{Boyan95generalizationin}
+Boyan, J., Moore, A., 1995. Generalization in reinforcement learning: Safely
+  approximating the value function. In: Advances in Neural Information
+  Processing Systems (NIPS). Vol.~7. pp. 369--376.
+
+\bibitem[{Brooks et~al.(2006)Brooks, Makarenko, Williams, and
+  Durrant-Whyte}]{PPOMDP_2006}
+Brooks, A., Makarenko, A., Williams, S., Durrant-Whyte, H., 2006. {Parametric
+  {\{}POMDPs{\}} for planning in continuous state spaces}. Robotics and
+  Autonomous Systems 54~(11), 887--897.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0921889006000960}
+
 \bibitem[{Busoniu et~al.(2011)Busoniu, Ernst, {de Schutter}, and
   Babuska}]{approx_rl_overview_2011}
 Busoniu, L., Ernst, D., {de Schutter}, B., Babuska, R., April 2011. Approximate
@@ -60,6 +77,13 @@ Calinon, S., D'halluin, F., Sauser, E., Caldwell, D., Billard, A., jun 2010.
   Learning and reproduction of gestures by imitation. IEEE Robotics Automation
   Magazine 17~(2), 44--54.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/MRA.2010.936947}
+
+\bibitem[{Calinon et~al.(2013)Calinon, Kormushev, and
+  Caldwell}]{Calinon2013369}
+Calinon, S., Kormushev, P., Caldwell, D.~G., 2013. {Compliant skills
+  acquisition and multi-optima policy search with EM-based reinforcement
+  learning}. Robotics and Autonomous Systems 61~(4), 369--379.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0921889012001662}
 
 \bibitem[{Chambrier and Billard(2014)}]{Chambrier2014}
 Chambrier, G.~d., Billard, A., 2014. Learning search policies from humans in a
@@ -101,6 +125,14 @@ Gordon, G., 1995. Stable function approximation in dynamic programming. In:
   University.
 \newline\urlprefix\url{"http://www.cs.cmu.edu/~ggordon/ml95-stable-dp.ps.gz"}
 
+\bibitem[{Grondman et~al.(2012)Grondman, Busoniu, Lopes, and
+  Babuska}]{rl_ac_surv_2012}
+Grondman, I., Busoniu, L., Lopes, G., Babuska, R., Nov 2012. A survey of
+  actor-critic reinforcement learning: Standard and natural policy gradients.
+  Transactions on Systems, Man, and Cybernetics, Part C (Applications and
+  Reviews) 42~(6), 1291--1307.
+\newline\urlprefix\url{http://dx.doi.org/10.1109/TSMCC.2012.2218595}
+
 \bibitem[{Gullapalli et~al.(1994)Gullapalli, Barto, and
   Grupen}]{learn_admittance_icra_1994}
 Gullapalli, V., Barto, A., Grupen, R., may 1994. Learning admittance mappings
@@ -120,6 +152,12 @@ Hauskrecht, M., Aug 2000. Value-function approximations for partially
   Research 13~(1), 33--94.
 \newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=1622262.1622264}
 
+\bibitem[{Jodogne et~al.(2006)Jodogne, Briquet, and Piater}]{Jodogne2006}
+Jodogne, S., Briquet, C., Piater, J.~H., 2006. {Approximate Policy Iteration
+  for Closed-Loop Learning of Visual Tasks}. Springer Berlin Heidelberg, pp.
+  210--221.
+\newline\urlprefix\url{http://dx.doi.org/10.1007/11871842{\_}23}
+
 \bibitem[{Kalakrishnan et~al.(2011)Kalakrishnan, Righetti, Pastor, and
   Schaal}]{learn_force_c_icirs_2011}
 Kalakrishnan, M., Righetti, L., Pastor, P., Schaal, S., Sept 2011. Learning
@@ -127,8 +165,20 @@ Kalakrishnan, M., Righetti, L., Pastor, P., Schaal, S., Sept 2011. Learning
   Conference on Intelligent Robots and Systems (ICRA). pp. 4639--4644.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/IROS.2011.6095096}
 
+\bibitem[{Kormushev et~al.(2010)Kormushev, Calinon, Saegusa, and
+  Metta}]{Kormushev2010Humanoids}
+Kormushev, P., Calinon, S., Saegusa, R., Metta, G., December 2010. Learning the
+  skill of archery by a humanoid robot {iCub}. In: International Conference on
+  Humanoid Robots ({H}umanoids). Nashville, USA, pp. 417--423.
+\newline\urlprefix\url{http://kormushev.com/papers/Kormushev_Humanoids-2010.pdf}
+
 \bibitem[{Kronander(2015)}]{Kronander2015}
 Kronander, K., 2015. Control and learning of compliant manipulation skills.
+
+\bibitem[{Lagoudakis and Parr(2003)}]{LSPI_2003}
+Lagoudakis, M.~G., Parr, R., dec 2003. Least-squares policy iteration. Journal
+  of Machine Learning Research 4, 1107--1149.
+\newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=945365.964290}
 
 \bibitem[{Lange and Riedmiller(2010)}]{Lange_riedmiller_2010}
 Lange, S., Riedmiller, M., July 2010. Deep auto-encoder neural networks in
@@ -145,6 +195,11 @@ Meeussen, W., Wise, M., Glaser, S., Chitta, S., et. al, May 2010. Autonomous
   door opening and plugging in with a personal robot. In: International
   Conference on Robotics and Automation (ICRA). pp. 729--736.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/ROBOT.2010.5509556}
+
+\bibitem[{Melo and Lopes(2008)}]{Melo2008}
+Melo, F.~S., Lopes, M., 2008. {Fitted Natural Actor-Critic: A New Algorithm for
+  Continuous State-Action MDPs}. Springer Berlin Heidelberg, pp. 66--81.
+\newline\urlprefix\url{http://dx.doi.org/10.1007/978-3-540-87481-2{\_}5}
 
 \bibitem[{Mnih(2015)}]{mnih-dqn-2015}
 Mnih, V., 02 2015. Human-level control through deep reinforcement learning.
@@ -227,6 +282,17 @@ Sung, H.~G., 2004. Gaussian mixture regression and classification. Ph.D.
 \bibitem[{Sutton and Barto(1998)}]{sutton1998reinforcement}
 Sutton, R.~S., Barto, A., 1998. Reinforcement Learning: An Introduction. MIT
   Press, Cambridge, MA.
+
+\bibitem[{Sutton et~al.(2000)Sutton, Mcallester, Singh, and
+  Mansour}]{Sutton00policygradient}
+Sutton, R.~S., Mcallester, D., Singh, S., Mansour, Y., 2000. Policy gradient
+  methods for reinforcement learning with function approximation. In: Neural
+  Information Processing Systems (NIPS). Vol.~12. MIT Press, pp. 1057--1063.
+
+\bibitem[{Thrun(2000)}]{Thrun_1999}
+Thrun, S., 2000. {Monte Carlo POMDPs}. In: Advances in Neural Information
+  Processing Systems (NIPS). Vol.~12. MIT Press, pp. 1064--1070.
+\newline\urlprefix\url{http://papers.nips.cc/paper/1772-monte-carlo-pomdps.pdf}
 
 \bibitem[{Thrun et~al.(2005)Thrun, Burgard, and Fox}]{Thrun_Burgard_Fox_2005}
 Thrun, S., Burgard, W., Fox, D., 2005. Probabilistic Robotics. The MIT Press.

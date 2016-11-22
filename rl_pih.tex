@@ -225,39 +225,57 @@ the engineering of action and are locally optimal.
 %The drawback is that function approximation combined with temporal difference learning can lead to divergence. Fitted
 %Reinforcement Learning methods are robust against such divergence [cite].
 
-An alternative is Policy Search (PS) methods \cite{p_search_surv_2011} in which the policy is a parameterised function 
-which naturally supports continuous actions. The parameters are updated in order to maximise the 
-reward function (gradient descent) without evaluating a value function. Solving continuous POMDPs (both state and action) 
-with a large number of policy parameters (up to a point in which we can consider it to be non-parametric) can 
-be difficult as the autonomous exploration and gradient 
-descent becomes inefficient. Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement} address 
-the inefficiency of learning by having a separate parameterisation of the policy (actor) and value function 
-(critic). The critic is used to update both the actor and critic parameters such to maximise the expected reward.
-AC are advantageous over critic only methods (policy search) as bootstrapping reduces the variance of 
-the gradient which results in faster learning and they are advantageous over critic only methods as 
+An alternative is Policy Search (PS) methods \cite{p_search_surv_2011} where the policy is a smooth continuous
+parametric function ideal for robotics or non discretisable control systems. The parameters are updated (gradient ascent or EM) 
+to maximise the reward function directly without the estimation of a value function. Although successful 
+when used to learn reflex or motion primitive policies \cite{Kormushev2010Humanoids,Calinon2013369}, when considering continuous (PO)MDPs policies
+with a large number of parameters traditional un-informed autonomous exploration strategies  result in a large variance in the gradient estimate of the parameters 
+which leads to inefficient learning \cite{rl_ac_surv_2012}.
+Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement} address 
+the inefficient learning by having a separate parameterisation of the policy (actor) and value function 
+(critic). ACs are advantageous over critic only methods (policy search) as the estimated value function (via bootstrapping) reduces the variance of 
+the policy's parameters gradient which results in faster learning. They are also advantageous over critic only methods as 
 making the policy the derivative of the value function, even when small approximation errors are present, can lead 
 to sub-optimal greedy policies \cite{Baxter_GPOMDP_2000}. The drawback of AC is that function approximation 
-combined with bootstrapping [cite] can lead to divergence. Only when both actor and critic share the same 
-linear functional form (but different parameters) is there a guarantee of convergence [cite] which is 
+combined with off-policy bootstrapping \cite{Baird95} can lead to divergence. Only when both actor and critic share the same 
+linear functional form (but different parameters) is there a guarantee of convergence \cite{Sutton00policygradient} which is 
 restrictive. The divergence problem can be addressed by moving from on-line to off-line learning methods such 
 as fitted/batch reinforcement learning.
 
 %By first computing the value function until convergence off-line in a fitted setting 
 %resolves the divergence issue and the gradient estimate, computed from the value function, of the policy's parameters 
 %will have low variance.
+%for which random exploration is infeasible
 
-In this paper we propose a Fitted Policy Iteration (FPI) method suited for POMDP and MDP problems which have large continuous belief-state 
-and action spaces and for which random exploration is considered infeasible. 
-We address the exploration-exploitation dilemma by using sample episodes (demonstrations) provided by human 
+In this paper we propose a Fitted Policy Iteration (FPI) approach for large continuous state and action space 
+(PO)MDPs. In this framework the policy and value function have different functional representations and the learning 
+is comprised of two steps: \textit{fitted policy evaluation} and \textit{policy improvement}. In fitted policy 
+evaluation a value function is estimated (locally weighted regression) offline by applying multiple passes of 
+bellman backup operator over a dataset of episodes until the bellman residual converges. 
+By separating the update of the value function and policy in an on-policy off-line framework 
+it is guaranteed that the value function will not diverge \cite{stable_FA_gordon_1995,LSPI_2003} . In the policy improvement step, 
+the parameters of a Gaussian Mixture Model (GMM) policy are updated to maximise the estimated value function. 
+This is achieved by modifying the traditional GMM Expectation-Maximisation (EM) \cite{Bilmes97agentle} algorithm 
+to our Q-EM method in which each data point (state-action pairs) are 
+weighted proportionally to the temporal difference error. The Q-EM approach is close to GMM-EM making 
+it intuitive and easy to implement and avoids the need of a learning rate.
+
+The exploration-exploitation dilemma is addressed by using sample episodes provided by human 
 teachers in a Programming by Demonstration (PbD) framework. It has been previously shown \cite{Chambrier2014} 
 that humans exhibit both risk-prone and averse behaviour which constitutes an ideal training set 
 (mixture of explorative-exploitative behaviour) for a reinforcement learning problem, removing the 
 need for costly autonomous exploration. 
-The Fitted Policy Iteration method is based on an on-policy Actor-Critic framework. A belief-space value function 
-is learned from human teacher demonstrations by fitted policy evaluation which computes the value function, off-line, 
-from a dataset of episodes. The derivative of the value function is used in a Monte-Carlo Expectation-Maximisation[cite] policy search 
-method adapted for a Gaussian Mixture Model (GMM) policy by modifying the GMM Expectation-Maximisation (EM) \cite{Bilmes97agentle} algorithm, 
-which we call Q-EM. The Q-EM approach is close to GMM-EM making it intuitive and easy to implement.
+
+% Monte-Carol Expectation-Maximisation MC-EM policy search method [] which we modified to 
+% the derivative of the value function (temporal difference error) is use to weigh 
+% sample state-action pairs, from the set of episodes, which is us
+% Monte-Carlo Expectation-Maximisation 
+%Monte-Carlo Expectation-Maximisation policy search approach  adapted [cite] which we adapted for a Gaussian Mixture Model (GMM) policies 
+% by modifying the GMM Expectation-Maximisation (EM) \cite{Bilmes97agentle} algorithm, which we call Q-EM. 
+%In the policy evaluation step, value function is learned by fitted policy evaluation, which computes the value function off-line until the bellman residual converges, 
+%from a dataset of sample episodes provided by human teachers. 
+
+
 
 We consider a plug power-socket search and connection task, also known as Peg-in-Hole (PiH), in which a 
 robot apprentice must localise a power socket and establish a connection. 
@@ -280,7 +298,7 @@ conducted to evaluate the FPI in the PiH-search task. Section \ref{sec:conclusio
 % POMDP is not introduced in the paper. Despite it is a quite known model, it should be 
 
 A Partially Observable Markov Decision Process (POMDP) is a generic framework for formulating a temporal decision process 
-given that the state space is not directly observable \cite{Sondik_1973}. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,r,\gamma\}$, 
+given that the state space is not directly observable \cite{Sondik_1973}. A POMDP is defined by the tuple $\{X,U,Y,T,\Omega,R,\gamma\}$, 
 where $X$, $U$ and $Y$ are the state, action and observation spaces (which can be discrete or continuous);
 ${T:= p(x_t|x_{t-1},u_{t-1})}$ is the state transition probability distribution; $\Omega := p(y_t|x_t)$ is 
 the observation model which gives the probability of a measurement $y_t \in Y$ given a state $x_t \in X$; 
@@ -318,40 +336,95 @@ by Generalized Policy Iteration \cite[Chap. 4.6]{sutton1998reinforcement}.
   V^{\pi_{\Param}}(b) = R_B(b) + \sum\limits_{u \in U}\, \pi_{\Param}(b,u)\, \gamma \sum\limits_{y\in Y} p(y|b,u)\, V^{\pi_{\Param}}(\tau(b,u,y))
 \end{equation}
 
-Solving discrete state space POMDP problems is a difficult as the number of parameters of the value function grows 
+Solving a discrete state space POMDP problems is a difficult as the number of parameters of the value function grows 
 exponentially with respect to the decision horizon \cite[Chap. 15]{Thrun_Burgard_Fox_2005}\cite{Sondik_1973},
 a by-product of preserving the Piece Wise Linear and Convex (PWLC) property of the value function. Recent 
 advances for discrete POMDPs are  Point-based Value Iteration (PBVI) methods \cite{PBVI_2003}, which focus
 on pruning, belief selection and exploration strategies, see \cite{Veiga14aaai}, \cite{POMDP_approach_2010}.
 However these Value Iteration (VI) approaches do not naturally transfer to a 
-continuous domains \cite{cPBVI_2006}. 
+continuous domains \cite{cPBVI_2006}. An alternative approach is to represent the value function by a non-parametric function,
+parameterize the belief space and perform approximate dynamic programming.
 
-%Policy Search (PS) methods \cite{p_search_surv_2011} directly optimised the policy's parameters without estimating 
-%a value function. The advantage is that convergence (local) can be guaranteed and the policy is smooth as taking the derivative of 
-%the value function, even when small approximation errors are present, can lead to sub-optimal greedy policies 
-%\cite{Baxter_GPOMDP_2000}. Policy search methods work well when the number of parameters are relatively low but 
-%as the number of parameters increase the learning becomes slow as the variance of the policy's gradient estimate 
-%is high \cite{rl_ac_surv_2012}. 
 
-% However using function approximation with temporal difference learning can lead to diverence.
-%\subsection{Related work}
-%There are two research domains which are closely related this work;
-%Fitted Reinforcement learning and Peg-in-hole.
-\subsection{Fitted Reinforcement Learning}
+\subsection{Approximate dynamic programming}
 
-%AC is advantageous in that the policy can be chosen which 
-%is computationally efficient in evaluating actions whilst the value function can have a more complex representation.
-% By retaining all the data and applying Batch RL the chance of the function approximator diverging when it is 
-% not an averager (a neural network for instance) is reduced.
+%
+% 1) Explain Appoximate dynamic programming (why ?)
+%	-> some examples in litterature
+%	-> diverging value function => this is why approximate dynamic programming methods are better. 
 
-To guarantee convergence of a value function approximator, in model based RL, when combined with 
-temporal difference learning, the functional parameterisation has to be an averager 
-(tile coding, k-nearest-neighbour, locally weighted averaging) \cite{stable_FA_gordon_1995}. 
-The extension to a model-free approach with a kernel function approximator known as Kernel-Based Approximate 
-Dynamic Programming (KBDP) \cite{kernel_rl_ormoneit_2002} has proven to be globally optimal in a continuous-space framework. 
-These convergence guarantees lead to an increase in the popularity of Batch RL methods such as Fitted Value Iteration (FVI) \cite{fvi_uav_2010} and Fitted Q-Iteration (FQI) \cite{EGW05,fqi_nips_peter_2009}.
+% Q-iteration update is a contraction
+%
+% If Q approximator are nonexpansions, the entire fitted Q-iteration update is a contraction and 
+% therefore asymptotically converges.
+
+% Approximiat
+
+Approximate Dynamic Programming (ADP)\cite{approx_rl_overview_2011} methods for solving (PO)MDPs do not utilise the PWLC 
+property of the value function and instead directly learn the mapping:
+
+\begin{equation}
+  Q_\mathbf{w}^{\pi_{\Param}}: b,u \mapsto q
+\end{equation}
+
+by regression from a dataset of state transition samples. This is done offline and it is assumed that state transition samples are prior-knowledge. 
+The increase in popularity of ADP, also known as Batch reinforcement learning, arose as it addressed the limitations of traditional online 
+method such as Q-learning which are hard to combine with function approximation when trying to scale them to full continuous state spaces. One 
+of the particular issue that ADP addresses is stability issues when using function approximation, see \cite{RL_state_art_2012}[Chap. 2]. It was 
+first proved by \cite{stable_FA_gordon_1995} that offline fitted value iteration is stable given that the function approximator belongs to 
+the family of averages (nonexpansion in max norm). The authors successfully learned mountain car value function (locally weighted averaging) 
+in which the input was two consecutive images of the mountain car simulation resulting in 2048 dimensional state space. In \cite{Boyan95generalizationin}
+the others showed that when traditional regression techniques (neural networks, locally weighted regression or linear regression) where naively combined
+with dynamic programming this often lead to the value function diverging in common reinforcement learning problems. By separating the 
+bellman backup operator and the fitting of the regressor function, similarly as in \cite{stable_FA_gordon_1995}, they demonstrated that locally weighted 
+regression could be combined with dynamic programming to learn the mountain car policy. The extension of \cite{stable_FA_gordon_1995} results 
+to a model-free approach with a kernel function approximator known as Kernel-Based Approximate Dynamic Programming (KBDP) \cite{kernel_rl_ormoneit_2002} 
+has proven to be globally optimal in a continuous-space framework.  These convergence guarantees lead to an increase in the popularity of 
+Batch RL methods such as Fitted Value Iteration (FVI) \cite{fvi_uav_2010} and Fitted Q-Iteration (FQI) \cite{EGW05,fqi_nips_peter_2009}. 
 By remembering all the state transition pairs and by separating the Dynamic Programming (DP) backup operator with function approximation learning (fitting), 
 the problem of diverging value function approximators is resolved. 
+
+
+In a POMDP using the ADP approach is much simpler to implement and understand as there is no need to implement pruning heurisitcs which 
+are required to keep the set of support belief points small and as a regression function is being learned directly an ADP approach to a POMDP 
+problem will make it easier to apply to a continuous state and action space.  A very first successful example of this approach is Monte Carlo POMDP 
+(MC-POMDP) \cite{Thrun_1999} in which a Q-value function (k-nearest-neighbour) is learned in an online experience replay (synonym for batch)  
+framework. The belief was represented by a particle filter and the distance metric used in k-nearest neighbour (knn) was the KL-divergence between 
+to particle sets convolved with a Gaussian function. One of the drawbacks each data point of the knn is point cloud which is costly when a the distance 
+with a new point cloud has to be evaluated. 
+
+In \cite{PPOMDP_2006} a POMDP policy for a 2D navigation problem is learned with fitted Value Iteration (VI) in which the belief space is represented by 
+a Gaussian functions parameters which are updated by a an Extended Kalman Filter. The authors first pre-calculate the state transition and observation models 
+and performs forward simulation to compute the resulting belief state during the evaluation, value iteration, of the new target values of belief. The value 
+function is then fitted to the belief parameter target value pairs with a Freudenthal triangulation function approximator. This model based fitted value iteration 
+approach works when it is feasible to sample actions during the computation of the maximisation in VI which we consider infeasible in our case. When the controlling 
+a robotic system on-policy methods such as actor critics are more suitable for the reasons we outlined in the Introduction.
+
+In \cite{Melo2008} the authors introduce a Fitted Natural Actor Critic (FNAC) algorithm in which they introduce importance 
+resampling in order to reuse the trajectories from previous policy parametrisations in order to be more data efficient. Their approach requires keeping 
+parameters for both the value and advantage function and require a learning rate to be chosen. The Fitted Policy Iteration will only estimate the parameters 
+of a value function (not a q-value function) and as a result the value function will have less dimensions.
+
+	% fitted natural actor critic
+% variant of fitted value iteration with importance resampling. Summarizing, FNAC allows for general function approximation 
+% in the critic component, while being able to use all sampled data in all iterations of the algorithm.
+% Use gradient approach which implies a learning rate as to be set.
+
+Approximate Policy Iteration 
+
+\cite{LSPI_2003} %Only uses linear architecture which makes the maximisation of the 
+
+
+\cite{Jodogne2006} 	% approximate policy iteration
+% use Approximate iteration approach in which the q-value of a given policy is first evaluated before in a second step the parameters of 
+% a policy is maximised with respect to the value function. The regression function is a Tree and the action space is discrete
+% Learn a control policy mapping from images to actions used a Approximate policy iteration framework. The policy is achieved by making the 
+% is a greedy Q-function.
+
+% want to go to explain methods like power
+
+
+
 A successful example is Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which 
 uses a multi-layer perceptron to represent the Q-function for the cart-pole and mountain car problems and 
 shows rapid convergence to optimal policies. It has since been used in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}.
@@ -369,7 +442,9 @@ We chose an on-policy approach to avoid the maximisation over the actions, as we
 A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
 the value function approximator.
 
-\subsection{Monte-Carlo Expectation-Maximisation policy search}
+% Fitted Natural Actor-Critic: A New Algorithm for Continuous State-Action MDP (close to what we do)
+
+
 
 \subsection{Peg-in-hole}
 
