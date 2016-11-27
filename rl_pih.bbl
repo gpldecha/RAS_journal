@@ -1,15 +1,8 @@
-\begin{thebibliography}{56}
+\begin{thebibliography}{48}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
-
-\bibitem[{Abu-Dakka et~al.(2014)Abu-Dakka, Nemec, Kramberger, Buch, Kr{\"u}ger,
-  and Ude}]{sol_pdg_pbd_2014}
-Abu-Dakka, F., Nemec, B., Kramberger, A., Buch, A.~G., Kr{\"u}ger, N., Ude, A.,
-  2014. Solving peg-in-hole tasks by human demonstration and exception
-  strategies. Industrial Robot 41~(6), 575--584.
-\newline\urlprefix\url{http://dx.doi.org/10.1108/IR-07-2014-0363}
 
 \bibitem[{Agostini and Celaya(2010)}]{rl_gmm_2010}
 Agostini, A., Celaya, E., July 2010. Reinforcement learning with a gaussian
@@ -90,12 +83,6 @@ Chambrier, G.~d., Billard, A., 2014. Learning search policies from humans in a
   partially observable context. Journal of Robotics and Biomimetics 1~(1),
   1--16.
 
-\bibitem[{Cheng and Chen(2014)}]{online_gpr_icra_2014}
-Cheng, H., Chen, H., may 2014. Online parameter optimization in robotic force
-  controlled assembly processes. In: International Conference on Robotics and
-  Automation (ICRA). pp. 3465--3470.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/ICRA.2014.6907358}
-
 \bibitem[{Cheng et~al.(2014)Cheng, Chen, Hao, and Li}]{pomdp_peg_icra_2014}
 Cheng, H., Chen, H., Hao, L., Li, W., May 2014. Robot learning based on partial
   observable markov decision process in unstructured environment. In:
@@ -133,13 +120,6 @@ Grondman, I., Busoniu, L., Lopes, G., Babuska, R., Nov 2012. A survey of
   Reviews) 42~(6), 1291--1307.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/TSMCC.2012.2218595}
 
-\bibitem[{Gullapalli et~al.(1994)Gullapalli, Barto, and
-  Grupen}]{learn_admittance_icra_1994}
-Gullapalli, V., Barto, A., Grupen, R., may 1994. Learning admittance mappings
-  for force-guided assembly. In: International Conference on Robotics and
-  Automation (ICRA). pp. 2633--2638.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/ROBOT.1994.351117}
-
 \bibitem[{Hausknecht and Stone(2015)}]{DRQ_AAAI_2015}
 Hausknecht, M., Stone, P., 2015. Deep recurrent q-learning for partially
   observable mdps. Association for the Advancement of Artificial Intelligence
@@ -157,13 +137,6 @@ Jodogne, S., Briquet, C., Piater, J.~H., 2006. {Approximate Policy Iteration
   for Closed-Loop Learning of Visual Tasks}. Springer Berlin Heidelberg, pp.
   210--221.
 \newline\urlprefix\url{http://dx.doi.org/10.1007/11871842{\_}23}
-
-\bibitem[{Kalakrishnan et~al.(2011)Kalakrishnan, Righetti, Pastor, and
-  Schaal}]{learn_force_c_icirs_2011}
-Kalakrishnan, M., Righetti, L., Pastor, P., Schaal, S., Sept 2011. Learning
-  force control policies for compliant manipulation. In: International
-  Conference on Intelligent Robots and Systems (ICRA). pp. 4639--4644.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/IROS.2011.6095096}
 
 \bibitem[{Kormushev et~al.(2010)Kormushev, Calinon, Saegusa, and
   Metta}]{Kormushev2010Humanoids}
@@ -189,13 +162,6 @@ Lange, S., Riedmiller, M., July 2010. Deep auto-encoder neural networks in
 Lauri, M., Ritala, R., 2016. Planning for robotic exploration based on forward
   simulation. Robotics and Autonomous Systems.
 
-\bibitem[{Meeussen et~al.(2010)Meeussen, Wise, Glaser, Chitta, and et.
-  al}]{peg_personal_icra_2010}
-Meeussen, W., Wise, M., Glaser, S., Chitta, S., et. al, May 2010. Autonomous
-  door opening and plugging in with a personal robot. In: International
-  Conference on Robotics and Automation (ICRA). pp. 729--736.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/ROBOT.2010.5509556}
-
 \bibitem[{Melo and Lopes(2008)}]{Melo2008}
 Melo, F.~S., Lopes, M., 2008. {Fitted Natural Actor-Critic: A New Algorithm for
   Continuous State-Action MDPs}. Springer Berlin Heidelberg, pp. 66--81.
@@ -205,13 +171,6 @@ Melo, F.~S., Lopes, M., 2008. {Fitted Natural Actor-Critic: A New Algorithm for
 Mnih, V., 02 2015. Human-level control through deep reinforcement learning.
   Nature 518~(7540), 529--533.
 \newline\urlprefix\url{http://dx.doi.org/10.1038/nature14236}
-
-\bibitem[{Nemec et~al.(2013)Nemec, Abu-Dakka, Ridge, and et.
-  al}]{trans_workpiece_icra_2013}
-Nemec, B., Abu-Dakka, F., Ridge, B., et. al, Nov 2013. Transfer of assembly
-  operations to new workpiece poses by adaptation to the desired force profile.
-  In: International Conference on Advanced Robotics (ICAR). pp. 1--7.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/ICAR.2013.6766568}
 
 \bibitem[{Neumann and Peters(2009{\natexlab{a}})}]{fqi_nips_peter_2009}
 Neumann, G., Peters, J., Jun 2009{\natexlab{a}}. Fitted q-iteration by
@@ -263,12 +222,6 @@ Ross, S., Pineau, J., Paquet, S., Chaib-draa, B., Jul 2008. Online planning
   663--704.
 \newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=1622673.1622690}
 
-\bibitem[{Siddharth and Branicky(2001)}]{search_strategies_icra_2001}
-Siddharth, C., Branicky, M., 2001. Search strategies for peg-in-hole assemblies
-  with position uncertainty. In: International Conference on Intelligent Robots
-  and Systems (ICRA). Vol.~3. pp. 1465--1470.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/IROS.2001.977187}
-
 \bibitem[{Smallwood and Sondik(1973)}]{Sondik_1973}
 Smallwood, R., Sondik, E., Oct 1973. The optimal control of partially
   observable markov processes over a finite horizon. Journal of Operational
@@ -311,12 +264,5 @@ Vien, N., Toussaint, M., Sept 2015. Pomdp manipulation via trajectory
 \bibitem[{Wiering and van Otterio(2012)}]{RL_state_art_2012}
 Wiering, M., van Otterio, M., 2012. Reinforcement Learning State-of-the-Art.
   Springer-Verlag Berlin Heidelberg.
-
-\bibitem[{Yang et~al.(2014)Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and
-  Savarimuthu}]{fast_peg_pbd_icmc_2014}
-Yang, Y., Lin, L., Song, Y., Nemec, B., Ude, A., Buch, A., Kruger, N.,
-  Savarimuthu, T., 2014. Fast programming of peg-in-hole actions by human
-  demonstration. pp. 990--995.
-\newline\urlprefix\url{http://dx.doi.org/10.1109/ICMC.2014.7231702}
 
 \end{thebibliography}
