@@ -1,4 +1,4 @@
-\begin{thebibliography}{48}
+\begin{thebibliography}{51}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -30,6 +30,15 @@ Baxter, J., Bartlett, P., 2000. Reinforcement learning in pomdp's via direct
 Bergman, N., Bergman, N., 1999. Recursive bayesian estimation: Navigation and
   tracking applications. thesis no 579. Tech. rep., Link\"oping University,
   Link\"oping Studies in Science and Technology. Doctoral dissertation.
+
+\bibitem[{Bertsekas(2011)}]{Bertsekas2011}
+Bertsekas, D.~P., 2011. Approximate policy iteration: a survey and some new
+  methods. Journal of Control Theory and Applications 9~(3), 310--335.
+\newline\urlprefix\url{http://dx.doi.org/10.1007/s11768-011-1005-3}
+
+\bibitem[{Bertsekas and Tsitsiklis(1996)}]{Neuro_1996}
+Bertsekas, D.~P., Tsitsiklis, J.~N., 1996. Neuro-Dynamic Programming, 1st
+  Edition. Athena Scientific.
 
 \bibitem[{Bilmes(1997)}]{Bilmes97agentle}
 Bilmes, J., 1997. A gentle tutorial on the em algorithm and its application to
@@ -89,10 +98,18 @@ Cheng, H., Chen, H., Hao, L., Li, W., May 2014. Robot learning based on partial
   International Conference on Robotics and Automation (ICRA). pp. 4399--4404.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/ICRA.2014.6907500}
 
-\bibitem[{Deisenroth et~al.(2013)Deisenroth, Neumann, and
+\bibitem[{Deisenroth et~al.(2013{\natexlab{a}})Deisenroth, Neumann, and
   Peters}]{p_search_surv_2011}
-Deisenroth, M.~P., Neumann, G., Peters, J., 2013. A survey on policy search for
-  robotics. Foundations and Trends in Robotics 2~(1-2), 1--142.
+Deisenroth, M.~P., Neumann, G., Peters, J., 2013{\natexlab{a}}. A survey on
+  policy search for robotics. Foundations and Trends in Robotics 2~(1-2),
+  1--142.
+\newline\urlprefix\url{http://dx.doi.org/10.1561/2300000021}
+
+\bibitem[{Deisenroth et~al.(2013{\natexlab{b}})Deisenroth, Neumann, and
+  Peters}]{rl_gradient_survey_2013}
+Deisenroth, M.~P., Neumann, G., Peters, J., 2013{\natexlab{b}}. A survey on
+  policy search for robotics. Foundations and Trends in Robotics 2~(1-2),
+  1--142.
 \newline\urlprefix\url{http://dx.doi.org/10.1561/2300000021}
 
 \bibitem[{Du et~al.(2010)Du, Hsu, Kurniawati, Lee, Ong, and

@@ -26,6 +26,7 @@
 \citation{Kormushev2010Humanoids,Calinon2013369}
 \citation{rl_ac_surv_2012}
 \citation{sutton1998reinforcement}
+\citation{rl_ac_surv_2012}
 \citation{Baxter_GPOMDP_2000}
 \citation{Baird95}
 \citation{Sutton00policygradient}
@@ -70,26 +71,25 @@
 \citation{DRQ_AAAI_2015}
 \citation{Thrun_1999}
 \citation{PPOMDP_2006}
+\citation{Neuro_1996,Bertsekas2011}
 \citation{LSPI_2003}
+\citation{Sutton00policygradient}
 \citation{Jodogne2006}
-\citation{approx_rl_overview_2011}
-\citation{RL_state_art_2012}
+\citation{rl_gradient_survey_2013}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Approximate dynamic programming}{3}{subsection.2.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{3}{section.3}}
+\newlabel{sec:experiment_methods}{{3}{3}{Methodology}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}PiH-search experiment}{3}{subsection.3.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Peg-in-Hole search task setup}. \textit  {Top-left}: Three different sockets are used, socket A will be only used to gather training data whilst socket B and C will be used for evaluation purposes. \textit  {Top-right:} Dimensions of the the wall and socket, the orange area illustrates the possible locations in which the human teacher will start the search. \textit  {Bottom-left:} A participant (human teacher) is blindfolded and placed within the orange rectangular area always facing the wall. He is holding a cylinder equipped with a peg and an ATI force torque sensor and OptiTrack markers. See \href  {http://lasa.epfl.ch/videos/gpldecha/pih-search/human_search.wmv}{Video 1} for an illustrate of a human subject performing the search task. \textit  {Bottom-right:} The KUKA LWR robot is equipped with a peg holder mounted with an ATI force torque sensor, it is reproducing a search and connection policy learned from the human demonstrations. See \href  {http://lasa.epfl.ch/videos/gpldecha/pih-search/KUKA_pih-search.wmv}{Video 2} for an illustration of the KUKA searching for the socket and then establishing a connection.}}{4}{figure.1}}
 \newlabel{fig:search_task_setup}{{1}{4}{\textbf {Peg-in-Hole search task setup}. \textit {Top-left}: Three different sockets are used, socket A will be only used to gather training data whilst socket B and C will be used for evaluation purposes. \textit {Top-right:} Dimensions of the the wall and socket, the orange area illustrates the possible locations in which the human teacher will start the search. \textit {Bottom-left:} A participant (human teacher) is blindfolded and placed within the orange rectangular area always facing the wall. He is holding a cylinder equipped with a peg and an ATI force torque sensor and OptiTrack markers. See \href {http://lasa.epfl.ch/videos/gpldecha/pih-search/human_search.wmv}{Video 1} for an illustrate of a human subject performing the search task. \textit {Bottom-right:} The KUKA LWR robot is equipped with a peg holder mounted with an ATI force torque sensor, it is reproducing a search and connection policy learned from the human demonstrations. See \href {http://lasa.epfl.ch/videos/gpldecha/pih-search/KUKA_pih-search.wmv}{Video 2} for an illustration of the KUKA searching for the socket and then establishing a connection}{figure.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{4}{section.3}}
-\newlabel{sec:experiment_methods}{{3}{4}{Methodology}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}PiH-search experiment}{4}{subsection.3.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Experiment protocol. The participants are divided in two groups of 5, Group A begins with socket A and after a short break repeats the task with socket B. The same logic holds for Group B. For each socket 15 executions of the task are recorded.}}{4}{figure.2}}
 \newlabel{fig:experiment_design}{{2}{4}{Experiment protocol. The participants are divided in two groups of 5, Group A begins with socket A and after a short break repeats the task with socket B. The same logic holds for Group B. For each socket 15 executions of the task are recorded}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data collection}{4}{subsection.3.2}}
 \citation{Bergman99recursivebayesian}
 \newlabel{fig:data-flow}{{3.2}{5}{Data collection}{subsection.3.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textit  {Left:} The Point Mass Filter is updated with velocities, $u$ from the Optitrack vision system when human demonstrations are being recorded. When the policy is active the PMF uses the velocity output of policy $\pi _{\boldsymbol  {\theta }_1}$. The sensed wrench $\phi $ is transformed to a multivariate binary feature vector which is used in the PMF state estimator. The filtered probability density, $b$ is compressed to a lower dimensional feature vector $F$ before given as input to the linear velocity policy $\pi _{\boldsymbol  {\theta }_1}$. The second policy $\pi _{\boldsymbol  {\theta }_2}$ outputs angular velocities $\omega $ given a sensed wrench $\phi $ and is used during the insertion stage of the PiH. \textit  {Right:} Data pipeline. First a set of $M$ demonstrates a dataset is created consisting of two subsets. Secondly, the left dataset is used to learn policy $\pi _{\boldsymbol  {\theta }_1}$ in an Actor-Critic framework the dataset on the right is used to directly learn the statistical policy $\pi _{\boldsymbol  {\theta }_2}$.}}{5}{figure.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data collection}{5}{subsection.3.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Black points represent the starting position of the end-effector for all the demonstrations. Four trajectories are illustrated.}}{5}{figure.5}}
 \newlabel{fig:experiment_setup_data}{{5}{5}{Black points represent the starting position of the end-effector for all the demonstrations. Four trajectories are illustrated}{figure.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Learning}{5}{section.4}}
-\newlabel{sec:learning-value-actor}{{4}{5}{Learning}{section.4}{}}
 \citation{Kronander2015}
 \citation{sutton1998reinforcement}
 \citation{Atkeson97locallyweighted}
@@ -97,11 +97,13 @@
 \citation{NIPS2008_3501,EGW05,Riedmiller2005}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textit  {Left:} Point Mass Filter (PMF) update of a particular human demonstration. (1) Initial uniform distribution spread over the starting region. Each grid cell represents a hypothetical position of the plug. The orientation is assumed to be known. (2) First contact, the distribution is spread across the surface of the wall. The red trace is the trajectory history. (3) motion noise increases the uncertainty. (4) The plug is in contact with a socket edge. See \href  {http://lasa.epfl.ch/videos/gpldecha/pih-search/subject_PMF_belief_location.wmv}{Video 3} for an illustration of the PMF for a subject's search. \textit  {Right}: \textbf  {World model}: The plug is modelled by its three plug tips and the wall and sockets are fitted with bounding boxes. \textbf  {Likelihood}: The plug enters in contact with the left edge of the socket. As a result, the value of the likelihood in all the regions, $x_t$, close the left edge take a value of one (red points) whilst the others have a value zero (blue points) and areas around the socket's central ring have a value of one. }}{6}{figure.4}}
 \newlabel{fig:PMF}{{4}{6}{\textit {Left:} Point Mass Filter (PMF) update of a particular human demonstration. (1) Initial uniform distribution spread over the starting region. Each grid cell represents a hypothetical position of the plug. The orientation is assumed to be known. (2) First contact, the distribution is spread across the surface of the wall. The red trace is the trajectory history. (3) motion noise increases the uncertainty. (4) The plug is in contact with a socket edge. See \href {http://lasa.epfl.ch/videos/gpldecha/pih-search/subject_PMF_belief_location.wmv}{Video 3} for an illustration of the PMF for a subject's search. \textit {Right}: \textbf {World model}: The plug is modelled by its three plug tips and the wall and sockets are fitted with bounding boxes. \textbf {Likelihood}: The plug enters in contact with the left edge of the socket. As a result, the value of the likelihood in all the regions, $x_t$, close the left edge take a value of one (red points) whilst the others have a value zero (blue points) and areas around the socket's central ring have a value of one}{figure.4}{}}
-\newlabel{eq:GMM}{{6}{6}{Learning}{equation.4.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Learning}{6}{section.4}}
+\newlabel{sec:learning-value-actor}{{4}{6}{Learning}{section.4}{}}
+\newlabel{eq:GMM}{{5}{6}{Learning}{equation.4.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Fitted Policy Iteration}{6}{subsection.4.1}}
 \newlabel{sec:FPI}{{4.1}{6}{Fitted Policy Iteration}{subsection.4.1}{}}
 \@writefile{toc}{\contentsline {paragraph}{Policy evaluation}{6}{section*.1}}
-\newlabel{eq:value_function}{{7}{6}{Policy evaluation}{equation.4.7}{}}
+\newlabel{eq:value_function}{{6}{6}{Policy evaluation}{equation.4.6}{}}
 \newlabel{alg:fpe}{{1}{6}{Policy evaluation}{algocfline.1}{}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Fitted Policy Evaluation}}{6}{algocf.1}}
 \citation{p_search_surv_2011}
@@ -110,12 +112,12 @@
 \citation{Bishop_2006}
 \citation{peter_nac_2008}
 \@writefile{toc}{\contentsline {paragraph}{Policy improvement}{7}{section*.2}}
-\newlabel{eq:disc_return}{{8}{7}{Policy improvement}{equation.4.8}{}}
-\newlabel{eq:expected_reward}{{9}{7}{Policy improvement}{equation.4.9}{}}
-\newlabel{eq:grad_log_cost}{{10}{7}{Policy improvement}{equation.4.10}{}}
-\newlabel{eq:advantage_f}{{11}{7}{Policy improvement}{equation.4.11}{}}
-\newlabel{fig:Q-EM}{{2}{7}{Policy improvement}{equation.4.10}{}}
+\newlabel{eq:disc_return}{{7}{7}{Policy improvement}{equation.4.7}{}}
+\newlabel{eq:expected_reward}{{8}{7}{Policy improvement}{equation.4.8}{}}
+\newlabel{eq:grad_log_cost}{{9}{7}{Policy improvement}{equation.4.9}{}}
+\newlabel{fig:Q-EM}{{2}{7}{Policy improvement}{equation.4.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Q-EM Maximisation of the GMM parameters. We used the same notation and derivation as in \cite  [Chap. 9.2.2]{Bishop_2006}, where $\alpha _k(\mathbf  {x}^{[j]})$ is the responsibility factor, denoting the probability that data point $\mathbf  {x}^{[j]} = [u^{[j]},F^{[j]}]^{\mathrm  {T}}$ belongs to Gaussian function $k$.}}{7}{figure.6}}
+\newlabel{eq:advantage_f}{{10}{7}{Policy improvement}{equation.4.10}{}}
 \@writefile{toc}{\contentsline {paragraph}{2D example fitted policy iteration}{7}{section*.3}}
 \citation{gesture_calinon_2010}
 \citation{gmr_2004}
@@ -124,15 +126,15 @@
 \@writefile{toc}{\contentsline {paragraph}{Belief state fitted policy evaluation}{8}{section*.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Control architecture}{8}{section.5}}
 \newlabel{sec:control_architecture}{{5}{8}{Control architecture}{section.5}{}}
-\newlabel{eq:gmm_conditional}{{12}{8}{Control architecture}{equation.5.12}{}}
-\newlabel{eq:alpha_eq}{{13}{8}{Control architecture}{equation.5.13}{}}
-\newlabel{eq:alpha_expectation}{{14}{8}{Control architecture}{equation.5.14}{}}
+\newlabel{eq:gmm_conditional}{{11}{8}{Control architecture}{equation.5.11}{}}
+\newlabel{eq:alpha_eq}{{12}{8}{Control architecture}{equation.5.12}{}}
+\newlabel{eq:alpha_expectation}{{13}{8}{Control architecture}{equation.5.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Robot Implementation}{8}{subsection.5.1}}
-\newlabel{eq:modulation}{{15}{8}{Robot Implementation}{equation.5.15}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textit  {Left}: LWR value function approximate $\mathaccentV {hat}05E{V}^{\pi }(\mathaccentV {hat}05E{x})$ for the most likely state $\mathaccentV {hat}05E{x}$. The red plane is to help visualise where the value function is above and below the axis $z=0$. Only states with values above $0.25$ are plotted. The red arrow indicates the heading of the human teacher when performing the search task. The discount factor was $\gamma =0.99$ and the variance of the kernel variance of 1 [cm], which was set experimentally. \textit  {Middle-right}: Best and worst trajectories. The red demonstrated trajectories are the best in terms of the amount of value function gain whilst the blue are the worst. The red arrow indicates the teacher's heading. The blue trajectories tend towards the sides of the wall as the initial starting position is on the border of the wall. The red trajectories are centred along the y-axis of socket and tend to move in a straight line towards the wall whilst aligning themselves with the axis $z=0$. }}{9}{figure.8}}
 \newlabel{fig:ch4:Figure1}{{8}{9}{\textit {Left}: LWR value function approximate $\hat {V}^{\pi }(\hat {x})$ for the most likely state $\hat {x}$. The red plane is to help visualise where the value function is above and below the axis $z=0$. Only states with values above $0.25$ are plotted. The red arrow indicates the heading of the human teacher when performing the search task. The discount factor was $\gamma =0.99$ and the variance of the kernel variance of 1 [cm], which was set experimentally. \textit {Middle-right}: Best and worst trajectories. The red demonstrated trajectories are the best in terms of the amount of value function gain whilst the blue are the worst. The red arrow indicates the teacher's heading. The blue trajectories tend towards the sides of the wall as the initial starting position is on the border of the wall. The red trajectories are centred along the y-axis of socket and tend to move in a straight line towards the wall whilst aligning themselves with the axis $z=0$}{figure.8}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Q-EM and GMM policy vector fields. \textit  {Top}: The GMM policy is conditioned on an entropy of $-10$ and $-5.2$. For the lowest entropy level, most of the probability mass is close to the socket area since this level corresponds to very little uncertainty; we are already localised. We can see that the policy converges to the socket area regardless of the location of the believed state. For an entropy of $-5.2$ we can see that the likelihood of the policy is present across wall. The vector field directs the end-effector to go towards the left or right edge of the wall. \textit  {Bottom}: The entropy is marginalised out, the yellow vector field is of the Q-EM and orange of the GMM. The Q-EM vector field tends to be closer to a sink and there is less variation.}}{9}{figure.9}}
 \newlabel{fig:policy_vf}{{9}{9}{Q-EM and GMM policy vector fields. \textit {Top}: The GMM policy is conditioned on an entropy of $-10$ and $-5.2$. For the lowest entropy level, most of the probability mass is close to the socket area since this level corresponds to very little uncertainty; we are already localised. We can see that the policy converges to the socket area regardless of the location of the believed state. For an entropy of $-5.2$ we can see that the likelihood of the policy is present across wall. The vector field directs the end-effector to go towards the left or right edge of the wall. \textit {Bottom}: The entropy is marginalised out, the yellow vector field is of the Q-EM and orange of the GMM. The Q-EM vector field tends to be closer to a sink and there is less variation}{figure.9}{}}
+\newlabel{eq:modulation}{{14}{9}{Robot Implementation}{equation.5.14}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Results}{9}{section.6}}
 \newlabel{sec:results}{{6}{9}{Results}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Distance taken to reach the socket's edge}{10}{subsection.6.1}}
@@ -148,8 +150,6 @@
 \citation{Kronander2015}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces \textbf  {Experiment 4} Evaluation of generalisation. The socket is located at the top right corner of the wall. We consider a \textit  {Fixed} starting location for both the true and believed locations (most likely state $\mathaccentV {hat}05E{x}_t$) of the end-effector. The red square depicted in Figure \ref  {fig:experiment12} is the extent of the initial uniform uncertainty. \textit  {Right:} Distance taken to reach the socket's edge for four initial starting conditions, left, centre and right of Experiment 1 and the fourth is the fixed condition as previously described. For the Fixed setup both the Q-EM and GMM significantly outperform the Greedy.}}{14}{figure.13}}
 \newlabel{fig:experiment4}{{13}{14}{\textbf {Experiment 4} Evaluation of generalisation. The socket is located at the top right corner of the wall. We consider a \textit {Fixed} starting location for both the true and believed locations (most likely state $\hat {x}_t$) of the end-effector. The red square depicted in Figure \ref {fig:experiment12} is the extent of the initial uniform uncertainty. \textit {Right:} Distance taken to reach the socket's edge for four initial starting conditions, left, centre and right of Experiment 1 and the fourth is the fixed condition as previously described. For the Fixed setup both the Q-EM and GMM significantly outperform the Greedy}{figure.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion \& Conclusion}{14}{section.7}}
-\newlabel{sec:conclusion}{{7}{14}{Discussion \& Conclusion}{section.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces \textit  {Left}: 25 search trajectories for each of the three search policies for socket A. \textit  {Right} KUKA LWR4 equipped with a holder mounted with a ATI 6-axis force-torque sensor. \textit  {Socket A}: The robot's end-effector starts to the right of the socket. The second row shows screen captures taken of ROS Rviz data visualiser in which we see the Point Mass Filter (red particles) and a yellow arrow indicating the direction given by the policy. In this particular run, the plug remained in contact with the ring of the socket until the top was reached before making a connection. \textit  {Socket C}: Same initial condition as for socket A. The policy leads the plug down to the bottom corner of the socket before going the center of the top edge, localising itself, and then making a connection. See \href  {http://lasa.epfl.ch/videos/gpldecha/pih-search/KUKA_socket_B_connection.wmv}{Video 4} and \href  {http://lasa.epfl.ch/videos/gpldecha/pih-search/KUKA_socket_C_connection.wmv}{Video 5} for an illustration of the KUKA establishing a connection to socket B and C. }}{15}{figure.14}}
 \newlabel{fig:real_pictures}{{14}{15}{\textit {Left}: 25 search trajectories for each of the three search policies for socket A. \textit {Right} KUKA LWR4 equipped with a holder mounted with a ATI 6-axis force-torque sensor. \textit {Socket A}: The robot's end-effector starts to the right of the socket. The second row shows screen captures taken of ROS Rviz data visualiser in which we see the Point Mass Filter (red particles) and a yellow arrow indicating the direction given by the policy. In this particular run, the plug remained in contact with the ring of the socket until the top was reached before making a connection. \textit {Socket C}: Same initial condition as for socket A. The policy leads the plug down to the bottom corner of the socket before going the center of the top edge, localising itself, and then making a connection. See \href {http://lasa.epfl.ch/videos/gpldecha/pih-search/KUKA_socket_B_connection.wmv}{Video 4} and \href {http://lasa.epfl.ch/videos/gpldecha/pih-search/KUKA_socket_C_connection.wmv}{Video 5} for an illustration of the KUKA establishing a connection to socket B and C}{figure.14}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces  Distance taken to connect the plug to the socket (a) The Q-EM algorithm is the best for both socket A and C. For socket C, the Greedy algorithm does worse than the other two. This is because socket C has no informative features. (b) Group AA are the set of teachers who first started with socket A. They had no previous training on another socket beforehand. Group BA first gave demonstrations on Socket B before giving demonstrations on Socket A. Group BA is better than Group AA at doing the task. This is most likely a training effect. However all policy search methods are far better at connecting the plug to the socket. (c) Both Groups AB and BB are similar in terms of the distance they took to insert the plug into the socket, the search policies on the other hand travel less to accomplish the task. }}{15}{figure.15}}
@@ -162,46 +162,51 @@
 \bibcite{Baird95}{{3}{1995}{{Baird}}{{}}}
 \bibcite{Baxter_GPOMDP_2000}{{4}{2000}{{Baxter and Bartlett}}{{}}}
 \bibcite{Bergman99recursivebayesian}{{5}{1999}{{Bergman and Bergman}}{{}}}
-\bibcite{Bilmes97agentle}{{6}{1997}{{Bilmes}}{{}}}
-\bibcite{Bishop_2006}{{7}{2006}{{Bishop}}{{}}}
-\bibcite{fvi_uav_2010}{{8}{2010}{{Bou-Ammar et~al.}}{{Bou-Ammar, Voos, and Ertel}}}
-\bibcite{Boyan95generalizationin}{{9}{1995}{{Boyan and Moore}}{{}}}
-\bibcite{PPOMDP_2006}{{10}{2006}{{Brooks et~al.}}{{Brooks, Makarenko, Williams, and Durrant-Whyte}}}
-\bibcite{approx_rl_overview_2011}{{11}{2011}{{Busoniu et~al.}}{{Busoniu, Ernst, {de Schutter}, and Babuska}}}
-\bibcite{gesture_calinon_2010}{{12}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
-\bibcite{Calinon2013369}{{13}{2013}{{Calinon et~al.}}{{Calinon, Kormushev, and Caldwell}}}
-\bibcite{Chambrier2014}{{14}{2014}{{Chambrier and Billard}}{{}}}
-\bibcite{pomdp_peg_icra_2014}{{15}{2014}{{Cheng et~al.}}{{Cheng, Chen, Hao, and Li}}}
-\bibcite{p_search_surv_2011}{{16}{2013}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
-\bibcite{POMDP_approach_2010}{{17}{2010}{{Du et~al.}}{{Du, Hsu, Kurniawati, Lee, Ong, and Png}}}
-\bibcite{EGW05}{{18}{2005}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
-\bibcite{stable_FA_gordon_1995}{{19}{1995}{{Gordon}}{{}}}
-\bibcite{rl_ac_surv_2012}{{20}{2012}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
-\bibcite{DRQ_AAAI_2015}{{21}{2015}{{Hausknecht and Stone}}{{}}}
-\bibcite{Milos_POMDP_2000}{{22}{2000}{{Hauskrecht}}{{}}}
-\bibcite{Jodogne2006}{{23}{2006}{{Jodogne et~al.}}{{Jodogne, Briquet, and Piater}}}
-\bibcite{Kormushev2010Humanoids}{{24}{2010}{{Kormushev et~al.}}{{Kormushev, Calinon, Saegusa, and Metta}}}
-\bibcite{Kronander2015}{{25}{2015}{{Kronander}}{{}}}
-\bibcite{LSPI_2003}{{26}{2003}{{Lagoudakis and Parr}}{{}}}
-\bibcite{Lange_riedmiller_2010}{{27}{2010}{{Lange and Riedmiller}}{{}}}
-\bibcite{Lauri2016}{{28}{2016}{{Lauri and Ritala}}{{}}}
-\bibcite{Melo2008}{{29}{2008}{{Melo and Lopes}}{{}}}
-\bibcite{mnih-dqn-2015}{{30}{2015}{{Mnih}}{{}}}
-\bibcite{fqi_nips_peter_2009}{{31}{2009{}}{{Neumann and Peters}}{{}}}
-\bibcite{NIPS2008_3501}{{32}{2009{}}{{Neumann and Peters}}{{}}}
-\bibcite{kernel_rl_ormoneit_2002}{{33}{2002}{{Ormoneit and Glynn}}{{}}}
-\bibcite{NAC_2008}{{34}{2008{}}{{Peters and Schaal}}{{}}}
-\bibcite{peter_nac_2008}{{35}{2008{}}{{Peters and Schaal}}{{}}}
-\bibcite{PBVI_2003}{{36}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
-\bibcite{cPBVI_2006}{{37}{2006}{{Porta et~al.}}{{Porta, Vlassis, Spaan, and Poupart}}}
-\bibcite{Riedmiller2005}{{38}{2005}{{Riedmiller}}{{}}}
-\bibcite{Ross08onlineplanning}{{39}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
-\bibcite{Sondik_1973}{{40}{1973}{{Smallwood and Sondik}}{{}}}
-\bibcite{gmr_2004}{{41}{2004}{{Sung}}{{}}}
-\bibcite{sutton1998reinforcement}{{42}{1998}{{Sutton and Barto}}{{}}}
-\bibcite{Sutton00policygradient}{{43}{2000}{{Sutton et~al.}}{{Sutton, Mcallester, Singh, and Mansour}}}
-\bibcite{Thrun_1999}{{44}{2000}{{Thrun}}{{}}}
-\bibcite{Thrun_Burgard_Fox_2005}{{45}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
-\bibcite{Veiga14aaai}{{46}{2014}{{Veiga et~al.}}{{Veiga, Spaan, and Lima}}}
-\bibcite{toussain_2015}{{47}{2015}{{Vien and Toussaint}}{{}}}
-\bibcite{RL_state_art_2012}{{48}{2012}{{Wiering and van Otterio}}{{}}}
+\bibcite{Bertsekas2011}{{6}{2011}{{Bertsekas}}{{}}}
+\bibcite{Neuro_1996}{{7}{1996}{{Bertsekas and Tsitsiklis}}{{}}}
+\bibcite{Bilmes97agentle}{{8}{1997}{{Bilmes}}{{}}}
+\bibcite{Bishop_2006}{{9}{2006}{{Bishop}}{{}}}
+\bibcite{fvi_uav_2010}{{10}{2010}{{Bou-Ammar et~al.}}{{Bou-Ammar, Voos, and Ertel}}}
+\bibcite{Boyan95generalizationin}{{11}{1995}{{Boyan and Moore}}{{}}}
+\bibcite{PPOMDP_2006}{{12}{2006}{{Brooks et~al.}}{{Brooks, Makarenko, Williams, and Durrant-Whyte}}}
+\bibcite{approx_rl_overview_2011}{{13}{2011}{{Busoniu et~al.}}{{Busoniu, Ernst, {de Schutter}, and Babuska}}}
+\bibcite{gesture_calinon_2010}{{14}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion \& Conclusion}{16}{section.7}}
+\newlabel{sec:conclusion}{{7}{16}{Discussion \& Conclusion}{section.7}{}}
+\bibcite{Calinon2013369}{{15}{2013}{{Calinon et~al.}}{{Calinon, Kormushev, and Caldwell}}}
+\bibcite{Chambrier2014}{{16}{2014}{{Chambrier and Billard}}{{}}}
+\bibcite{pomdp_peg_icra_2014}{{17}{2014}{{Cheng et~al.}}{{Cheng, Chen, Hao, and Li}}}
+\bibcite{p_search_surv_2011}{{18}{2013{}}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{rl_gradient_survey_2013}{{19}{2013{}}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{POMDP_approach_2010}{{20}{2010}{{Du et~al.}}{{Du, Hsu, Kurniawati, Lee, Ong, and Png}}}
+\bibcite{EGW05}{{21}{2005}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
+\bibcite{stable_FA_gordon_1995}{{22}{1995}{{Gordon}}{{}}}
+\bibcite{rl_ac_surv_2012}{{23}{2012}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
+\bibcite{DRQ_AAAI_2015}{{24}{2015}{{Hausknecht and Stone}}{{}}}
+\bibcite{Milos_POMDP_2000}{{25}{2000}{{Hauskrecht}}{{}}}
+\bibcite{Jodogne2006}{{26}{2006}{{Jodogne et~al.}}{{Jodogne, Briquet, and Piater}}}
+\bibcite{Kormushev2010Humanoids}{{27}{2010}{{Kormushev et~al.}}{{Kormushev, Calinon, Saegusa, and Metta}}}
+\bibcite{Kronander2015}{{28}{2015}{{Kronander}}{{}}}
+\bibcite{LSPI_2003}{{29}{2003}{{Lagoudakis and Parr}}{{}}}
+\bibcite{Lange_riedmiller_2010}{{30}{2010}{{Lange and Riedmiller}}{{}}}
+\bibcite{Lauri2016}{{31}{2016}{{Lauri and Ritala}}{{}}}
+\bibcite{Melo2008}{{32}{2008}{{Melo and Lopes}}{{}}}
+\bibcite{mnih-dqn-2015}{{33}{2015}{{Mnih}}{{}}}
+\bibcite{fqi_nips_peter_2009}{{34}{2009{}}{{Neumann and Peters}}{{}}}
+\bibcite{NIPS2008_3501}{{35}{2009{}}{{Neumann and Peters}}{{}}}
+\bibcite{kernel_rl_ormoneit_2002}{{36}{2002}{{Ormoneit and Glynn}}{{}}}
+\bibcite{NAC_2008}{{37}{2008{}}{{Peters and Schaal}}{{}}}
+\bibcite{peter_nac_2008}{{38}{2008{}}{{Peters and Schaal}}{{}}}
+\bibcite{PBVI_2003}{{39}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
+\bibcite{cPBVI_2006}{{40}{2006}{{Porta et~al.}}{{Porta, Vlassis, Spaan, and Poupart}}}
+\bibcite{Riedmiller2005}{{41}{2005}{{Riedmiller}}{{}}}
+\bibcite{Ross08onlineplanning}{{42}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
+\bibcite{Sondik_1973}{{43}{1973}{{Smallwood and Sondik}}{{}}}
+\bibcite{gmr_2004}{{44}{2004}{{Sung}}{{}}}
+\bibcite{sutton1998reinforcement}{{45}{1998}{{Sutton and Barto}}{{}}}
+\bibcite{Sutton00policygradient}{{46}{2000}{{Sutton et~al.}}{{Sutton, Mcallester, Singh, and Mansour}}}
+\bibcite{Thrun_1999}{{47}{2000}{{Thrun}}{{}}}
+\bibcite{Thrun_Burgard_Fox_2005}{{48}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
+\bibcite{Veiga14aaai}{{49}{2014}{{Veiga et~al.}}{{Veiga, Spaan, and Lima}}}
+\bibcite{toussain_2015}{{50}{2015}{{Vien and Toussaint}}{{}}}
+\bibcite{RL_state_art_2012}{{51}{2012}{{Wiering and van Otterio}}{{}}}

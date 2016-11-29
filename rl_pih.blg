@@ -10,45 +10,45 @@ Warning--empty chapter and pages in Jodogne2006
 Warning--can't use both author and editor fields in Melo2008
 Warning--empty chapter and pages in Melo2008
 Warning--empty chapter and pages in Riedmiller2005
-You've used 48 entries,
+You've used 51 entries,
             2821 wiz_defined-function locations,
-            967 strings with 14402 characters,
-and the built_in function-call counts, 26071 in all, are:
-= -- 2748
-> -- 1091
-< -- 56
-+ -- 418
-- -- 358
-* -- 2173
-:= -- 4344
-add.period$ -- 168
-call.type$ -- 48
-change.case$ -- 389
-chr.to.int$ -- 46
-cite$ -- 55
-duplicate$ -- 1091
-empty$ -- 1922
-format.name$ -- 521
-if$ -- 5515
-int.to.chr$ -- 3
+            981 strings with 14735 characters,
+and the built_in function-call counts, 27489 in all, are:
+= -- 2894
+> -- 1149
+< -- 60
++ -- 442
+- -- 376
+* -- 2295
+:= -- 4594
+add.period$ -- 177
+call.type$ -- 51
+change.case$ -- 411
+chr.to.int$ -- 54
+cite$ -- 58
+duplicate$ -- 1148
+empty$ -- 2026
+format.name$ -- 548
+if$ -- 5804
+int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 51
-newline$ -- 179
-num.names$ -- 194
-pop$ -- 437
+missing$ -- 55
+newline$ -- 190
+num.names$ -- 206
+pop$ -- 461
 preamble$ -- 1
-purify$ -- 310
+purify$ -- 328
 quote$ -- 0
-skip$ -- 852
+skip$ -- 889
 stack$ -- 0
-substring$ -- 1552
-swap$ -- 307
+substring$ -- 1635
+swap$ -- 318
 text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 411
+type$ -- 435
 warning$ -- 7
-while$ -- 231
+while$ -- 245
 width$ -- 0
-write$ -- 565
+write$ -- 600
 (There were 7 warnings)
