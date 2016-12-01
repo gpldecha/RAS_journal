@@ -1,4 +1,4 @@
-\begin{thebibliography}{51}
+\begin{thebibliography}{52}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -238,6 +238,12 @@ Ross, S., Pineau, J., Paquet, S., Chaib-draa, B., Jul 2008. Online planning
   algorithms for pomdps. Journal Artifcial Intelligence Research 32~(1),
   663--704.
 \newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=1622673.1622690}
+
+\bibitem[{Siddharth and Branicky(2001)}]{search_strategies_icra_2001}
+Siddharth, C., Branicky, M., 2001. Search strategies for peg-in-hole assemblies
+  with position uncertainty. In: International Conference on Intelligent Robots
+  and Systems (ICRA). Vol.~3. pp. 1465--1470.
+\newline\urlprefix\url{http://dx.doi.org/10.1109/IROS.2001.977187}
 
 \bibitem[{Smallwood and Sondik(1973)}]{Sondik_1973}
 Smallwood, R., Sondik, E., Oct 1973. The optimal control of partially

@@ -213,7 +213,7 @@ Advances have been made in applying approximate POMDP algorithms to robotic appl
 action space which is restrictive for tasks which are naturally continuous. In this case
 a local optimisation with quantifiable actions (macro) \cite{toussain_2015} or alternatively heuristic 
 approaches \cite{Lauri2016}, based on the most likely state, can be applied. However these approaches require 
-the engineering of action and are locally optimal. 
+the engineering of actions and are locally optimal. 
 
 % Both result in a large amount of rollouts, necessary to solve the RL problem, which is undesirable.
 %Alternative Policy Search (PS) methods \cite{p_search_surv_2011} naturally support continuous actions and directly optimise 
@@ -229,7 +229,7 @@ An alternative is Policy Search (PS) methods \cite{p_search_surv_2011} where the
 parametric function ideal for robotics or non discretisable control systems. The parameters are updated (gradient ascent or EM) 
 to maximise the reward function directly without the estimation of a value function. Although successful 
 when used to learn reflexes or motion primitives \cite{Kormushev2010Humanoids,Calinon2013369}, when considering continuous (PO)MDPs policies
-with a large number of parameters traditional un-informed autonomous exploration strategies  result in a large variance in the gradient estimate of the parameters 
+with a large number of parameters uninformed autonomous exploration strategies  result in a large variance in the gradient estimate of the parameters 
 which leads to inefficient learning \cite{rl_ac_surv_2012}.
 Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement} address 
 the large variance of the parameters gradient estimate by having a separate parameterisation of the policy (actor) and value function 
@@ -240,7 +240,7 @@ to sub-optimal greedy policies \cite{Baxter_GPOMDP_2000}. The drawback of ACs an
 are combined with off-policy bootstrapping this can lead to divergence of the value functions parameters \cite{Baird95}. Only when both actor 
 and critic are linear in parameters and share the same basis functions (but different parameters) is there a guarantee 
 of convergence \cite{Sutton00policygradient} to a local optimum which is restrictive. The divergence problem can be 
-addressed by trading off online for offline learning methods such as fitted/batch reinforcement learning.
+addressed by trading online for offline learning methods such as fitted/batch reinforcement learning.
 
 %By first computing the value function until convergence off-line in a fitted setting 
 %resolves the divergence issue and the gradient estimate, computed from the value function, of the policy's parameters 
@@ -277,7 +277,7 @@ need for costly autonomous exploration.
 
 
 
-We consider a plug power-socket search and connection task, also known as Peg-in-Hole (PiH), in which a 
+We consider a plug power-socket search and connection task, also known as Peg-in-Hole (PiH)\cite{search_strategies_icra_2001}, in which a 
 robot apprentice must localise a power socket and establish a connection. 
 No vision system is used during the task and only haptic information, provided via 
 a force-torque sensor mounted on the end-effector of the robot. This choice is motivated by two reasons:
@@ -371,10 +371,10 @@ The increase in popularity of ADP arose as it addresses stability issues when fu
 with traditional online off-policy method such as Q-learning, see \cite{RL_state_art_2012}[Chap. 2].
 It was first proved by \cite{stable_FA_gordon_1995} that offline fitted value iteration is stable given that the function approximator belongs to 
 the family of averages (nonexpansion in max norm). The authors successfully learned the mountain car value function (locally weighted averaging) 
-in which the input was two consecutive images of the mountain car simulation resulting in 2048 dimensional state space. 
+in which the input was two consecutive images of the mountain car's simulation resulting in 2048 dimensional state space. 
 In \cite{Boyan95generalizationin} the others showed that when traditional regression techniques 
-(neural networks, locally weighted regression or linear regression) where naively combined with dynamic programming this 
-often lead to the value function diverging in common reinforcement learning problems. By separating the bellman backup operator 
+(neural networks, locally weighted regression or linear regression) were naively combined with dynamic programming  
+often leads to the value function diverging in common reinforcement learning problems. By separating the bellman backup operator 
 and the fitting of the regressor function, similarly as in \cite{stable_FA_gordon_1995}, they demonstrated that locally weighted 
 regression could be combined with dynamic programming to learn the mountain car policy. The extension of results in \cite{stable_FA_gordon_1995}  
 to a model-free approach with a kernel function approximator known as Kernel-Based Approximate Dynamic Programming (KBDP) 
@@ -382,13 +382,11 @@ to a model-free approach with a kernel function approximator known as Kernel-Bas
 lead to an increase application of the ADP methodology to reinforcement learning with application in the control of a UAV with fitted 
 value iteration\cite{fvi_uav_2010}, and to other reinforcement learning architectures such as Fitted Natural Actor Critic 
 (FNAC) \cite{Melo2008} and Fitted Q-Iteration (FQI) \cite{EGW05,fqi_nips_peter_2009}. Even non averager regressor functions have been successfully 
-combined with dynamic programming in the fitted reinforcement learning framework. A successful example is 
+combined with dynamic programming in the fitted reinforcement learning framework such as 
 Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which uses a multi-layer perceptron to represent the Q-function for 
-the cart-pole and mountain car problems and shows rapid convergence to optimal policies. It has since been used 
-in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}. This has lead to the application of more sophisticated regression methods such as 
-Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} which learned a visual control policy from directly mapping pixel 
-input to control output and since more deep learning research has been combined with ADP \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015}.
-
+the cart-pole and mountain car problems and has since been used in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}. 
+This has lead to the application of more sophisticated regression methods such as Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} which learned a visual 
+control policy from directly mapping pixel input to control output and since more deep learning research has been combined with ADP \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015}.
 
 An early successful example of the application of the ADP concepts to a POMDP problem was Monte Carlo POMDP (MC-POMDP) \cite{Thrun_1999} in which a 
 Q-value function (k-nearest-neighbour, which is an averager), is learned online whilst also using experience 
@@ -405,7 +403,7 @@ backup operator to compute the resulting belief state during the evaluation of t
 then fitted to the belief parameter target value pairs with a Freudenthal triangulation function approximator. 
 This model based fitted value iteration approach works when it is feasible to sample actions during the computation 
 of the maximisation in VI which we consider infeasible in our case. When the controlling a robotic system on-policy 
-methods such as actor critics are more suitable for the reasons we outlined in the introduction.
+methods such as actor-critics are more suitable for the reasons we outlined in the introduction.
 
 % By remembering all the state transition pairs and by separating the Dynamic Programming (DP) backup operator with function approximation learning (fitting), 
 % the problem of diverging value function approximators has been greatly diminished. 
@@ -422,7 +420,7 @@ Approximate Policy Iteration (API) \cite{Neuro_1996,Bertsekas2011} is suited for
 An early application in a batch setting was Least-Squares Policy Iteration (LSPI) \cite{LSPI_2003} where the associated 
 Q-value function is represented by linear weighed sum of radial basis functions and a policy learned to control 
 a simulated bike. Although a API approach the value function and control policy do not have a separate 
-architecture and the Q-value function has to have a linear architecture \cite{Sutton00policygradient}. In 
+architecture and the Q-value function has to be linear in the parameters \cite{Sutton00policygradient}. In 
 \cite{Jodogne2006} the authors introduce a non-parametric API approach for learning a vision to discrete action policy in which 
 a Q-function (a regression Tree) is learned for each separate action. To the authors knowledge there are none or very 
 few examples in which API as been applied to a continuous state and action space in which the policy and value function 
@@ -430,13 +428,15 @@ have distinct functional forms.
 
 Our contribution is a Fitted Policy Iteration approach suited for continuous state and action space. The policy improvement 
 step follows closely the fitted reinforcement learning approach in the literature with the difference that we learn the value instead of 
-the Q function. The main difference of our approach with the literature is in the policy improvement step in which we introduce 
-a novel Monte-Carlo Expectation Maximisation algorithm tailored for Gaussian Mixture Model policies. 
+the Q-function. The main difference of our approach with the literature is in the policy improvement step in which we introduce 
+a Monte-Carlo Expectation Maximisation (MC-EM) algorithm tailored for Gaussian Mixture Model policies. We do not give a review 
+of EM-MC approaches but refer to reader to \cite{rl_gradient_survey_2013}[p. 51] (Algorithm 11) which was the inspiration behind 
+the FPI.
 
-The Fitted Policy Iteration which we apply to our belief space PiH search task is part of this family of methods.
-We chose an on-policy approach to avoid the maximisation over the actions, as we are in continuous action space.
-A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
-the value function approximator.
+%The Fitted Policy Iteration which we apply to our belief space PiH search task is part of this family of methods.
+%We chose an on-policy approach to avoid the maximisation over the actions, as we are in continuous action space.
+%A Gaussian Mixture Model is used to parameterise the policy and a Locally Weighted Regression (LWR) as 
+%the value function approximator.
 
 %  approximate policy iteration
 % use Approximate iteration approach in which the q-value of a given policy is first evaluated before in a second step the parameters of 
@@ -523,7 +523,7 @@ Figure \ref{fig:experiment_design} summarises a walk through of the experiment.
 The only exclusion criteria was the inability of the subject to accomplish the task. All participants gave written consent 
 for taking part in this study. A total of 300 demonstrations were gathered.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
  \includegraphics[width=0.9\linewidth]{./Figures/Fig/experiment_design_v2.pdf}
  \caption{Experiment protocol. The participants are divided in two groups of 5, Group A begins with socket A 
@@ -532,20 +532,30 @@ for taking part in this study. A total of 300 demonstrations were gathered.
  \label{fig:experiment_design}
 \end{figure}
 
+\begin{figure}[h]
+ \centering
+   \includegraphics[width=0.9\linewidth]{./Figure/demonstrations.pdf}
+   \caption{Black points represent the starting position of the end-effector
+   for all the demonstrations. Four trajectories are illustrated.}
+  \label{fig:experiment_demonstrations}
+\end{figure}
+
+
 \subsection{Data collection}
 
 \begin{figure*}\label{fig:data-flow}
 \centering
 \includegraphics[width=0.9\linewidth]{./Figure/parameters-system-only-two-v2.pdf}
- \caption{\textit{Left:} The Point Mass Filter is updated with velocities, $u$ from the 
- Optitrack vision system when human demonstrations are being recorded. When the policy is active the PMF uses 
- the velocity output of policy $\pi_{\Param_1}$. The sensed wrench $\phi$ is transformed to a multivariate binary 
- feature vector which is used in the PMF state estimator. The filtered probability density, $b$ is compressed to a lower 
+ \caption{\textit{Left:} The Point Mass Filter is updated with velocities $u \in \mathbb{R}^3$,from the 
+ Optitrack vision system when human demonstrations are being recorded and velocities from the policy
+ $\pi_{\Param_1}$ otherwise. The sensed wrench $\phi \in \mathbb{R}^6$ is transformed to a multivariate binary 
+ feature vector $y$ which is used in the measurement model of the PMF state estimator. The filtered probability density, $b$ is compressed to a lower 
  dimensional feature vector $F$ before given as input to the linear velocity policy $\pi_{\Param_1}$. The second policy 
- $\pi_{\Param_2}$ outputs angular velocities $\omega$ given a sensed wrench $\phi$ and is used during the insertion stage of the PiH. 
- \textit{Right:} Data pipeline. First a set of $M$ demonstrates a dataset is created consisting of two subsets. Secondly, the left 
- dataset is used to learn policy $\pi_{\Param_1}$ in an Actor-Critic framework the dataset on the right is used 
- to directly learn the statistical policy $\pi_{\Param_2}$.}
+ $\pi_{\Param_2}$ outputs angular velocities $\omega \in \mathbb{R}^3$ given a sensed wrench $\phi$ and is used during the insertion stage of the PiH. 
+ \textit{Right:} Data pipeline. A set of $M$ demonstrations are recorded and split into two datasets. The left 
+ dataset is used to learn policy $\pi_{\Param_1}$ with the Fitted Policy Iteration framework and the dataset on the right is used 
+ to directly learn the statistical policy $\pi_{\Param_2}$. The desired linear search direction is obtained from a re-weighted expectation 
+ of the conditional $\pi_{\Param_1}(u|F)$ whilst angular velocities are sampled from the second policies conditional.}
 \end{figure*}
 
 
@@ -558,7 +568,8 @@ and the direction in which it occurs, which is discretized to the four cardinali
 On top of the cylinder there is a set of markers used by a motion capture system 
 OptiTrack\footnote{http://www.optitrack.com/} (which has millimeter tracking accuracy) to measure 
 both linear, $u \in \mathbb{R}^3$, and angular velocity, $\omega \in \mathbb{R}^3$, at each 
-time step which is recorded at a rate of 100 Hz along with the F/T information. 
+time step which is recorded at a rate of 100 Hz along with the F/T information. See Figure \ref{fig:experiment_demonstrations}
+for an illustration of demonstrated trajectories.
 
 
 The location belief of the human teacher and robot apprentice is represented by a probability density function (pdf) ${b_t: = p(x_t|y_{0:t},u_{1:t})}$
@@ -568,16 +579,13 @@ Both $u$ and $y$ are used in the state transition and measurement model defined 
 illustrates different time segments of the location belief recording during a demonstration. Figure \ref{fig:PMF} (\textit{Right}) illustrates 
 the measurement likelihood function $\Omega := p(y_t|x_t)$ when an edge is sensed. 
 
-As the belief is high dimensional it is impractical to directly learn a statistical policy ${\pi_{\theta} : b \rightarrow u }$ without 
-some form of compression. We apply a compression function $f : b \mapsto F$ which transforms the belief to a lower 
-dimensional feature vector  $F_t = [\hat{x}_t,U]^{\mathrm{T}}$ which for our purpose composed of 
-the Most Likely State (MLS) $\hat{x}_t \in \mathbb{R}^3$ and differential entropy $U = H(b_t) \in \mathbb{R}$.
+As the belief is high dimensional it is impractical to directly learn a statistical policy ${\pi_{\theta} : b \mapsto u }$ without 
+some form of compression. We apply a compression function ${f : b \mapsto F}$ which transforms the belief to a lower 
+dimensional feature vector  ${F_t = [\hat{x}_t,U]^{\mathrm{T}}}$ which is composed of 
+the Most Likely State (MLS) ${\hat{x}_t \in \mathbb{R}^3}$ and differential entropy ${U = H(b_t) \in \mathbb{R}}$.
 
-%which is assumed to be uniformly distributed in the orange area (refferece). All subsequent beliefs can be inferred from 
-%the measured velocity and measurements provided by the ATI and OptiTrack sensors.
-
-Each participant's demonstration results in a dataset ${D=\{u^{[i]}_{1:T},F^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T}\}}$, 
-where the upper index $[i]$ references the ith search trajectory (one episode) and subscript $1:T$ denotes the time 
+The demonstrations of all the participants are combined into a dataset ${D=\{u^{[i]}_{1:T},F^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T}\}_{i=1:M}}$
+comprised of $M$ episodes,where the upper index $[i]$ references the i\textit{th} search trajectory (one episode) and subscript ${1:T}$ denotes the time 
 steps during the trajectory from initialisation $t=1$ until the end $t=T$. The information  flow is summarised in
 Figure \ref{fig:data-flow} (\textit{Left}).
 
@@ -596,13 +604,7 @@ Figure \ref{fig:data-flow} (\textit{Left}).
 \end{figure*}
 
 
-\begin{figure}
- \centering
-   \includegraphics[width=0.9\linewidth]{./Figure/demonstrations.pdf}
-   \caption{Black points represent the starting position of the end-effector
-   for all the demonstrations. Four trajectories are illustrated.}
-  \label{fig:experiment_setup_data}
-\end{figure}
+
 
 \section{Learning}\label{sec:learning-value-actor}
 
@@ -634,28 +636,26 @@ the methodology outlined in \cite[Chap. 5]{Kronander2015}.
 
 \subsection{Fitted Policy Iteration}\label{sec:FPI}
 
-Policy Iteration is an on-policy off-line reinforcement learning method which through successive iterations of policy \textit{evaluation} 
+Fitted Policy Iteration is an on-policy offline reinforcement learning method which through successive iterations of policy \textit{evaluation} 
 and \textit{improvement} both value function and policy converge to their optimal parameters \cite[Chap. 4.6]{sutton1998reinforcement}.
 
 \paragraph{Policy evaluation}
 %s and then policy is maximised it with respect to its parameters.
 %In an Actor-Critic setting, the temporal difference error, ${\delta^{\pi}_t = r_{t+1} + \gamma \hat{V}^{\pi}(F_{t+1}) - \hat{V}^{\pi}(F_t)}$, 
 %of the value function is used as a learning signal to update simultaneously itself and the actor.
+% , Equation \ref{eq:value_function}, 
+%\begin{equation}\label{eq:value_function}
+%  V^{\pi_{\Param_1}}(F) = \mathbb{E}_{\pi_{\Param_1}}\Bigg\{  \sum^{\infty}_{k=0} \gamma^k r_{t+k+1} \Bigg\lvert  F_t=F\Bigg\}
+%\end{equation}
 
-A value function, Equation \ref{eq:value_function}, of the belief state feature vector $F$ is  learned from the 
-trajectory data provided by the teachers.
-
-\begin{equation}\label{eq:value_function}
-  V^{\pi_{\Param_1}}(F) = \mathbb{E}_{\pi_{\Param_1}}\Bigg\{  \sum^{\infty}_{k=0} \gamma^k r_{t+k+1} \Bigg\lvert  F_t=F\Bigg\}
-\end{equation}
-
-A reward of ${r=0}$ is assigned at each time step until the goal (plug-socket connection) is achieved, where a 
-reward of $r_{T}=100$ is obtained. Given the continuous nature of the belief feature vector Locally Weighted Regression
+A value function of the belief state feature vector $F$ is  learned from the 
+trajectory data provided by the teachers. A reward of ${r=0}$ is assigned at each time step until the goal (plug-socket connection) is achieved, where a 
+reward of $r_{T}=100$ is assigned. Given the continuous nature of the belief feature vector Locally Weighted Regression
 (LWR) \cite{Atkeson97locallyweighted}  is used as a function approximator of the value function.
 
 To learn the value function Fitted/Batch RL approach is taken\cite{EGW05}, an offline method which applies multiple 
 sweeps of the Bellman backup operator followed by fitting the value function through regression to a dataset of 
-tuples $\{(F^{[i]}_t,r^{[i]}_t,F^{[i]}_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual 
+tuples $\{(F^{[i]}_t,r^{[i]}_t,F^{[i]}_{t+1})\}_{i=1:M}$ until the Bellman residual 
 converges, see Algorithm \ref{alg:fpe}.
 
 \begin{center}
@@ -665,10 +665,10 @@ converges, see Algorithm \ref{alg:fpe}.
 \label{alg:fpe}
 \SetKwInOut{Input}{input}
 \SetKwInOut{Output}{output}
-\Input{$\epsilon$, $\{(F^{[i]}_t,r^{[i]},F^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
-\Output{$\hat{V}^{\pi}_{k}(F)$}
+\Input{$\{(F^{[i]}_t,r^{[i]}_t,F^{[i]}_{t+1})\}_{i=1:M}$}
+\Output{$\hat{V}^{\pi}(F)$}
 \BlankLine
-\While{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| > \epsilon$}{
+\While{$||\hat{V}^{\pi}_{k+1}(F) - \hat{V}^{\pi}_{k}(F)|| > \epsilon$}{
   $\hat{V}^{\pi}_{k+1}(F)$ = Regress($F_t$, $r_t + \gamma \hat{V}^{\pi}_k(F_{t+1}))$
 }
 \caption{Fitted Policy Evaluation}
@@ -679,27 +679,29 @@ converges, see Algorithm \ref{alg:fpe}.
 Most Fitted RL methods have focused on learning the Q-value function directly (Fitted Q-Iteration) 
 \cite{NIPS2008_3501,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
 of the action space or assumes quantifiable actions, so that maximisation in the Q-Bellman backup
-${\max_{u_{t+1}} \hat{Q}(u_{t+1},F_{t+1})}$ is easily achievable. Given the dimensionality and continuity 
-of our problem we assume this to be unrealistic and we opt for a fitted .
+${\max_{u_{t+1}} \hat{Q}(u_{t+1},F_{t+1})}$ is easily achievable. Given that FPI has to be applicable to 
+non discretisable continuous control problems we opt for an on-policy approach.
 
 \paragraph{Policy improvement}
 
 The actor is updated given the critic's value function through a modification of the Maximisation step in  Expectation-Maximisation (EM) 
 for Gaussian Mixture Models. This modification is referred to as Q-EM which is strongly related to a Monte-Carlo EM-based policy 
-search approach \cite[p.50]{p_search_surv_2011}. 
+search approach \cite[p.50]{p_search_surv_2011}. To highlight the difference in our approach we derive the Q-EM policy improvement step
+from first principal.
 
-The reward of a demonstrated trajectory (one episode) is given by the sum of discounted return, Equation $\ref{eq:disc_return}$,
+The reward of a demonstrated trajectory $R_e$ (one episode) is the sum of discounted one-step rewards $r$,
 \begin{equation}\label{eq:disc_return}
- R_T(e_i) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(u^{[i]}_t,F^{[i]}_t)
+ R_e(e_i) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(u^{[i]}_t,F^{[i]}_t)
 \end{equation}
-where $e_i = \{(u_0,F_0),\cdots,(u_T^{[i]},F_T^{[i]}) \}$ are the state-action samples of the $ith$ episode.
+where $e_i = \{(u_0,F_0),\cdots,(u_T^{[i]},F_T^{[i]}) \}$ are the state-action samples of the $i$th episode.
 All policy gradient approaches seek to find a set of parameters $\Param$ of the actor,
-which will maximise the expected reward, Equation \ref{eq:expected_reward},
+which will maximise the expected reward
 
 \begin{equation}\label{eq:expected_reward}
- J(\Param) = \mathbb{E}_{p_{\Param}}\{R_T\} = \sum\limits_{i=1}^{N}
- \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(u^{[i]}_t,F^{[i]}_t) \right)}_{p_{\Param}(e_i)} \, R_T(e_i) 
+ J(\Param) = \mathbb{E}_{p_{\Param}}\{R_e\} = \sum\limits_{i=1}^{N}
+ \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(u^{[i]}_t,F^{[i]}_t) \right)}_{p_{\Param}(e_i)} \, R_e(e_i) 
 \end{equation}
+
 
 By setting the derivative to zero, the parameters which maximise the cost function $\argmax_{\Param} J(\Param)$
 can be found. This cannot be done directly, instead the logarithmic lower bound of the cost function is maximised which results in 
