@@ -261,17 +261,20 @@ by weighting each data point (state-action pair) by the temporal difference erro
 The similarity between Q-EM with the GMM-EM makes it intuitive and easy to implement and avoids the need of a learning rate 
 required in gradient Policy Search methods.
 
-The exploration-exploitation dilemma is addressed by using sample episodes provided by human 
-teachers in a Programming by Demonstration (PbD) framework. It has been previously shown \cite{Chambrier2014} 
+We address the exploration-exploitation dilemma which affects all reinforcement learning methods by taken 
+a Programming by Demonstration (PbD) approach in which we solely provide our FPI algorithm with sample 
+episodes demonstrated by human teachers. It has been previously shown \cite{Chambrier2014} 
 that humans exhibit both risk-prone and averse behaviour which constitutes an ideal training set 
 (mixture of explorative-exploitative behaviour) for a reinforcement learning problem, removing the 
-need for costly autonomous exploration. 
+need for costly autonomous exploration. We will demonstrate that FPI is able to select the subset of 
+relevant samples form the demonstrations in order to learn an efficient policy.
 
 We consider a plug power-socket search and connection task, also known as Peg-in-Hole 
-(PiH)\cite{search_strategies_icra_2001} for the evaluation of our Fitted Policy Iteration method, 
-in which a robot apprentice must localise a power socket and establish a connection. 
-No vision system is used during the task and only haptic information, provided via 
-a force-torque sensor mounted on the end-effector of the robot. This choice is motivated by two reasons:
+(PiH)\cite{search_strategies_icra_2001} for the evaluation of our Fitted Policy Iteration method. 
+In this task human teachers demonstrate to a robot apprentice (KUKA LWR) how to localise a power
+socket and establish a connection. For this task no vision and hearing information is used leaving 
+only haptic information for both the teachers and robot apprentice. The haptic information is 
+made available via a force-torque sensor mounted on the plug. This choice is motivated by two reasons:
 to validate that humans can be viable expert teachers under these conditions. The second is that PiH is a very important component 
 in manufacturing processes and we seek to demonstrate that this task can be accomplished without the need of
 a costly vision system. 
@@ -295,7 +298,7 @@ ${\mathcal{T}:= p(x_t|x_{t-1},u_{t-1})}$ is the state transition probability dis
 the observation model which gives the probability of a measurement $y_t \in Y$ given a state $x_t \in X$; 
 $R(x_t) \in \mathbb{R}$ is the reward function which gives the utility of a state and $\gamma \in (0,1]$ is the discount factor. As the state space is not 
 observable the agent must consider the entire history $\mathcal{H}:= \{y_{0:t},u_{1:t-1}\}$ of measurements and actions
-when deciding which action $u_t \in U$ to take \cite{Ross08onlineplanning}. Instead of memorising the entire history $h_t$, 
+when deciding which action $u_t \in U$ to take \cite{Ross08onlineplanning}. Instead of memorising the entire history $\mathcal{H}$, 
 it can be iteratively integrated into a belief/information state ${b_t := p(x_t|\mathcal{H})}$, which 
 is a probability distribution over the state space, without losing any information \cite{Milos_POMDP_2000}.
 This leads to a reformulation of the tuple as a \textit{belief}-MDP $\{\mathcal{B},U,\tau,R_B,\gamma\}$, where $b_t \in \mathcal{B}$ is 
@@ -355,7 +358,7 @@ Approximate Dynamic Programming (ADP)\cite{approx_rl_overview_2011}, also known 
 for solving (PO)MDPs do not utilise the PWLC property of the value function and instead directly estimate the parameters of 
 the value function from a dataset of state-value samples. Once the policy or value function are computed a new batch of state-value samples are 
 generated using the current policy and the process repeats until convergence. The ADP approach to solving a (PO)MDP is much 
-simpler to implement and understand, when compared with PBVI as there is no need to implement pruning heuristics which are required 
+simpler to understand when compared with PBVI as there is no need to implement pruning heuristics which are required 
 to keep the set of support belief points small. 
 
 The increase in popularity of ADP arose as it addresses stability issues when function approximators are combined 
@@ -363,7 +366,7 @@ with traditional online off-policy method such as Q-learning, see \cite{RL_state
 It was first proved by \cite{stable_FA_gordon_1995} that offline fitted value iteration is stable given that the function approximator belongs to 
 the family of averages (nonexpansion in max norm). The authors successfully learned the mountain car value function (locally weighted averaging) 
 in which the input was two consecutive images of the mountain car's simulation resulting in 2048 dimensional state space. 
-In \cite{Boyan95generalizationin} the others showed that when traditional regression techniques 
+In \cite{Boyan95generalizationin} the authored demonstrated that when traditional regression techniques 
 (neural networks, locally weighted regression or linear regression) were naively combined with dynamic programming  
 often leads to the value function diverging in common reinforcement learning problems. By separating the bellman backup operator 
 and the fitting of the regressor function, similarly as in \cite{stable_FA_gordon_1995}, they demonstrated that locally weighted 
@@ -393,13 +396,13 @@ The authors first pre-calculate the state transition and observation models and 
 backup operator to compute the resulting belief state during the evaluation of the new target values of the associated belief state. The value function is 
 then fitted to the belief parameter target value pairs with a Freudenthal triangulation function approximator. 
 This model based fitted value iteration approach works when it is feasible to sample actions during the computation 
-of the maximisation in VI which we consider infeasible in our case. When the controlling a robotic system on-policy 
+of the maximisation in VI which we consider infeasible in our case. When controlling a robotic system on-policy 
 methods such as actor-critics are more suitable for the reasons we outlined in the introduction.
 
 Approximate Policy Iteration (API) \cite{Neuro_1996,Bertsekas2011} is suited for actor-critic architectures.
 An early application in a batch setting was Least-Squares Policy Iteration (LSPI) \cite{LSPI_2003} where the associated 
-Q-value function is represented by linear weighed sum of radial basis functions and a policy learned to control 
-a simulated bike. Although a API approach the value function and control policy do not have a separate 
+Q-value function is represented by linear weighed sum of radial basis functions and a policy is learned to control 
+a simulated bike. Although a API approach, the value function and control policy do not have a separate 
 architecture and the Q-value function has to be linear in the parameters \cite{Sutton00policygradient}. In 
 \cite{Jodogne2006} the authors introduce a non-parametric API approach for learning a vision to discrete action policy in which 
 a Q-function (a regression Tree) is learned for each separate action. To the authors knowledge there are none or very 
@@ -467,7 +470,7 @@ the FPI.
 
 \section{Methodology}\label{sec:experiment_methods}
 
-\subsection{PiH-search experiment}
+\subsection{PiH-search task}
 
 \begin{figure*}
  \centering
@@ -501,7 +504,9 @@ by performing 15 PiH searches with socket A (AA), followed by a 10 minute break,
 The members of group B performed the same protocol starting with socket B (BB) and ending with socket A (BA).
 Figure \ref{fig:experiment_design} summarises a walk through of the experiment.
 The only exclusion criteria was the inability of the subject to accomplish the task. All participants gave written consent 
-for taking part in this study. A total of 300 demonstrations were gathered.
+for taking part in this study. A total of 300 demonstrations were gathered. Figure \ref{fig:search_task_setup} (\textit{Bottom-left})
+illustrates a human subject performing the search whilst blindfolded and wearing ear defenders and in Figure \ref{fig:search_task_setup} 
+(\textit{Bottom-right}) the KUKA LWR robot is carrying the PiH task that it learned from human demonstrations.
 
 \begin{figure}[h]
 \centering
@@ -523,7 +528,7 @@ for taking part in this study. A total of 300 demonstrations were gathered.
 
 \subsection{Data collection}
 
-\begin{figure*}\label{fig:data-flow}
+\begin{figure*}
 \centering
 \includegraphics[width=0.9\linewidth]{./Figure/parameters-system-only-two-v2.pdf}
  \caption{\textit{Left:} The Point Mass Filter is updated with velocities $u \in \mathbb{R}^3$,from the 
@@ -536,6 +541,7 @@ for taking part in this study. A total of 300 demonstrations were gathered.
  dataset is used to learn policy $\pi_{\Param_1}$ with the Fitted Policy Iteration framework and the dataset on the right is used 
  to directly learn the statistical policy $\pi_{\Param_2}$. The desired linear search direction is obtained from a re-weighted expectation 
  of the conditional $\pi_{\Param_1}(u|F)$ whilst angular velocities are sampled from the second policies conditional.}
+ \label{fig:data-flow}
 \end{figure*}
 
 
@@ -561,13 +567,16 @@ Figure \ref{fig:PMF} (\textit{Right}) illustrates the output of the observation 
 
 As the belief is high dimensional it is impractical to directly learn a statistical policy ${\pi_{\theta} : b \mapsto u }$ without 
 some form of compression. We apply a compression function ${f : b \mapsto F}$ which transforms the belief to a lower 
-dimensional feature vector  ${F_t = [\hat{x}_t,U]^{\mathrm{T}}}$ which is composed of 
-the Most Likely State (MLS) ${\hat{x}_t \in \mathbb{R}^3}$ and differential entropy ${U = H(b_t) \in \mathbb{R}}$.
+dimensional feature vector  ${F = [\hat{x},U]^{\mathrm{T}}}$ which is composed of 
+the Most Likely State (MLS) ${\hat{x} := \argmax\limits_{x_t} b_t \in \mathbb{R}^3}$ and differential entropy ${U := H(b_t) \in \mathbb{R}}$.
+Figure \ref{fig:data-flow} (\textit{Left}) gives an overview of the information flow and which variables are recoded.
 
 The demonstrations of all the participants are combined into a dataset ${D=\{u^{[i]}_{1:T},F^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T}\}_{i=1:M}}$
-comprised of $M$ episodes,where the upper index $[i]$ references the i\textit{th} search trajectory (one episode) and subscript ${1:T}$ denotes the time 
-steps during the trajectory from initialisation $t=1$ until the end $t=T$. The information  flow is summarised in
-Figure \ref{fig:data-flow} (\textit{Left}).
+comprised of $M$ episodes,where the upper index $[i]$ references the $i$th search trajectory (one episode) and subscript ${1:T}$ denotes the time 
+steps during the trajectory from initialisation $t=1$ until the end $t=T$. In Figure \ref{fig:data-flow} (\textit{Right} Data collection) we summarise 
+the dataset, gathered from the human teachers, split into two subsets which will be used to learn two different control policies. 
+
+
 
 \begin{figure*}
  \centering
@@ -588,15 +597,15 @@ Figure \ref{fig:data-flow} (\textit{Left}).
 
 \section{Learning}\label{sec:learning-value-actor}
 
-Two policies are learned: one maps a belief feature vector 
-to linear velocity $\pi_{\Param_1} : F \mapsto u$ and the other to maps sensed wrench to angular 
-velocity, $ \pi_{\Param_2} : \phi \mapsto \omega$.  Both linear and angular velocity policies are 
+Two policies are learned from the dataset $D$ acquired from the human teachers demonstrations: 
+one maps a belief feature vector to linear velocity $\pi_{\Param_1} : F \mapsto u$ and the other to maps sensed wrench to angular 
+velocity $ \pi_{\Param_2} : \phi \mapsto \omega$.  Both linear and angular velocity policies are 
 parameterised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 
 \begin{equation}
  \pi_{\Param}(\xi_1,\xi_2) = \sum\limits_{k=1}^{K} \piK \, g(\xi_1,\xi_2;\MuK,\SigK) \label{eq:GMM}
 \end{equation}
-The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1:K}$, are the weights, means and covariances 
 of the individual Gaussian functions $g(\cdot)$
 \begin{center}
 $\MuK =  \begin{bmatrix} \MuK_{\xi_1} \\ \MuK_{\xi_2} \end{bmatrix}$\hspace*{0.5cm}
@@ -605,7 +614,7 @@ $\SigK =  \begin{bmatrix}
 	  \SigK_{\xi_2\xi_1} & \SigK_{\xi_2\xi_2}
 	  \end{bmatrix}$
 \end{center}
-and $\sum_{k} w^{[k]} = 1$. For the linear policy policy $\pi_{\Param_1}$: ${\xi_1 = u}$ and ${\xi_2 = F}$.
+and $\sum_{k} w^{[k]} = 1$. For the linear policy $\pi_{\Param_1}$: ${\xi_1 = u}$ and ${\xi_2 = F}$.
 For the angular policy $\pi_{\Param_2}$: ${\xi_1 = \omega}$ and ${\xi_2 = \phi}$. In both cases the Bayesian Information Criterion is used to 
 determine the number of Gaussian functions.
 
@@ -669,7 +678,7 @@ for Gaussian Mixture Models. This modification is referred to as Q-EM which is s
 search approach \cite[p.50]{p_search_surv_2011}. To highlight the difference in our approach we derive the Q-EM policy improvement step
 from first principal.
 
-The reward of a demonstrated trajectory $R_e$ (one episode) is the sum of discounted one-step rewards $r$,
+The reward of a demonstrated episode $R_e$ is the sum of discounted one-step rewards $r$,
 \begin{equation}\label{eq:disc_return}
  R_e(e_i) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(u^{[i]}_t,F^{[i]}_t)
 \end{equation}
@@ -681,12 +690,12 @@ which will maximise the expected reward,
  J(\Param) = \mathbb{E}_{p_{\Param}}\{R_e\} = \sum\limits_{i=1}^{M}
  \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(u^{[i]}_t,F^{[i]}_t) \right)}_{p_{\Param}(e_i)} \, R_e(e_i) 
 \end{equation}
-where $p_{\Param}(e_i)$ is the probability of the episode $e_i$. We differ with \cite{p_search_surv_2011} by considering 
+where $p_{\Param}(e_i)$ is the probability of episode $e_i$. We differ with \cite{p_search_surv_2011} by considering 
 this probability to be the product step-wise joint distributions $\pi_{\Param}(u^{[i]}_t,F^{[i]}_t)$ instead of conditionals 
 $\pi_{\Param}(u^{[i]}_t|F^{[i]}_t)$. This is a valid decomposition of $p(e_i)$ and will result in intuitive algorithm to maximise 
 to parameters of the policy with respect to a value function.
 By setting the derivative of Equation \ref{eq:expected_reward} to zero, the parameters which maximise the cost function $\argmax_{\Param} J(\Param)$
-can be found. This cannot be done directly, instead the logarithmic lower bound of the cost function is maximised which results in 
+can be found. This cannot be done directly, instead the logarithmic lower bound of the cost function $\mathcal{Q}$ is maximised which results in 
 Equation \ref{eq:grad_log_cost}. See \cite[p.50]{p_search_surv_2011} for a detailed derivation. 
 
 \begin{equation} \label{eq:grad_log_cost}
@@ -718,7 +727,7 @@ the responsibility factor, denoting the probability that data point $\mathbf{x}^
 \end{figure}
 
 The Q-EM algorithm depends on the $Q^{\pi_{\Param}}(u,F)$ function, however it is feasible to replace it with the 
-advantage function $A^{\pi_{\Param}}(u,F)$ who's evaluation can be obtained from the gradient of the value function 
+advantage function $A^{\pi_{\Param}}(u,F)$ whose evaluation can be obtained from the gradient of the value function 
 which is equal to the Temporal Difference (TD) error, see Equation \ref{eq:advantage_f}.
 \begin{equation}\label{eq:advantage_f}
  A^{\pi_{\Param}}(u_t,F_t) =  Q^{\pi_{\Param}}(u_t,F_t) - V^{\pi_{\Param}}(F_t) = \delta^{\pi_{\Param}}_t
@@ -802,11 +811,13 @@ It can be seen that the best trajectories (red) tend to be aligned with the sock
 whilst the worst trajectories are towards the edges of the wall and tend to follow spiralling motions. 
 
 In conclusion we learned two policies, one solely from the original human demonstrations which we call GMM and the second which 
-is the result of \textbf{one iteration} of fitted policy iteration which we call Q-EM. This compares the effect
-of one policy evaluation and improvement sequence have without doing any additional rollouts. This ensures that both policies
+is the result of \textbf{one iteration} of fitted policy iteration which we call Q-EM. Figure \ref{fig:data-flow} (\textit{Right} Learning)
+summaries the learning process for both policies.
+
+This compares the effect of one policy evaluation and improvement sequence have without doing any additional rollouts. This ensures that both policies
 are given the same amount of information.
 
-\section{Control architecture}\label{sec:control_architecture}
+\section{Control}\label{sec:control_architecture}
 
 The direction to search is given by the conditional:
 
@@ -823,19 +834,20 @@ is multi-modal, as different search velocities are possible
 in the same belief state. Figure \ref{fig:policy_vf} illustrates the multi-modal 
 vector fields of the conditional, Equation \ref{eq:gmm_conditional}.
 In autonomous dynamical systems control, the velocity is obtained from 
-the expectation of the conditional, Equation \ref{eq:gmm_conditional}. However, the expectation which is a weighted 
-linear combination of the modes, could result in unobserved behaviour or no movement if the velocities cancel out. 
+the expectation of the conditional, Equation \ref{eq:gmm_conditional}. However, the expectation is a weighted 
+linear combination of the modes which could result in no displacement as result of cancellation.
 As a result we use a modified version of the expectation operator which favours the current
 direction, Equation \ref{eq:alpha_eq} - \ref{eq:alpha_expectation}.
 
 \begin{align}
  \eta_k(u) &= w^{[k]}_{\xb} \cdot \exp(-\cos^{-1}(<u,\MuK_{\xb}>)) \label{eq:alpha_eq}\\
- \underline{u} &= \mathbb{E}_{\eta}\{\pi_{\Param}(\xb)\} = \sum_{k=1}^K \eta_k(u) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
+ \underline{u} &= \mathbb{E}_{\eta}\{\pi_{\Param_1}(\xb)\} = \sum_{k=1}^K \eta_k(u) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
 \end{align}
-The GMM policy $\underbar{u} = \mathbb{E}_{\eta}\{\pi_{\Param}(u \lvert F)\}$ outputs a linear velocity which 
+The GMM policy $\underbar{u} = \mathbb{E}_{\eta}\{\pi_{\Param_1}(u \lvert F)\}$ outputs a linear velocity which 
 is normalised, $\underbar{u} \in \mathbb{R}^{(3 \times 1)}$. When the applied velocity mode is no longer present another direction is sampled. 
 For example, when the robot enters in contact with a feature, greatly reducing the uncertainty, the current mode changes and a new search direction is computed. 
-Figure \ref{fig:policy_vf} illustrates the policy vector field for GMM and Q-EM, both learned from teachers demonstrations.
+Figure \ref{fig:policy_vf} illustrates the policy vector field for GMM and Q-EM, both learned from teachers demonstrations. Figure \ref{fig:data-flow} (\textit{Right} Control)
+summaries how both linear and angular velocities are generated from $\pi_{\Param_1}$ and $\pi_{\Param_2}$.
 
 \begin{figure}
    \includegraphics[width=0.45\textwidth]{./Figures/Fig/policy_vf.pdf}
@@ -853,18 +865,20 @@ Figure \ref{fig:policy_vf} illustrates the policy vector field for GMM and Q-EM,
 
 This search task is haptic and the end-effector of the robot is always in contact with the environment. To make the robot
 compliant with the environment we use an impedance controller in combination with a hybrid position-force controller. The hybrid controller
-targets a sensed force $F_x$, in the $x$-axis, of 3N. The $y$ and $z$ velocity components of the direction vector are given by 
+targets a sensed force $\mathcal{F}_x$, in the $x$-axis, of 3N. The $y$ and $z$ velocity components of the direction vector are given by 
 Equation \ref{eq:alpha_expectation}. This is insufficient for the robot to reliably surmount the edges of the socket,
 hence the vector field of the GMM is modulated in $y$ and $z$-axis, Equation \ref{eq:modulation}.
 
 \begin{equation}
-  \underbar{u} = R_y(c(F_z) \cdot \pi/2) \cdot R_z(c(F_y) \cdot \pi/2) \cdot \underbar{u} \label{eq:modulation}
+  \underbar{u} = R_y(c(\mathcal{F}_z) \cdot \pi/2) \cdot R_z(c(\mathcal{F}_y) \cdot \pi/2) \cdot \underbar{u} \label{eq:modulation}
 \end{equation}
 
-where $R_y$ and $R_z$ are $(3 \times 3)$ rotation matrices around the $y$ and $z$-axis, and $c(force) \in [-1,1]$ is a truncated scaling function of the sensed 
-force.  When a force $F_z$ of 5N is sensed, a rotation of $R_y(\pi/2)$ is applied to the original direction resulting in the robot
+where $R_y$ and $R_z$ are $(3 \times 3)$ rotation matrices around the $y$ and $z$-axis, and $c(\mathcal{F}) \in [-1,1]$ is a truncated scaling function of the sensed 
+force.  When a force $\mathcal{F}_z$ of 5N is sensed, a rotation of $R_y(\pi/2)$ is applied to the original direction resulting in the robot
 getting over the edge. The direction velocity is always normalised up to this point. The amplitude of the velocity is a proportional
-controller based on the believed distance to the goal. 
+controller based on the believed distance to the goal. Figure \ref{fig:data-flow} (\textit{Left}) illustrates the proportional controller and hybrid force-controller 
+by $P$ which multiples the normalised linear velocity $\underbar{u}$ by Equation \ref{eq:modulation} and by a scaling factor which is a function of the believed distance to the goal.
+
 %Figure \ref{fig:control_flow} illustrates the complete control flow.
 %\begin{figure}
 %  \centering
