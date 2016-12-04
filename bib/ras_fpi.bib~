@@ -769,11 +769,28 @@
  	publisher 	= {Athena Scientific}
 } 
 
+@ARTICLE{Khansari_Billard_TRO11,
+  	author 	= {Khansari-Zadeh, S. M. and Billard, Aude},
+  	title 	= {Learning {S}table {N}on-{L}inear {D}ynamical {S}ystems with {G}aussian {M}ixture {M}odels},
+  	journal = {{IEEE} {T}ransaction on {R}obotics},
+  	year 	= {2011}
+}
 
 
+@article{stulp12reinforcement,
+  	title 	= {{Reinforcement Learning with Sequences of Motion Primitives for Robust Manipulation}},
+  	author 	= {Stulp, F. and Theodorou, E. and Schaal, S.},
+  	journal = {IEEE Transactions on Robotics},
+  	year 	= {2012}
+}
 
-
-
+@phdthesis{Roy:2003:FAP:979485,
+	 author 	= {Roy, Nicholas George Dilip},
+	 title 		= {Finding Approximate Pomdp Solutions Through Belief Compression},
+	 year 		= {2003},
+	 publisher 	= {Carnegie Mellon University},
+	 address 	= {Pittsburgh, PA, USA},
+} 
 
 
 

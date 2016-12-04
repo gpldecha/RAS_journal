@@ -1,4 +1,4 @@
-\begin{thebibliography}{52}
+\begin{thebibliography}{53}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -80,13 +80,6 @@ Calinon, S., D'halluin, F., Sauser, E., Caldwell, D., Billard, A., jun 2010.
   Magazine 17~(2), 44--54.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/MRA.2010.936947}
 
-\bibitem[{Calinon et~al.(2013)Calinon, Kormushev, and
-  Caldwell}]{Calinon2013369}
-Calinon, S., Kormushev, P., Caldwell, D.~G., 2013. {Compliant skills
-  acquisition and multi-optima policy search with EM-based reinforcement
-  learning}. Robotics and Autonomous Systems 61~(4), 369--379.
-\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0921889012001662}
-
 \bibitem[{Chambrier and Billard(2014)}]{Chambrier2014}
 Chambrier, G.~d., Billard, A., 2014. Learning search policies from humans in a
   partially observable context. Journal of Robotics and Biomimetics 1~(1),
@@ -155,12 +148,10 @@ Jodogne, S., Briquet, C., Piater, J.~H., 2006. {Approximate Policy Iteration
   210--221.
 \newline\urlprefix\url{http://dx.doi.org/10.1007/11871842{\_}23}
 
-\bibitem[{Kormushev et~al.(2010)Kormushev, Calinon, Saegusa, and
-  Metta}]{Kormushev2010Humanoids}
-Kormushev, P., Calinon, S., Saegusa, R., Metta, G., December 2010. Learning the
-  skill of archery by a humanoid robot {iCub}. In: International Conference on
-  Humanoid Robots ({H}umanoids). Nashville, USA, pp. 417--423.
-\newline\urlprefix\url{http://kormushev.com/papers/Kormushev_Humanoids-2010.pdf}
+\bibitem[{Khansari-Zadeh and Billard(2011)}]{Khansari_Billard_TRO11}
+Khansari-Zadeh, S.~M., Billard, A., 2011. Learning {S}table {N}on-{L}inear
+  {D}ynamical {S}ystems with {G}aussian {M}ixture {M}odels. {IEEE}
+  {T}ransaction on {R}obotics.
 
 \bibitem[{Kronander(2015)}]{Kronander2015}
 Kronander, K., 2015. Control and learning of compliant manipulation skills.
@@ -239,6 +230,11 @@ Ross, S., Pineau, J., Paquet, S., Chaib-draa, B., Jul 2008. Online planning
   663--704.
 \newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=1622673.1622690}
 
+\bibitem[{Roy(2005)}]{belief_compression_2005}
+Roy, N., 2005. {Finding Approximate POMDP solutions Through Belief
+  Compression}. Journal of Artificial Intelligence Research 23.
+\newline\urlprefix\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180}
+
 \bibitem[{Siddharth and Branicky(2001)}]{search_strategies_icra_2001}
 Siddharth, C., Branicky, M., 2001. Search strategies for peg-in-hole assemblies
   with position uncertainty. In: International Conference on Intelligent Robots
@@ -250,6 +246,12 @@ Smallwood, R., Sondik, E., Oct 1973. The optimal control of partially
   observable markov processes over a finite horizon. Journal of Operational
   Research 21~(5), 1071--1088.
 \newline\urlprefix\url{http://dx.doi.org/10.1287/opre.21.5.1071}
+
+\bibitem[{Stulp et~al.(2012)Stulp, Theodorou, and
+  Schaal}]{stulp12reinforcement}
+Stulp, F., Theodorou, E., Schaal, S., 2012. {Reinforcement Learning with
+  Sequences of Motion Primitives for Robust Manipulation}. IEEE Transactions on
+  Robotics.
 
 \bibitem[{Sung(2004)}]{gmr_2004}
 Sung, H.~G., 2004. Gaussian mixture regression and classification. Ph.D.
