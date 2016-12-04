@@ -3,52 +3,62 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rl_pih.aux
 The style file: elsarticle-harv.bst
 Database file #1: bib/ras_fpi.bib.bib
+I was expecting a `,' or a `}'---line 439 of file bib/ras_fpi.bib.bib
+ :    
+ :    url    = {"http://www.cs.cmu.edu/~ggordon/ml95-stable-dp.ps.gz"}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty publisher in Neuro_1996
 Warning--empty institution in Bilmes97agentle
 Warning--empty pages in POMDP_approach_2010
 Warning--empty pages in stable_FA_gordon_1995
-Warning--empty chapter and pages in Jodogne2006
 Warning--can't use both author and editor fields in Melo2008
+Warning--empty publisher in Melo2008
 Warning--empty chapter and pages in Melo2008
+Warning--empty publisher in Riedmiller2005
 Warning--empty chapter and pages in Riedmiller2005
+Warning--empty publisher in Thrun_1999
+Warning--empty publisher in Thrun_Burgard_Fox_2005
+Warning--empty publisher in RL_state_art_2012
 You've used 53 entries,
             2821 wiz_defined-function locations,
-            986 strings with 14974 characters,
-and the built_in function-call counts, 28092 in all, are:
-= -- 2965
+            976 strings with 14498 characters,
+and the built_in function-call counts, 28019 in all, are:
+= -- 2957
 > -- 1162
-< -- 64
+< -- 65
 + -- 447
 - -- 379
-* -- 2319
-:= -- 4711
-add.period$ -- 184
+* -- 2305
+:= -- 4702
+add.period$ -- 182
 call.type$ -- 53
-change.case$ -- 422
+change.case$ -- 425
 chr.to.int$ -- 56
-cite$ -- 60
-duplicate$ -- 1181
-empty$ -- 2067
+cite$ -- 65
+duplicate$ -- 1179
+empty$ -- 2045
 format.name$ -- 559
-if$ -- 5927
+if$ -- 5897
 int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 57
-newline$ -- 196
+missing$ -- 56
+newline$ -- 195
 num.names$ -- 214
-pop$ -- 472
+pop$ -- 463
 preamble$ -- 1
 purify$ -- 337
 quote$ -- 0
-skip$ -- 927
+skip$ -- 943
 stack$ -- 0
 substring$ -- 1644
-swap$ -- 325
-text.length$ -- 28
+swap$ -- 326
+text.length$ -- 29
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 453
-warning$ -- 7
+type$ -- 456
+warning$ -- 12
 while$ -- 250
 width$ -- 0
-write$ -- 620
-(There were 7 warnings)
+write$ -- 610
+(There was 1 error message)
