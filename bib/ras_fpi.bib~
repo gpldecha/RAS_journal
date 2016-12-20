@@ -238,7 +238,7 @@
 @ARTICLE{Atkeson97locallyweighted,
     	author 		= {Christopher Atkeson and Andrew Moore and Stefan Schaal},
     	title 		= {Locally weighted learning},
-    	journal 	= {Artificial Inteligence},
+    	journal 	= {Journal of Artificial Inteligence},
     	year 		= {1997},
     	pages 		= {11--73},
 	url 		= {http://dx.doi.org/10.1023/A:1006559212014}

@@ -199,15 +199,6 @@ a local optimisation with quantifiable actions (macro) \cite{toussain_2015} or a
 approaches \cite{Lauri2016} can be applied. However these approaches require the engineering 
 of actions and are locally optimal. 
 
-%Alternative approaches are the Policy Search (PS) methods \cite{p_search_surv_2011} where the policy is 
-%a smooth continuous parametric function ideal for robotics or non discretisable control systems. 
-%The parameters are updated (gradient ascent or EM) to maximise the reward function directly 
-%without the estimation of a value function. Although successful when used to learn reflexes 
-%or motion primitives \cite{Kormushev2010Humanoids,Calinon2013369}, when considering continuous 
-%(PO)MDPs policies with a large number of parameters uninformed autonomous exploration strategies 
-%result in a large variance in the gradient estimate of the parameters which leads to inefficient 
-%learning \cite{rl_ac_surv_2012}.
-
 An alternative approach are Actor-critic (AC) methods \cite[Chap. 6.6]{sutton1998reinforcement}. 
 The actor (policy) can be a smooth continuous parametric function ideal for robotics or non discretisable control systems
 whilst the critic (value function) can be any function approximator. ACs are advantageous over actor only methods 
@@ -368,7 +359,7 @@ other reinforcement learning architectures such as Fitted Natural Actor Critic (
 Fitted Q-Iteration (FQI) \cite{EGW05,fqi_nips_peter_2009}. Even non averager regressor functions have been successfully 
 combined with dynamic programming in the fitted reinforcement learning framework such as 
 Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which uses a multi-layer perceptron to represent the Q-function 
-and has since been used in many extensions, \cite{NAC_2008,rl_gmm_2010}. 
+and has since been used in many extensions, \cite{peter_nac_2008,rl_gmm_2010}. 
 This has lead to the application of more sophisticated regression methods such as Deep Fitted Q-iteration (DFQ) 
 \cite{Lange_riedmiller_2010,mnih-dqn-2015,DRQ_AAAI_2015}.
 
@@ -405,7 +396,7 @@ This paper proposes a Fitted Policy Iteration approach suited to continuous stat
 with the literature is within the policy improvement step. We introduce a Monte-Carlo Expectation Maximisation (MC-EM) 
 algorithm tailored for generative distribution policies such as the Gaussian Mixture Model. The policy evaluation step resembles the 
 fitted reinforcement learning approach in the literature with the difference being that the value function is learned instead of the Q-function.
-We do not give a review of EM-MC approaches but refer the reader to \cite{rl_gradient_survey_2013}[p. 51] (Algorithm 11) which has 
+We do not give a review of EM-MC approaches but refer the reader to \cite{p_search_surv_2011}[p. 51] (Algorithm 11) which has 
 inspired the FPI approach.
 
 %The Fitted Policy Iteration which we apply to our belief space PiH search task is part of this family of methods.
@@ -580,7 +571,7 @@ the dataset, gathered from the human teachers, split into two subsets which will
    is spread across the surface of the wall. The red trace is the trajectory history. (3) motion noise increases the uncertainty. (4) The plug is in contact with a socket edge.
    See \href{http://lasa.epfl.ch/videos/gpldecha/pih-search/subject_PMF_belief_location.wmv}{Video 3} for an illustration of the PMF for a subject's search.
    \textit{Right}: \textbf{World model}: The plug is modelled by its three plug tips and the wall and sockets are fitted with bounding boxes.
-   \textbf{Observation model}: The plug enters in contact with the left edge of the socket. As a result, the value of the likelihood in all the regions, $x_t$, close the left edge take 
+   \textbf{Observation model}: The plug enters in contact with the left edge of the socket. As a result, the value of the likelihood in all the regions close the left edge take 
    a value of one (red points)  whilst the others have a value zero (blue points) and areas around the socket's central 
    ring have a value of one. }
   \label{fig:PMF}
@@ -662,7 +653,7 @@ converges, see Algorithm \ref{alg:fpe}.
 \end{center}
 
 Most Fitted RL methods have focused on learning the Q-value function directly (Fitted Q-Iteration) 
-\cite{NIPS2008_3501,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
+\cite{fqi_nips_peter_2009,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
 of the action space or assumes quantifiable actions, so that maximisation in the Q-Bellman backup
 ${\max_{u_{t+1}} \hat{Q}(u_{t+1},F_{t+1})}$ is easily achievable. Given that FPI has to be applicable to 
 non discretisable continuous control problems we opt for an on-policy approach.
@@ -846,11 +837,11 @@ To address this, we use a modified version of the expectation operator which fav
 direction, Equation \ref{eq:alpha_eq} - \ref{eq:alpha_expectation}.
 
 \begin{align}
- \eta_k(u) &= w^{[k]}_{\xb} \cdot \exp(-\cos^{-1}(<u,\MuK_{\xb}>)) \label{eq:alpha_eq}\\
- \underline{u} &= \mathbb{E}_{\eta}\{\pi_{\Param_1}(\xb)\} = \sum_{k=1}^K \eta_k(u) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
+ \eta_k(\underline{u}) &= w^{[k]}_{\xb} \cdot \exp(-\cos^{-1}(<\underline{u},\MuK_{\xb}>)) \label{eq:alpha_eq}\\
+ \underline{u}_{\:t} &= \mathbb{E}_{\eta}\{\pi_{\Param_1}(\xb)\} = \sum_{k=1}^K \eta_k(\underline{u}_{\:t-1}) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
 \end{align}
-The GMM policy $\underbar{u} = \mathbb{E}_{\eta}\{\pi_{\Param_1}(u \lvert F)\}$ outputs a linear velocity which 
-is normalised, $\underbar{u} \in \mathbb{R}^{(3 \times 1)}$. When the applied velocity mode is no longer present another direction is sampled. 
+The GMM policy $\underbar{u} = \mathbb{E}_{\eta}\{\pi_{\Param_1}(u \lvert F)\} \in \mathbb{R}^{(3 \times 1)}$ outputs a linear velocity which 
+is normalised (denoted by the under bar). When the applied velocity mode is no longer present another direction is sampled. 
 For example, when the robot enters in contact with a feature, greatly reducing the uncertainty, the current mode changes and a 
 new search direction is computed. Figure \ref{fig:data-flow} (\textit{Right} Control) summaries how both linear and angular 
 velocities are generated from $\pi_{\Param_1}$ and $\pi_{\Param_2}$.
@@ -876,14 +867,16 @@ Equation \ref{eq:alpha_expectation}. This is insufficient for the robot to relia
 hence the vector field of the GMM is modulated in $y$ and $z$-axis, Equation \ref{eq:modulation}.
 
 \begin{equation}
-  \underbar{u} = R_y(c(\mathcal{F}_z) \cdot \pi/2) \cdot R_z(c(\mathcal{F}_y) \cdot \pi/2) \cdot \underbar{u} \label{eq:modulation}
+  \underbar{u}_p = R_y(c(\mathcal{F}_z) \cdot \pi/2) \cdot R_z(c(\mathcal{F}_y) \cdot \pi/2) \cdot \underbar{u} \label{eq:modulation}
 \end{equation}
 
 where $R_y$ and $R_z$ are $(3 \times 3)$ rotation matrices around the $y$ and $z$-axis, and $c(\mathcal{F}) \in [-1,1]$ is a truncated scaling function of the sensed 
 force.  When a force $\mathcal{F}_z$ of 5N is sensed, a rotation of $R_y(\pi/2)$ is applied to the original direction resulting in the robot
 getting over the edge. The direction velocity is always normalised up to this point. The amplitude of the velocity is a proportional
 controller based on the believed distance to the goal. Figure \ref{fig:data-flow} (\textit{Left}) illustrates the proportional controller and hybrid force-controller 
-by $P$ which multiples the normalised linear velocity $\underbar{u}$ by Equation \ref{eq:modulation} and by a scaling factor which is a function of the believed distance to the goal.
+by $P$ which multiples the normalised linear velocity $\underbar{u}$ by Equation \ref{eq:modulation} and by a scaling factor which is a function of the believed distance to the goal
+results in the velocity $u$ which is applied at the end-effector of the robot.
+
 
 %Figure \ref{fig:control_flow} illustrates the complete control flow.
 %\begin{figure}

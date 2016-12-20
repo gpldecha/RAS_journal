@@ -1,0 +1,4 @@
+
+- A Fitted Policy Iteration algorithm for continuous state and actions space (PO)MDPs is proposed
+- The policy improvement is tailored to generative policy models such as the Gaussian Mixture Model.
+- A policy is learned from human demonstrations without the need of additional rollouts. 

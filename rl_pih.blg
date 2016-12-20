@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: rl_pih.aux
 The style file: elsarticle-harv.bst
 Database file #1: bib/ras_fpi.bib.bib
-I was expecting a `,' or a `}'---line 439 of file bib/ras_fpi.bib.bib
+I was expecting a `,' or a `}'---line 428 of file bib/ras_fpi.bib.bib
  :    
  :    url    = {"http://www.cs.cmu.edu/~ggordon/ml95-stable-dp.ps.gz"}
 (Error may have been on previous line)
@@ -20,45 +20,45 @@ Warning--empty chapter and pages in Riedmiller2005
 Warning--empty publisher in Thrun_1999
 Warning--empty publisher in Thrun_Burgard_Fox_2005
 Warning--empty publisher in RL_state_art_2012
-You've used 53 entries,
+You've used 50 entries,
             2821 wiz_defined-function locations,
-            976 strings with 14498 characters,
-and the built_in function-call counts, 28019 in all, are:
-= -- 2957
-> -- 1162
-< -- 65
-+ -- 447
-- -- 379
-* -- 2305
-:= -- 4702
-add.period$ -- 182
-call.type$ -- 53
-change.case$ -- 425
+            965 strings with 14235 characters,
+and the built_in function-call counts, 26205 in all, are:
+= -- 2764
+> -- 1084
+< -- 61
++ -- 414
+- -- 354
+* -- 2132
+:= -- 4407
+add.period$ -- 171
+call.type$ -- 50
+change.case$ -- 401
 chr.to.int$ -- 56
-cite$ -- 65
-duplicate$ -- 1179
-empty$ -- 2045
-format.name$ -- 559
-if$ -- 5897
-int.to.chr$ -- 4
+cite$ -- 62
+duplicate$ -- 1108
+empty$ -- 1917
+format.name$ -- 520
+if$ -- 5519
+int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 56
-newline$ -- 195
-num.names$ -- 214
-pop$ -- 463
+missing$ -- 53
+newline$ -- 184
+num.names$ -- 200
+pop$ -- 438
 preamble$ -- 1
-purify$ -- 337
+purify$ -- 318
 quote$ -- 0
-skip$ -- 943
+skip$ -- 896
 stack$ -- 0
-substring$ -- 1644
-swap$ -- 326
-text.length$ -- 29
+substring$ -- 1519
+swap$ -- 300
+text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 456
+type$ -- 429
 warning$ -- 12
-while$ -- 250
+while$ -- 233
 width$ -- 0
-write$ -- 610
+write$ -- 573
 (There was 1 error message)

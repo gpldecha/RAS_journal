@@ -1,4 +1,4 @@
-\begin{thebibliography}{53}
+\begin{thebibliography}{50}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -90,18 +90,10 @@ Cheng, H., Chen, H., Hao, L., Li, W., May 2014. Robot learning based on partial
   International Conference on Robotics and Automation (ICRA). pp. 4399--4404.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/ICRA.2014.6907500}
 
-\bibitem[{Deisenroth et~al.(2013{\natexlab{a}})Deisenroth, Neumann, and
+\bibitem[{Deisenroth et~al.(2013)Deisenroth, Neumann, and
   Peters}]{p_search_surv_2011}
-Deisenroth, M.~P., Neumann, G., Peters, J., 2013{\natexlab{a}}. A survey on
-  policy search for robotics. Foundations and Trends in Robotics 2~(1-2),
-  1--142.
-\newline\urlprefix\url{http://dx.doi.org/10.1561/2300000021}
-
-\bibitem[{Deisenroth et~al.(2013{\natexlab{b}})Deisenroth, Neumann, and
-  Peters}]{rl_gradient_survey_2013}
-Deisenroth, M.~P., Neumann, G., Peters, J., 2013{\natexlab{b}}. A survey on
-  policy search for robotics. Foundations and Trends in Robotics 2~(1-2),
-  1--142.
+Deisenroth, M.~P., Neumann, G., Peters, J., 2013. A survey on policy search for
+  robotics. Foundations and Trends in Robotics 2~(1-2), 1--142.
 \newline\urlprefix\url{http://dx.doi.org/10.1561/2300000021}
 
 \bibitem[{Du et~al.(2010)Du, Hsu, Kurniawati, Lee, Ong, and
@@ -177,30 +169,19 @@ Mnih, V., 02 2015. Human-level control through deep reinforcement learning.
   Nature 518~(7540), 529--533.
 \newline\urlprefix\url{http://dx.doi.org/10.1038/nature14236}
 
-\bibitem[{Neumann and Peters(2009{\natexlab{a}})}]{fqi_nips_peter_2009}
-Neumann, G., Peters, J., Jun 2009{\natexlab{a}}. Fitted q-iteration by
-  advantage weighted regression. In: Advances in Neural Information Processing
-  Systems (NIPS). Vol.~21. pp. 1177--1184.
-
-\bibitem[{Neumann and Peters(2009{\natexlab{b}})}]{NIPS2008_3501}
-Neumann, G., Peters, J.~R., 2009{\natexlab{b}}. Fitted q-iteration by advantage
-  weighted regression. In: Koller, D., Schuurmans, D., Bengio, Y., Bottou, L.
-  (Eds.), Advances in Neural Information Processing Systems (NIPS). Vol.~21.
-  Curran Associates, Inc., pp. 1177--1184.
+\bibitem[{Neumann and Peters(2009)}]{fqi_nips_peter_2009}
+Neumann, G., Peters, J., Jun 2009. Fitted q-iteration by advantage weighted
+  regression. In: Advances in Neural Information Processing Systems (NIPS).
+  Vol.~21. pp. 1177--1184.
 
 \bibitem[{Ormoneit and Glynn(2002)}]{kernel_rl_ormoneit_2002}
 Ormoneit, D., Glynn, P., Oct 2002. Kernel-based reinforcement learning in
   average-cost problems. Transactions on Automatic Control 47~(10), 1624--1636.
 \newline\urlprefix\url{http://dx.doi.org/10.1109/TAC.2002.803530}
 
-\bibitem[{Peters and Schaal(2008{\natexlab{a}})}]{NAC_2008}
-Peters, J., Schaal, S., 2008{\natexlab{a}}. Natural actor-critic. European
-  Symposium on Artificial Neural Networks 71~(7-9), 1180--1190.
-\newline\urlprefix\url{http://dx.doi.org/10.1016/j.neucom.2007.11.026}
-
-\bibitem[{Peters and Schaal(2008{\natexlab{b}})}]{peter_nac_2008}
-Peters, J., Schaal, S., mar 2008{\natexlab{b}}. Natural actor-critic.
-  Neurocomputing 71~(7-9), 1180--1190.
+\bibitem[{Peters and Schaal(2008)}]{peter_nac_2008}
+Peters, J., Schaal, S., mar 2008. Natural actor-critic. Neurocomputing
+  71~(7-9), 1180--1190.
 \newline\urlprefix\url{http://dx.doi.org/10.1016/j.neucom.2007.11.026}
 
 \bibitem[{Pineau et~al.(2003)Pineau, Gordon, and Thrun}]{PBVI_2003}
